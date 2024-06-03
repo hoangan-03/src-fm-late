@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "start": "serve -s _static -l tcp://0.0.0.0:$8080 -n",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -47,6 +48,7 @@
     "react-social-login-buttons": "^3.9.1",
     "react-spring": "^9.7.3",
     "reactjs-social-login": "^2.6.3",
+    "serve": "^14.2.3",
     "styled-component": "^2.8.0",
     "styled-components": "^5.3.11",
     "web-vitals": "^2.1.4",
