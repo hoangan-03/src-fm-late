@@ -15,6 +15,7 @@ import Course from "./page/Course";
 import ViewAllPost from "./page/ViewAllPost";
 import Auth from "./page/Auth";
 import Header from "./components/Header";
+import Account from "./page/Account";
 
 
 function App() {
@@ -75,6 +76,7 @@ function App() {
           <Route path="/Partners" element={<Partners />} />
           <Route path="/CourseInfo" element={<CourseInfo />} />
           <Route path="/Auth" element={<Auth />} />
+          <Route path="/Account" element={<Account />} />
   
         </Routes>
       </BrowserRouter>

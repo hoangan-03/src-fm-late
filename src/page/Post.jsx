@@ -35,7 +35,7 @@ const TOOLBAR_OPTIONS = [
 const categoryOptions = ["Thông báo", "Sự kiện"];
 
 const Post = () => {
-  const baseUrl = process.env.REACT_APP_BASEURL;
+  const baseUrl = import.meta.env.VITE_BASE_URL;
   const [active, setActive] = useState(null);
   const handleActive = (boole) => {
     setActive(boole);
