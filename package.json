@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "start": "serve -s _static -l tcp://0.0.0.0:$8080 -n",
+    "start": "serve -s _static -l tcp://0.0.0.0:8080 -n",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
