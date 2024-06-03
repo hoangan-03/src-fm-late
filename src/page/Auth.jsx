@@ -5,7 +5,7 @@ import a1 from "../assets/pic/1.jpg";
 // import { FacebookRounded, GitHub, Google } from "@mui/icons-material";
 
 const Auth = () => {
-  const baseUrl = process.env.REACT_APP_BASEURL;
+  const baseUrl = import.meta.env.VITE_BASE_URL;
   const [isLogin, setIsLogin] = useState(true);
   const [name, setUsername] = useState("");
   const [email, setEmail] = useState("");
