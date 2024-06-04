@@ -54,25 +54,25 @@ const PictureInfo = ({ pictures }) => {
         }`}
       >
         <button
-          className={`w-auto h-[50px] rounded-2xl bg-sky-800 flex flex-row px-1 py-1 gap-4 justify-start items-center ${
+          className={`w-auto h-[25px]  lg:h-[50px]  rounded-lg lg:rounded-2xl bg-sky-800 flex flex-row px-1 py-1 gap-4 justify-start items-center ${
             show
-              ? "w-[50px] -translate-x-0 justify-center"
-              : "w-auto -translate-x-14"
+              ? "w-[25px] lg:w-[50px] -translate-x-0 justify-center"
+              : "w-auto -translate-x-10 lg:-translate-x-14"
           }`}
           onClick={() => handleClick()}
         >
           <img
             src={arrowleft}
-            className={`object-cover w-10 h-10 ${show ? "hidden" : "block"}  `}
+            className={`object-cover w-4 h-4 lg:w-10 lg:h-10 ${show ? "hidden" : "block"}  `}
             alt=""
           ></img>
           <img
             src={closewhite}
-            className={`object-cover w-5 h-5 ${show ? "block" : "hidden"}  `}
+            className={`object-cover w-2 h-2 lg:w-5 lg:h-5 ${show ? "block" : "hidden"}  `}
             alt=""
           ></img>
         </button>
-        <h2 className="text-2xl font-bold text-black">Bài viết gần đây</h2>
+        <h2 className="text-base lg:text-2xl pl-2 font-bold text-black">Bài viết gần đây</h2>
         <RecentPost containerList={pictures} />
       </div>
     </div>

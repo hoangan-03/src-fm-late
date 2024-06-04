@@ -11,16 +11,16 @@ function RecentPostContainer({ imageSrc, heading, date, p, category }) {
         className="object-cover  h-auto aspect-square w-2/3 rounded-xl lg:w-[150px] lg:h-auto"
       />
       <div
-        className={`flex flex-col gap-2 lg:w-[700px] w-2/3 pr-[20%] 
+        className={`flex flex-col gap-2 lg:w-[700px]  w-2/3 pr-0 lg:pr-[20%] 
         `}
       >
-        <h2 className="rounded-b-md text-[12px] lg:text-[17px] w-full h-1/2 text-start merry block font-semibold">
+        <h2 className="rounded-b-md text-[10px] lg:text-[17px] w-full h-1/2 text-start merry block font-semibold">
           {heading}
         </h2>
-        <div className="flex flex-row  gap-2 justify-end w-full items-center">
+        <div className="flex flex-row gap-1  lg:gap-2 justify-end w-full items-center">
           <div className="w-[50px] mt-[2px] h-[2px] bg-black/30"></div>
           <h2
-            className={` text-sm self-center font-semibold text-center ${
+            className={`text-xs lg:text-sm self-center font-semibold text-center ${
               category === "Thông báo" ? "text-blue-700" : "text-cyan-700"
             }`}
           >
@@ -35,7 +35,7 @@ function RecentPostContainer({ imageSrc, heading, date, p, category }) {
             src={datee}
           ></img>
           <h2
-            className={` text-xs self-center  font-semibold text-center text-gray-600 `}
+            className={`text-xs lg:text-sm self-center  font-semibold text-center text-gray-600 `}
           >
             {date.substring(8)}
           </h2>

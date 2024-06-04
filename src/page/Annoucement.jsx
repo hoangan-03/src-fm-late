@@ -38,7 +38,7 @@ const Annoucement = ({ containerData }) => {
       
       <div className="w-full h-auto lg:h-full flex flex-col lg:flex-row gap-5">
         <div className="w-full lg:w-[60%] h-full flex flex-col gap-3">
-          <div className="w-full h-[200px] flex flex-row items-end justify-between">
+          <div className="w-full h-[120px] lg:h-[200px] flex flex-row items-end justify-between">
             <h2 className="text-start font-semibold text-black text-base lg:text-3xl ">
               Tin tức - Sự kiện
             </h2>
@@ -89,10 +89,10 @@ const Annoucement = ({ containerData }) => {
         <div className="w-full lg:w-[40%] h-auto lg:h-full flex flex-col gap-7">
           <div className="w-full h-[220px] lg:h-2/3 rounded-3xl bg-gray-400 relative">
             <div className="absolute top-2 left-2 lg:left-10 flex flex-col gap-4 ">
-              <div className="bg-transparent backdrop-blur-lg max-w-[150px] w-auto flex flex-row justify-center items-center h-auto border-white gap-3 rounded-3xl px-3 py-2">
+              <div className="bg-transparent backdrop-blur-lg max-w-[120px] w-auto flex flex-row justify-center items-center h-auto border-white gap-3 rounded-3xl px-3 py-2">
                 <Circle style={{ fontSize: 10, color: "white" }} />
                 <h2 className="text-white text-xs lg:text-sm">
-                  {reversedContainers[0].category}
+                  {reversedContainers[1].category}
                 </h2>
               </div>
             </div>
