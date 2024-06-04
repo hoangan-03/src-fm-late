@@ -10,6 +10,21 @@ import tick from "../assets/pic/accept.png";
 import info from "../assets/pic/info.png";
 import close from "../assets/pic/close.png";
 const Auth = () => {
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      navigate("/");
+    }
+  }, [navigate]);
+  const [shouldNavigate, setShouldNavigate] = React.useState(false);
+
+  React.useEffect(() => {
+    if (shouldNavigate) {
+      navigate("/");
+    }
+  }, [shouldNavigate]);
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const [isLogin, setIsLogin] = useState(true);
   const [name, setUsername] = useState("");
@@ -22,7 +37,6 @@ const Auth = () => {
   const [openlogin, setOpenLogin] = useState(false);
   const [registerError, setRegisterError] = useState("");
   const [loginError, setLoginError] = useState("");
-  const navigate = useNavigate();
   const [usernameOrEmail, setUsernameOrEmail] = useState("");
 
   const switchMode = () => {
@@ -88,19 +102,26 @@ const Auth = () => {
         if (res.data.success) {
           localStorage.setItem("user", JSON.stringify(res.data.user));
           setOpenLogin(true);
+          setLoginError("");
           console.log(res.data.message);
-          navigate("/");
-        } else {
-          if (res.status === 404) {
-            setLoginError("nonexist");
-          }
-          else setLoginError("wrong");
-          setOpenLogin(true);
-          console.log(res.data.message);
+          setShouldNavigate(true);
         }
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        if (err.response) {
+          console.log(err.response.data.message);
+          if (err.response.status === 404) {
+            setLoginError("nonexist");
+          } else if (err.response.status === 403) {
+            setLoginError("wrong");
+          }
+          setOpenLogin(true);
+        } else {
+          console.error(err);
+        }
+      });
   };
+  console.log("error", loginError);
   const handleClose1 = () => {
     setOpen(false);
   };
@@ -150,8 +171,7 @@ const Auth = () => {
                     ? ""
                     : loginError === "nonexist"
                     ? "Tên tài khoản hoặc email không tồn tại"
-                    : "Mật khẩu đăng nhập không chính xác"
-}
+                    : "Mật khẩu đăng nhập không chính xác"}
                 </h1>
               </div>
             </div>
@@ -239,7 +259,7 @@ const Auth = () => {
             <form className="flex flex-col w-full gap-3" onSubmit={handleLogin}>
               <input
                 className=" px-7 py-2 border rounded-2xl "
-                type="email"
+                type="text"
                 placeholder="Username or Email"
                 required
                 onChange={(e) => setUsernameOrEmail(e.target.value)}

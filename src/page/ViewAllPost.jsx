@@ -5,8 +5,10 @@ import Scroll from "../components/Scroll";
 import TextField from "@mui/material/TextField";
 // import { HashLink } from "react-router-hash-link";
 import { useTranslation } from "react-i18next";
-
+import { HashLink } from "react-router-hash-link";
 const ViewAllPost = ({ containerData }) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  console.log(user);
   const [inputText, setInputText] = useState("");
   let inputHandler = (e) => {
     var lowerCase = e.target.value.toLowerCase();
@@ -21,16 +23,24 @@ const ViewAllPost = ({ containerData }) => {
       id="hero"
     >
       <Scroll />
-      {/* <button className={`button-54 h-[60px] mt-[150px] text-black `}>
+      <button
+        className={`button-54 h-[60px] mt-[150px] text-black  ${
+          user.role === "Admin" ? "block" : "hidden"
+        } `}
+      >
         <HashLink
           className={`h-[50px] text-xl text-center font-semibold w-[250px] no-underline`}
           to="./post"
         >
-          {t("post")}
+          {"Đăng bài viết"}
         </HashLink>
-      </button> */}
+      </button>
 
-      <div className={`search w-[60%] xl:w-[60%] mt-[150px] `}>
+      <div
+        className={`search w-[60%] xl:w-[60%]  ${
+          user.role === "Admin" ? "mt-0" : "mt-[150px]"
+        }  `}
+      >
         <TextField
           id="outlined-basic"
           onChange={inputHandler}
@@ -46,7 +56,7 @@ const ViewAllPost = ({ containerData }) => {
             },
             style: {
               color: "black",
-              fontWeight: "bold", 
+              fontWeight: "bold",
             },
           }}
         />
