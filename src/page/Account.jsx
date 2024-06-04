@@ -39,6 +39,7 @@ const BlueOutlinedTextField = styled(TextField)(() => ({
 const Account = () => {
   const fileInputRef = useRef(null);
   const baseUrl = import.meta.env.VITE_BASE_URL;
+
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user")) || {};
   const [fullname, setFullname] = useState("");
