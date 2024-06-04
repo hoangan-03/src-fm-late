@@ -19,23 +19,25 @@ const Auth = () => {
   const [checkedBox, setCheckedBox] = useState(false);
   const [apiKey, setApiKey] = useState("");
   const [open, setOpen] = useState(false);
-  const [error, setError] = useState("");
+  const [openlogin, setOpenLogin] = useState(false);
+  const [registerError, setRegisterError] = useState("");
+  const [loginError, setLoginError] = useState("");
   const navigate = useNavigate();
   const [usernameOrEmail, setUsernameOrEmail] = useState("");
-  console.log("eroor, ", error);
+
   const switchMode = () => {
     setIsLogin((prevIsLogin) => !prevIsLogin);
   };
   const handleRegister = (event) => {
     event.preventDefault();
     if (password.length < 6 || password.length > 16) {
-      setError("passwordlen");
+      setRegisterError("passwordlen");
       setOpen(true);
     } else if (password !== passwordReType) {
-      setError("password");
+      setRegisterError("password");
       setOpen(true);
     } else if (apiKey !== import.meta.env.VITE_API_KEY && checkedBox) {
-      setError("apikey");
+      setRegisterError("apikey");
       setOpen(true);
     } else {
       const user = {
@@ -55,13 +57,14 @@ const Auth = () => {
         .then((res) => {
           console.log("User created successfully");
           setOpen(true);
+          setRegisterError("");
           switchMode();
         })
         .catch((err) => {
           if (err.response) {
             if (err.response.status === 400) {
+              setRegisterError("username");
               setOpen(true);
-              setError("username");
             } else if (err.response.status === 500) {
               console.error("Internal Server Error");
               console.error(err.response.data.message);
@@ -84,26 +87,37 @@ const Auth = () => {
       .then((res) => {
         if (res.data.success) {
           localStorage.setItem("user", JSON.stringify(res.data.user));
+          setOpenLogin(true);
           console.log(res.data.message);
           navigate("/");
         } else {
+          if (res.status === 404) {
+            setLoginError("nonexist");
+          }
+          else setLoginError("wrong");
+          setOpenLogin(true);
           console.log(res.data.message);
         }
       })
       .catch((err) => console.error(err));
   };
-
+  const handleClose1 = () => {
+    setOpen(false);
+  };
+  const handleClose2 = () => {
+    setOpenLogin(false);
+  };
   return (
     <section className="w-screen h-screen flex flex-row gap-2 airbnb justify-center items-center">
       <Modal
-        open={open}
-        onClose={handleClose}
+        open={openlogin}
+        onClose={handleClose2}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <div
           className={`absolute border-b-[8px] ${
-            error === "" ? "border-b-green-500" : "border-b-amber-600"
+            loginError === "" ? "border-b-green-500" : "border-b-amber-600"
           }  left-1/2 gap-1 top-1/2 flex h-[100px] w-[620px] -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center rounded-2xl bg-white`}
         >
           <div
@@ -112,40 +126,99 @@ const Auth = () => {
             <div className="flex flex-row gap-4 h-full w-full">
               <div
                 className={`h-[45px] w-[45px] p-1 self-center rounded-xl flex justify-center items-center ${
-                  error === "" ? "bg-green-500/20" : "bg-amber-600/20"
+                  loginError === "" ? "bg-green-500/20" : "bg-amber-600/20"
                 } `}
               >
                 <img
                   className="w-[30px] h-[30px]"
                   alt=""
-                  src={`${error === "" ? tick : info}`}
+                  src={`${loginError === "" ? tick : info}`}
                 ></img>
               </div>
               <div className="w-auto h-[70px] self-center flex flex-col text-start justify-center items-start">
                 <h2
                   className={`  w-auto text-start items-start text-2xl  font-bold text-black`}
                 >
-                  {error === ""
+                  {loginError === ""
+                    ? "Đăng nhập thành công"
+                    : "Đăng nhập thất bại"}
+                </h2>
+                <h1
+                  className={`w-auto text-start items-start text-base font-semibold text-gray-700`}
+                >
+                  {loginError === ""
+                    ? ""
+                    : loginError === "nonexist"
+                    ? "Tên tài khoản hoặc email không tồn tại"
+                    : "Mật khẩu đăng nhập không chính xác"
+}
+                </h1>
+              </div>
+            </div>
+            <button
+              onClick={() => handleClose2()}
+              className="w-[40px] h-[40px] flex self-center rounded-full justify-center items-center p-3 hover:bg-gray-200/30"
+            >
+              <img
+                alt=""
+                className="w-full h-full object-cover"
+                src={close}
+              ></img>
+            </button>
+          </div>
+        </div>
+      </Modal>
+      <Modal
+        open={open}
+        onClose={handleClose1}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <div
+          className={`absolute border-b-[8px] ${
+            registerError === "" ? "border-b-green-500" : "border-b-amber-600"
+          }  left-1/2 gap-1 top-1/2 flex h-[100px] w-[620px] -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center rounded-2xl bg-white`}
+        >
+          <div
+            className={`flex flex-row gap-4 h-full w-full justify-between px-4`}
+          >
+            <div className="flex flex-row gap-4 h-full w-full">
+              <div
+                className={`h-[45px] w-[45px] p-1 self-center rounded-xl flex justify-center items-center ${
+                  registerError === "" ? "bg-green-500/20" : "bg-amber-600/20"
+                } `}
+              >
+                <img
+                  className="w-[30px] h-[30px]"
+                  alt=""
+                  src={`${registerError === "" ? tick : info}`}
+                ></img>
+              </div>
+              <div className="w-auto h-[70px] self-center flex flex-col text-start justify-center items-start">
+                <h2
+                  className={`  w-auto text-start items-start text-2xl  font-bold text-black`}
+                >
+                  {registerError === ""
                     ? "Đăng kí tài khoản thành công"
                     : "Đăng kí tài khoản thất bại"}
                 </h2>
                 <h1
                   className={`  w-auto text-start items-start text-base font-semibold text-gray-700`}
                 >
-                  {error === ""
+                  {registerError === ""
                     ? "Tài khoản của bạn đã được chấp thuận"
-                    : error === "passwordlen"
+                    : registerError === "passwordlen"
                     ? "Mật khẩu phải có độ dài từ 6 đến 16 kí tự"
-                    : error === "password"
+                    : registerError === "password"
                     ? "Mật khẩu nhập lại không chính xác"
-                    : error === "username"
+                    : registerError === "username"
                     ? "Tên tài khoản hoặc email đã tồn tại"
                     : "Mã API không chính xác"}
                 </h1>
               </div>
             </div>
             <button
-              onClick={() => handleClose()}
+              onClick={() => handleClose1()}
               className="w-[40px] h-[40px] flex self-center rounded-full justify-center items-center p-3 hover:bg-gray-200/30"
             >
               <img
