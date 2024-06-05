@@ -46,7 +46,6 @@ const Course = ({containerData}) => {
         <div className="overflow-scroll h-[400px] w-full">
         <CourseList containerList={data} containersPerPage={4}/>
         </div>
-
       </section>
     </section>
   );
