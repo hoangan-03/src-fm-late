@@ -17,7 +17,7 @@ const PictureInfo = ({ pictures }) => {
 
   return (
     <div
-      className="picture-info bg-sky-100 w-[100vw] h-auto flex flex-row justify-center "
+      className="picture-info bg-sky-100 w-screen overflow-hidden h-auto flex flex-row justify-center "
       id="top"
     >
       <div className="w-auto h-auto flex flex-col items-center justify-center">
@@ -47,17 +47,11 @@ const PictureInfo = ({ pictures }) => {
           {parse(picture.p)}
         </p>
       </div>
-
-      <div
-        className={`w-[600px] gap-6 h-auto flex flex-col mt-[160px]  lg:mt-[200px] transition duration-500 ${
-          show ? "right-0" : "absolute right-[-616px]"
-        }`}
-      >
-        <button
-          className={`w-auto h-[25px]  lg:h-[50px]  rounded-lg lg:rounded-2xl bg-sky-800 flex flex-row px-1 py-1 gap-4 justify-start items-center ${
+      <button
+          className={`absolute top-[120px] right-0 w-[25px] lg:w-[50px] h-[25px] lg:h-[50px]  rounded-l-lg lg:rounded-l-2xl bg-sky-800 flex flex-row px-1 py-1 gap-4 justify-start items-center ${
             show
-              ? "w-[25px] lg:w-[50px] -translate-x-0 justify-center"
-              : "w-auto -translate-x-10 lg:-translate-x-14"
+              ? "  justify-center"
+              :  ""
           }`}
           onClick={() => handleClick()}
         >
@@ -72,8 +66,17 @@ const PictureInfo = ({ pictures }) => {
             alt=""
           ></img>
         </button>
-        <h2 className="text-base lg:text-2xl pl-2 font-bold text-black">Bài viết gần đây</h2>
-        <RecentPost containerList={pictures} />
+
+      <div
+        className={`w-[600px] gap-6 h-auto flex flex-col mt-[160px]  lg:mt-[200px] transition duration-500 ${
+          show ? "right-0" : "absolute right-[-616px] hidden  "
+        }`}
+      >
+        
+        <h2 className={`text-base lg:text-2xl pl-2 font-bold text-black ${show ? "" : "hidden"}`}>Bài viết gần đây</h2>
+        <div  className={` ${show ? "block" : "hidden"}  `}>
+        <RecentPost containerList={pictures}  />
+        </div>
       </div>
     </div>
   );
