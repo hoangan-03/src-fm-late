@@ -111,7 +111,7 @@ const HomePage = ({ containerData }) => {
   }
 
   return (
-    <section className="w-[100vw] overflow-hidden h-[650vh] flex flex-col" id="hero">
+    <section className="w-[100vw]  h-[650vh] flex flex-col" id="hero">
       <div className="w-screen h-[100vh]">
         <div className="w-screen h-screen top-0 bg-black/30 z-[2000] absolute"></div>
         <Scroll />
