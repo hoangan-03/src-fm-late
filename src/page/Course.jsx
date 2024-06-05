@@ -8,8 +8,8 @@ const Course = ({containerData}) => {
   return (
     <section className="bg-sky-100 overflow-hidden">
       <section id="hero" className="w-screen h-auto lg:h-screen flex flex-col lg:flex-row airbnb ">
-        <div className="w-full lg:w-1/2 mt-[100px] lg:mt-0 h-auto lg:h-full flex flex-col text-3xl lg:text-8xl gap-8 justify-center items-center lg:items-start px-3 lg:pl-24 py-2">
-          <h1>
+        <div className="w-full lg:w-1/2 mt-[100px] lg:mt-0 h-auto lg:h-full flex flex-col gap-8 justify-center items-center lg:items-start px-3 lg:pl-24 py-2">
+          <h1 className="text-3xl lg:text-7xl ">
             Tìm những khóa học phù hợp với nhu cầu của bạn với{" "}
             <span className="text-sky-800 border-teal-400 border-2 px-4 rounded-full py-1">
               SRC-FM
