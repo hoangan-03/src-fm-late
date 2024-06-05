@@ -26,11 +26,11 @@ const PictureInfo = ({ pictures }) => {
         </h2>
 
         <div className="h-auto relative lg:h-[515px] w-[90%]">
-          <h1 className="text-lg right-0 merry absolute h-[39px] top-[-39px] w-auto px-4 py-2 text-start bg-gray-800 text-gray-200 rounded-tr-xl rounded-tl-xl">
+          <h1 className="text-sm lg:text-lg right-0 merry absolute h-[39px] top-[-39px] w-auto px-4 py-2 text-start bg-gray-800 text-gray-200 rounded-tr-xl rounded-tl-xl">
             {picture.date}
           </h1>
           <h3
-            className={`absolute text-lg top-[-38px] h-[38px] px-4 py-2 text-center left-0 text-white rounded-tr-xl rounded-tl-xl airbnb ${
+            className={`absolute text-sm lg:text-lg top-[-38px] h-[38px] px-4 py-2 text-center left-0 text-white rounded-tr-xl rounded-tl-xl airbnb ${
               picture.category === "Thông báo" ? "bg-blue-700" : "bg-cyan-700"
             }`}
           >
