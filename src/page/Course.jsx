@@ -40,10 +40,10 @@ const Course = ({containerData}) => {
  
 
       </section> */}
-      <section className="w-screen h-screen flex flex-col gap-3 px-4 lg:px-[200px] py-[200px]">
+      <section className="w-screen h-auto lg:h-screen flex flex-col gap-3 px-4 lg:px-[100px] pt-[150px] pb-0 lg:pb-[30px]">
         <h1 className="text-3xl font-bold uppercase text-sky-700 ">Y đa khoa - Cơ sở ngành</h1>
-        <h1 className="text-4xl text-black mb-8 ">Bắt đầu học ngay hôm nay</h1>
-        <div className="overflow-scroll">
+        <h1 className="text-xl lg:text-4xl text-black mb-8 ">Bắt đầu học ngay hôm nay</h1>
+        <div className="overflow-scroll h-[400px] w-full">
         <CourseList containerList={data} containersPerPage={4}/>
         </div>
 

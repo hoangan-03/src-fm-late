@@ -12,7 +12,7 @@ const CourseList = ({ containersPerPage, containerList }) => {
   );
   return (
     <div
-      className={`w-screen flex justify-start  gap-6 items-start flex-row h-[500px]`}
+      className={`w-screen flex justify-start  gap-6 items-start flex-row h-full`}
     >
       {currentContainers.map((containerData, index) => (
         <div
