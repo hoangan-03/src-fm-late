@@ -168,10 +168,16 @@ p {
   top: 0px;
   left: 0;
   right: 0;
-  height: 10px;
+  height: 7px;
   background: linear-gradient(to right, #b4c8e9 0%, #53b1a9 100%);
   width: 100vw;
   transform-origin: 0%;
+}
+@media screen and (max-width: 768px) {
+  .progress-bar {
+    height: 3px;
+  }
+  
 }
 @font-face {
   font-family: "ALS Hauss Book";

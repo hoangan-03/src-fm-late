@@ -68,7 +68,7 @@ export default function NavBar() {
           <div className="w-full gap-3 h-auto text-white pt-[7px] lg:pt-[20px]  uppercase flex justify-start pl-[12px] lg:pl-[30px]  text-2xl mb-[60px] ">
             <HashLink
               to="/Auth"
-              className={`w-auto mt-1 h-auto px-4 py-2 text-white bg-sky-800 text-sm rounded-2xl airbnb hover:bg-cyan-800 ${
+              className={`w-auto mt-1 h-auto px-2 lg:px-4 py-2 text-white bg-sky-800 text-xs lg:text-sm rounded-2xl airbnb hover:bg-cyan-800 ${
                 user ? "hidden" : "block"
               }`}
             >

@@ -111,7 +111,7 @@ const HomePage = ({ containerData }) => {
   }
 
   return (
-    <section className="w-[100vw] h-[650vh] flex flex-col" id="hero">
+    <section className="w-[100vw] overflow-hidden h-[650vh] flex flex-col" id="hero">
       <div className="w-screen h-[100vh]">
         <div className="w-screen h-screen top-0 bg-black/30 z-[2000] absolute"></div>
         <Scroll />
@@ -380,7 +380,7 @@ const HomePage = ({ containerData }) => {
               <img className="h-full w-1/2 object-cover" alt="" src={dna}></img>
               <img className="h-full w-1/2 object-cover" alt="" src={backgood}></img>
             </div>
-            <div className="h-full w-full flex flex-col justify-center items-center bg-white">
+            <div className="h-[250px] lg:h-full w-full flex flex-col justify-center items-center bg-white">
 
               <img
                 className="object-cover h-[255px] w-[255px] p-8 hover:scale-125 transition-all duration-200"

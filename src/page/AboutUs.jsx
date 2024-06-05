@@ -64,7 +64,7 @@ export default function Aboutus() {
       >
         <div className="w-full h-auto lg:h-[200px] justify-center ">
           <div className="w-[auto] h-full flex flex-col lg:flex-row gap-0 lg:gap-[200px]  justify-center bg-gray-200 mt-[20px] lg:mt-0 items-center text-center ">
-            <div className="flex flex-col animate gap-[8px] lg:gap-[20px] m-0 lg:ml-[200px]  lg:mt-[20px]">
+            <div className="flex flex-col items-center lg:items-start animate gap-[8px] lg:gap-[20px] m-0 lg:ml-[200px]  lg:mt-[20px]">
               <div className="h-[5px] bg-red-700 w-[50px]"></div>
 
               <h3 className=" h-[50px] lg:h-[100px]  z-[20] relative w-auto text-2xl lg:text-4xl airbnb uppercase text-black">
@@ -163,8 +163,8 @@ export default function Aboutus() {
         </div>
       </section>
 
-      <section className="w-screen h-screen relative animate  " id="vision1">
-        <div className="w-screen h-screen flex justify-center   flex-col items-center gap-8">
+      <section className="w-screen h-[600px] lg:h-screen relative animate  " id="vision1">
+        <div className="w-screen h-full flex justify-center   flex-col items-center gap-8">
           <div className="w-full h-auto justify-center mt-[10px] mb-[20px] lg:mb-0 lg:gap-8">
             <div className="w-[auto] h-auto flex flex-row gap-[100px]  justify-center items-center text-center ">
               <div className="flex flex-col gap-[20px] items-center justify-center ">
@@ -198,7 +198,7 @@ export default function Aboutus() {
       </section>
 
       <section
-        className="w-screen h-screen flex justify-center animate   flex-col items-center gap-8"
+        className="w-screen h-[600px] lg:h-screen flex justify-center animate   flex-col items-center gap-8"
         id="vision2"
       >
         <div className="w-screen lg:w-[1200px] h-[450px] flex flex-col lg:flex-row mb-[20px] lg:mb-0 lg:gap-8">
@@ -221,7 +221,7 @@ export default function Aboutus() {
         </div>
       </section>
       <section
-        className="w-screen h-[120vh] overflow-hidden relative bg-blue-200 flex pt-[20px] pb-[60px] flex-col gap-2 justify-center items-center"
+        className="w-screen overflow-auto h-auto lg:h-[120vh] relative bg-blue-200 flex pt-[20px] pb-[220px] lg:pb-[60px] flex-col gap-2 justify-center items-center"
         id="organization"
       >
         <a
@@ -234,7 +234,7 @@ export default function Aboutus() {
             alt=""
           ></img>
         </a>
-        <div className="w-full h-[120px] justify-center mt-[50px] ">
+        <div className="w-full h-[60px] lg:h-[120px] justify-center mt-[50px] ">
           <div className="w-[auto] h-auto flex flex-row gap-[100px]  justify-center items-center text-center ">
             <div className="flex flex-col gap-[20px] items-center justify-center ">
               <div className="h-[5px] bg-blue-800 w-[50px]"></div>
@@ -245,58 +245,58 @@ export default function Aboutus() {
             </div>
           </div>
         </div>
-        <div className="flex flex-row w-[1200px] h-full gap-6 ">
-          <div className="w-[20%] h-1/2 relative">
+        <div className="flex flex-col lg:flex-row h-[1300px] w-screen lg:w-[1200px] lg:h-full gap-6 justify-center items-start px-5 lg:px-0">
+          <div className="w-full lg:w-[20%] h-1/5 lg:h-1/2 relative">
             <img
               src={prit}
               className=" absolute rounded-2xl object-cover w-full h-full"
               alt=""
             ></img>
-            <div className="absolute airbnb h-auto backdrop-blur-[1px] text-white w-full flex justify-center items-center bg-black/20 pl-2  bottom-4 flex-col">
+            <div className="absolute airbnb h-auto backdrop-blur-[1px] text-white w-full flex justify-center items-center bg-black/20 pl-2 bottom-2 lg:bottom-4 flex-col">
               <h2 className="text-xl ">Cao Niên Kỷ</h2>
               <h2 className="text-base  ">Trưởng ban PR-IT</h2>
             </div>
           </div>
-          <div className="w-[20%] h-1/2 relative">
+          <div className="w-full lg:w-[20%] h-1/5 lg:h-1/2 relative">
             <img
               src={noidung}
               className=" absolute rounded-2xl object-cover w-full h-full"
               alt=""
             ></img>
-            <div className="absolute airbnb h-auto backdrop-blur-[1px] text-white w-full flex justify-center items-center bg-black/20 pl-2  bottom-4 flex-col">
+            <div className="absolute airbnb h-auto backdrop-blur-[1px] text-white w-full flex justify-center items-center bg-black/20 pl-2  bottom-2 lg:bottom-4 flex-col">
               <h2 className="text-base ">Đặng Lê Minh Khang</h2>
               <h2 className="text-base ">Phó chủ nhiệm - Trưởng ban Nội Dung</h2>
             </div>
           </div>
-          <div className="w-[20%] h-1/2 relative">
+          <div className="w-full lg:w-[20%] h-1/5 lg:h-1/2 relative">
             <img
               src={chunhiem}
               className=" absolute rounded-2xl object-cover w-full h-full"
               alt=""
             ></img>
-            <div className="absolute airbnb h-auto backdrop-blur-[1px] text-white w-full flex justify-center items-center bg-black/20 pl-2  bottom-4 flex-col">
+            <div className="absolute airbnb h-auto backdrop-blur-[1px] text-white w-full flex justify-center items-center bg-black/20 pl-2  bottom-2 lg:bottom-4 flex-col">
               <h2 className="text-xl">Lê Hoàng Thiên Ân</h2>
               <h2 className="text-base  ">Chủ nhiệm</h2>
             </div>
           </div>
-          <div className="w-[20%] h-1/2 relative">
+          <div className="w-full lg:w-[20%] h-1/5 lg:h-1/2 relative">
             <img
               src={haucan}
               className=" absolute rounded-2xl object-cover w-full h-full"
               alt=""
             ></img>
-            <div className="absolute airbnb h-auto backdrop-blur-[1px] text-white w-full flex justify-center items-center bg-black/20 pl-2  bottom-4 flex-col">
+            <div className="absolute airbnb h-auto backdrop-blur-[1px] text-white w-full flex justify-center items-center bg-black/20 pl-2  bottom-2 lg:bottom-4 flex-col">
               <h2 className="text-base ">Thạch Đặng Minh Uyên</h2>
               <h2 className="text-base  ">Phó chủ nhiệm - Trưởng ban Hậu Cần</h2>
             </div>
           </div>
-          <div className="w-[20%] h-1/2 relative">
+          <div className="w-full lg:w-[20%] h-1/5 lg:h-1/2 relative">
             <img
               src={taichinh}
               className=" absolute rounded-2xl object-cover w-full h-full"
               alt=""
             ></img>
-            <div className="absolute airbnb h-auto backdrop-blur-[1px] text-white w-full flex justify-center items-center bg-black/20 pl-2  bottom-4 flex-col">
+            <div className="absolute airbnb h-auto backdrop-blur-[1px] text-white w-full flex justify-center items-center bg-black/20 pl-2  bottom-2 lg:bottom-4 flex-col">
               <h2 className="text-xl ">Võ Tường Vi</h2>
               <h2 className="text-base  ">Trưởng ban Tài Chính</h2>
             </div>
