@@ -8,7 +8,6 @@ import { useTranslation } from "react-i18next";
 import { HashLink } from "react-router-hash-link";
 const ViewAllPost = ({ containerData }) => {
   const user = JSON.parse(localStorage.getItem("user"));
-  console.log(user);
   const [inputText, setInputText] = useState("");
   let inputHandler = (e) => {
     var lowerCase = e.target.value.toLowerCase();
@@ -25,7 +24,7 @@ const ViewAllPost = ({ containerData }) => {
       <Scroll />
       <button
         className={`button-54 h-[60px] mt-[150px] text-black  ${
-          user.role === "Admin" ? "block" : "hidden"
+          user && user.role === "Admin" ? "block" : "hidden"
         } `}
       >
         <HashLink
@@ -38,7 +37,7 @@ const ViewAllPost = ({ containerData }) => {
 
       <div
         className={`search w-[60%] xl:w-[60%]  ${
-          user.role === "Admin" ? "mt-0" : "mt-[150px]"
+          user && user.role === "Admin" ? "mt-0" : "mt-[150px]"
         }  `}
       >
         <TextField
