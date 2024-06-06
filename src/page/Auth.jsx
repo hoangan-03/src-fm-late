@@ -2,15 +2,35 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import a1 from "../assets/pic/1.jpg";
-// import { FacebookRounded, GitHub, Google } from "@mui/icons-material";
+import { FacebookRounded, GitHub, Google } from "@mui/icons-material";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Modal from "@mui/material/Modal";
 import tick from "../assets/pic/accept.png";
 import info from "../assets/pic/info.png";
 import close from "../assets/pic/close.png";
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
+import { useGoogleLogin } from '@react-oauth/google';
 const Auth = () => {
   const navigate = useNavigate();
+  const login = useGoogleLogin({
+    onSuccess: async (response) => {
+      try {
+        const res = await axios.get(
+          "https://www.googleapis.com/oauth2/v3/userinfo",
+          {
+            headers: {
+              Authorization: `Bearer ${response.access_token}`,
+            },
+          }
+        );
+        console.log(res);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+  });
 
   React.useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -69,7 +89,6 @@ const Auth = () => {
       axios
         .post(baseUrl + "/addUser", user)
         .then((res) => {
-          console.log("User created successfully");
           setOpen(true);
           setRegisterError("");
           switchMode();
@@ -103,7 +122,6 @@ const Auth = () => {
           localStorage.setItem("user", JSON.stringify(res.data.user));
           setOpenLogin(true);
           setLoginError("");
-          console.log(res.data.message);
           setShouldNavigate(true);
         }
       })
@@ -121,7 +139,6 @@ const Auth = () => {
         }
       });
   };
-  console.log("error", loginError);
   const handleClose1 = () => {
     setOpen(false);
   };
@@ -137,18 +154,16 @@ const Auth = () => {
         aria-describedby="modal-modal-description"
       >
         <div
-          className={`absolute border-b-[8px] ${
-            loginError === "" ? "border-b-green-500" : "border-b-amber-600"
-          }  left-1/2 gap-1 top-1/2 flex h-[100px] w-[620px] -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center rounded-2xl bg-white`}
+          className={`absolute border-b-[8px] ${loginError === "" ? "border-b-green-500" : "border-b-amber-600"
+            }  left-1/2 gap-1 top-1/2 flex h-[100px] w-[620px] -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center rounded-2xl bg-white`}
         >
           <div
             className={`flex flex-row gap-4 h-full w-full justify-between px-4`}
           >
             <div className="flex flex-row gap-4 h-full w-full">
               <div
-                className={`h-[45px] w-[45px] p-1 self-center rounded-xl flex justify-center items-center ${
-                  loginError === "" ? "bg-green-500/20" : "bg-amber-600/20"
-                } `}
+                className={`h-[45px] w-[45px] p-1 self-center rounded-xl flex justify-center items-center ${loginError === "" ? "bg-green-500/20" : "bg-amber-600/20"
+                  } `}
               >
                 <img
                   className="w-[30px] h-[30px]"
@@ -170,8 +185,8 @@ const Auth = () => {
                   {loginError === ""
                     ? ""
                     : loginError === "nonexist"
-                    ? "Tên tài khoản hoặc email không tồn tại"
-                    : "Mật khẩu đăng nhập không chính xác"}
+                      ? "Tên tài khoản hoặc email không tồn tại"
+                      : "Mật khẩu đăng nhập không chính xác"}
                 </h1>
               </div>
             </div>
@@ -195,18 +210,16 @@ const Auth = () => {
         aria-describedby="modal-modal-description"
       >
         <div
-          className={`absolute border-b-[8px] ${
-            registerError === "" ? "border-b-green-500" : "border-b-amber-600"
-          }  left-1/2 gap-1 top-1/2 flex h-[100px] w-[620px] -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center rounded-2xl bg-white`}
+          className={`absolute border-b-[8px] ${registerError === "" ? "border-b-green-500" : "border-b-amber-600"
+            }  left-1/2 gap-1 top-1/2 flex h-[100px] w-[620px] -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center rounded-2xl bg-white`}
         >
           <div
             className={`flex flex-row gap-4 h-full w-full justify-between px-4`}
           >
             <div className="flex flex-row gap-4 h-full w-full">
               <div
-                className={`h-[45px] w-[45px] p-1 self-center rounded-xl flex justify-center items-center ${
-                  registerError === "" ? "bg-green-500/20" : "bg-amber-600/20"
-                } `}
+                className={`h-[45px] w-[45px] p-1 self-center rounded-xl flex justify-center items-center ${registerError === "" ? "bg-green-500/20" : "bg-amber-600/20"
+                  } `}
               >
                 <img
                   className="w-[30px] h-[30px]"
@@ -228,12 +241,12 @@ const Auth = () => {
                   {registerError === ""
                     ? "Tài khoản của bạn đã được chấp thuận"
                     : registerError === "passwordlen"
-                    ? "Mật khẩu phải có độ dài từ 6 đến 16 kí tự"
-                    : registerError === "password"
-                    ? "Mật khẩu nhập lại không chính xác"
-                    : registerError === "username"
-                    ? "Tên tài khoản hoặc email đã tồn tại"
-                    : "Mã API không chính xác"}
+                      ? "Mật khẩu phải có độ dài từ 6 đến 16 kí tự"
+                      : registerError === "password"
+                        ? "Mật khẩu nhập lại không chính xác"
+                        : registerError === "username"
+                          ? "Tên tài khoản hoặc email đã tồn tại"
+                          : "Mã API không chính xác"}
                 </h1>
               </div>
             </div>
@@ -280,9 +293,9 @@ const Auth = () => {
               >
                 Đăng nhập
               </button>
-              {/* <h2 className='text-black text-center text-sm mt-3 mb-3'>Hoặc tiếp tục bằng</h2>
+              <h2 className='text-black text-center text-sm mt-3 mb-3'>Hoặc tiếp tục bằng</h2>
               <div className='flex flex-row items-center justify-center gap-5 w-full'>
-                <button className='w-[40px] h-[40px] flex justify-center items-center bg-sky-800 rounded-full'>
+                <button onClick={() => login()} className='w-[40px] h-[40px] flex justify-center items-center bg-sky-800 rounded-full'>
                 <Google style={{color: 'white'}} />
                 </button>
                 <button className='w-[40px] h-[40px] flex justify-center items-center bg-sky-800 rounded-full'>
@@ -292,7 +305,7 @@ const Auth = () => {
                 <GitHub style={{color: 'white'}} />
                 </button>
                 
-              </div> */}
+              </div>
             </form>
           </div>
         ) : (
@@ -339,9 +352,8 @@ const Auth = () => {
                 onChange={(e) => setCheckedBox(e.target.checked)}
               />
               <input
-                className={`px-7 py-2 border rounded-2xl ${
-                  checkedBox ? "block" : "hidden"
-                }`}
+                className={`px-7 py-2 border rounded-2xl ${checkedBox ? "block" : "hidden"
+                  }`}
                 type="text"
                 placeholder="Mã API"
                 onChange={(e) => setApiKey(e.target.value)}

@@ -19,27 +19,29 @@ export default function NavBar() {
 
   useEffect(() => {
     const fetchUserData = async () => {
-      try {
-        const response = await axios.post(baseUrl + "/api/users", {
-          name: user.name,
-        });
-        if (response.status === 200) {
-          const user = response.data[0];
-          setFullname(user.fullname);
-          setAvatarUrl(user.avatarurl);
-        } else {
-          console.log(
-            "Error retrieving user data:",
-            response.status,
-            response.data
-          );
+      if (user) {
+        try {
+          const response = await axios.post(baseUrl + "/api/users", {
+            name: user.name,
+          });
+          if (response.status === 200) {
+            const userData = response.data[0];
+            setFullname(userData.fullname);
+            setAvatarUrl(userData.avatarurl);
+          } else {
+            console.log(
+              "Error retrieving user data:",
+              response.status,
+              response.data
+            );
+          }
+        } catch (error) {
+          console.error("Error retrieving user data:", error);
         }
-      } catch (error) {
-        console.error("Error retrieving user data:", error);
       }
     };
     fetchUserData();
-  }, [baseUrl]);
+  }, [baseUrl, user]);
   const [isActive, setIsActive] = useState(false);
   const [modal, setModal] = useState(false);
   const handleClick = () => {
@@ -88,7 +90,11 @@ export default function NavBar() {
               >
                 <div className="flex flex-row gap-3 rounded-lg w-full pl-2 h-[40px] hover:bg-sky-800 py-1 items-center">
                   <div className="w-8 h-8 flex justify-center items-center rounded-full bg-gray-200/20 ">
-                    <img className="w-full h-full object-cover rounded-full" src={avatarUrl || profile} alt=""></img>
+                    <img
+                      className="w-full h-full object-cover rounded-full"
+                      src={avatarUrl || profile}
+                      alt=""
+                    ></img>
                   </div>
                   <h1 className="text-xs text-white font-bold leading-4">
                     {fullname}
