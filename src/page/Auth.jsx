@@ -9,8 +9,6 @@ import Modal from "@mui/material/Modal";
 import tick from "../assets/pic/accept.png";
 import info from "../assets/pic/info.png";
 import close from "../assets/pic/close.png";
-import { GoogleLogin } from "@react-oauth/google";
-import { jwtDecode } from "jwt-decode";
 import { useGoogleLogin } from '@react-oauth/google';
 const Auth = () => {
   const navigate = useNavigate();
