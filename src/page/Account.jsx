@@ -129,7 +129,7 @@ const Account = () => {
         password: password,
       });
       if (response.status === 200) {
-        console.log("User updated successfully:", response.data);
+
         handleState(true);
         setOpen(true);
       } else {
