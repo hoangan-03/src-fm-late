@@ -12,23 +12,7 @@ import close from "../assets/pic/close.png";
 import { useGoogleLogin } from '@react-oauth/google';
 const Auth = () => {
   const navigate = useNavigate();
-  const login = useGoogleLogin({
-    onSuccess: async (response) => {
-      try {
-        const res = await axios.get(
-          "https://www.googleapis.com/oauth2/v3/userinfo",
-          {
-            headers: {
-              Authorization: `Bearer ${response.access_token}`,
-            },
-          }
-        );
-        console.log(res);
-      } catch (err) {
-        console.log(err);
-      }
-    },
-  });
+  
 
   React.useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -56,6 +40,24 @@ const Auth = () => {
   const [registerError, setRegisterError] = useState("");
   const [loginError, setLoginError] = useState("");
   const [usernameOrEmail, setUsernameOrEmail] = useState("");
+  const login = useGoogleLogin({
+    onSuccess: async (response) => {
+      try {
+        const res = await axios.get(
+          "https://www.googleapis.com/oauth2/v3/userinfo",
+          {
+            headers: {
+              Authorization: `Bearer ${response.access_token}`,
+            },
+          }
+        );
+        
+        console.log(res);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+  });
 
   const switchMode = () => {
     setIsLogin((prevIsLogin) => !prevIsLogin);
