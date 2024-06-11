@@ -45,7 +45,7 @@ const ViewAllPost = ({ containerData }) => {
           onChange={inputHandler}
           variant="outlined"
           fullWidth
-          label={t("search")}
+          label={"Tìm kiếm bài viết"}
           InputLabelProps={{
             style: { fontWeight: "bold" },
           }}
