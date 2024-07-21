@@ -70,7 +70,7 @@ const Slick = () => {
       <div className="overflow-hidden h-screen">
         <div className="absolute bottom-0 left-[50%] translate-x-[-50%] translate-y-[-50%] w-auto h-auto z-[2001] py-2 lg:py-4 px-4 lg:px-8 bg-white/70 backdrop-blur-md flex justify-center text-center items-center rounded-[30px] lg:rounded-[60px]">
           <div className="text-base lg:text-4xl airbnb text-black ">
-            CLB Nghiên cứu Khoa học
+            CLB Nghiên cứu Khoa học - Khoa Y
           </div>
         </div>
         <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[550px] h-[100px] z-[2001] flex flex-col justify-center items-center">
