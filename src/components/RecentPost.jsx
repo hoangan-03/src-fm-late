@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+
 import RecentPostContainer from "./RecentPostContainer";
 import { HashLink } from "react-router-hash-link";
 

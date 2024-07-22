@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+
 import datee from "../assets/pic/date.png";
 import parse from "html-react-parser";
 

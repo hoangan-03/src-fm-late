@@ -1,4 +1,4 @@
-import React from "react";
+
 const Footer = () => {
   return (
     <div className=" w-screen h-[40vh] flex flex-col bg-gray-900">
@@ -18,7 +18,7 @@ const Footer = () => {
           <h2 className="text-xl airbnb mb-2 ">Kết nối </h2>
           <h2 className="text-white text-lg airbnb-thin">Facebook</h2>
           <div
-            class="fb-page"
+            className="fb-page"
             data-href="https://www.facebook.com/CLBNCKHKhoaY"
             data-tabs=""
             data-width="400"
@@ -30,7 +30,7 @@ const Footer = () => {
           >
             <blockquote
               cite="https://www.facebook.com/CLBNCKHKhoaY"
-              class="fb-xfbml-parse-ignore"
+              className="fb-xfbml-parse-ignore"
             >
               <a href="https://www.facebook.com/CLBNCKHKhoaY">
                 CLB Nghiên Cứu Khoa Học - Khoa Y

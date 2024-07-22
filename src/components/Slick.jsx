@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import sce2 from "../assets/pic/3right.jpg";
 import sce1 from "../assets/pic/3left.jpg";
 import sce4 from "../assets/pic/7right.jpg";

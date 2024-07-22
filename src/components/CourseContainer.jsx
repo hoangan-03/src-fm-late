@@ -1,9 +1,10 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+
 import { School } from "@mui/icons-material";
 import backgoodd from "../assets/pic/backgoodd.jpeg"
 import lock from "../assets/pic/lock.png"
 // import { HashLink } from "react-router-hash-link";
-function CourseContainer({ imageSrc, heading, description, price }) {
+function CourseContainer({ heading, description, price }) {
   return (
     <div
       className={`relative shadow-2xl shadow-sky-700 hover:scale-125 transition-all duration-300 hover:z-[100] bg-sky-100 rounded-2xl border-2 md:w-[280px] justify-center text-black items-center  lg:h-full flex flex-col md:flex-col gap-2`}

@@ -1,6 +1,7 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+
 import datee from "../assets/pic/date.png";
-function RecentPostContainer({ imageSrc, heading, date, p, category }) {
+function RecentPostContainer({ imageSrc, heading, date, category }) {
   return (
     <div
       className={`container relative lg:w-full justify-center text-black items-center lg:h-[auto] flex flex-col lg:flex-row gap-2`}

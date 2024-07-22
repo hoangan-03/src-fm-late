@@ -1,6 +1,4 @@
-// Pagination.js
-import React from 'react';
-
+/* eslint-disable react/prop-types */
 const Pagination = ({ totalPages, currentPage, onPageChange }) => {
   const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
 

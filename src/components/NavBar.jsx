@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import lines from "../assets/pic/three.png";
 import facebook from "../assets/pic/icons8-facebook-420 (1).png";
 import close from "../assets/pic/close.png";
