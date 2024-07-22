@@ -2,10 +2,8 @@ import  { useState, useEffect, useMemo } from "react";
 import useMeasure from "react-use-measure";
 import { useTransition, a } from "@react-spring/web";
 import shuffle from "lodash.shuffle";
-
 import useMedia from "./useMedia";
 import data from "./data";
-
 import styles from "./styles.module.css";
 
 const Masonry = () => {

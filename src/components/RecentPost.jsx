@@ -5,13 +5,13 @@ import { HashLink } from "react-router-hash-link";
 
 const RecentPost = ({ containerList }) => {
 
-  const reversedContainers = [...containerList].reverse(); // Reverse the containerList
+  const reversedContainers = [...containerList].reverse(); 
 
   return (
     <div className={`picture-grid w-full flex justify-center gap-8 items-center flex-col `}>
       {reversedContainers.map((containerData, index) => (
         <HashLink
-          to={`/ViewAllPost/${reversedContainers.length - index - 1}#top`} // Adjust the index calculation for reverse order
+          to={`/ViewAllPost/${reversedContainers.length - index - 1}#top`} 
           key={reversedContainers.length - index - 1}
           className="w-full"
         >

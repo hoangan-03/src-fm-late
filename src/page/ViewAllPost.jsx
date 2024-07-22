@@ -12,6 +12,7 @@ const ViewAllPost = ({ containerData }) => {
     var lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
   };
+  const [isEditMode, setEditMode] = useState(false);
 
 
   return (
@@ -20,23 +21,31 @@ const ViewAllPost = ({ containerData }) => {
       id="hero"
     >
       <Scroll />
-      <button
-        className={`button-54 h-[60px] mt-[150px] text-black  ${
-          user && user.role === "Admin" ? "block" : "hidden"
-        } `}
-      >
-        <HashLink
-          className={`h-[50px] text-xl text-center font-semibold w-[250px] no-underline`}
-          to="./post"
-        >
-          {"Đăng bài viết"}
-        </HashLink>
-      </button>
+      <div className="w-full flex justify-center  mt-[150px] h-auto items-center gap-5 flex-row">
+        <button className={`button-54 h-[60px]  text-black  ${user && user.role === "Admin" ? "block" : "hidden"} `}  >
+          <HashLink
+            className={`h-full w-full px-4 flex items-center text-center no-underline`}
+            to="./post"
+          
+          >
+            <h2 className="text-xl font-semibold ">{"Đăng bài viết"}</h2>
+            
+          </HashLink>
+        </button>
+        <button className={`button-54 h-[60px]  text-black  ${user && user.role === "Admin" ? "block" : "hidden"} `}  >
+          <HashLink
+            className={`h-full w-full px-4 flex items-center text-center no-underline`}
+            onClick={()=>setEditMode(true)}
+          >
+            <h2 className="text-xl font-semibold ">{"Chế độ chỉnh sửa"}</h2>
+            
+          </HashLink>
+        </button>
+      </div>
 
       <div
-        className={`search w-[60%] xl:w-[60%]  ${
-          user && user.role === "Admin" ? "mt-0" : "mt-[150px]"
-        }  `}
+        className={`search w-[60%] xl:w-[60%]  ${user && user.role === "Admin" ? "mt-0" : "mt-[150px]"
+          }  `}
       >
         <TextField
           id="outlined-basic"
@@ -63,6 +72,7 @@ const ViewAllPost = ({ containerData }) => {
         containersPerPage={10}
         containerList={containerData}
         input={inputText}
+        editMode={isEditMode}
       />
     </div>
   );

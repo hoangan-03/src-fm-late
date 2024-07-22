@@ -3,7 +3,7 @@
 import datee from "../assets/pic/date.png";
 import parse from "html-react-parser";
 
-function Container({ imageSrc, heading, date, p, category }) {
+function Container({ imageSrc, heading, date, p, category,editMode }) {
   function removeHeadingTags(inputString) {
     return inputString.replace(/<\/?(h[1-3])>/gi, "");
   }

@@ -4,7 +4,7 @@ import { HashLink } from 'react-router-hash-link';
 import Container from './Container'; // Assuming you have a Container component
 import Pagination from './Pagination'; // Assuming you have a Pagination component
 
-const PictureGrid = ({ containersPerPage, containerList, input }) => {
+const PictureGrid = ({ containersPerPage, containerList, input,editMode }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(containerList.length / containersPerPage);
@@ -20,11 +20,9 @@ const PictureGrid = ({ containersPerPage, containerList, input }) => {
       return el.heading.toLowerCase().includes(input);
     }
   });
-
-  const reversedContainers = [...filteredData].reverse(); // Reverse the filtered data
-
+  const reversedContainers = [...filteredData].reverse();
   const indexOfLastContainer = currentPage * containersPerPage;
-  const indexOfFirstContainer = Math.max(0, indexOfLastContainer - containersPerPage); // Adjust to ensure it doesn't go below 0
+  const indexOfFirstContainer = Math.max(0, indexOfLastContainer - containersPerPage); 
   const currentContainers = reversedContainers.slice(
     indexOfFirstContainer,
     indexOfLastContainer
@@ -34,10 +32,11 @@ const PictureGrid = ({ containersPerPage, containerList, input }) => {
     <div className={`bg-white shadow-2xl rounded-2xl backdrop-blur-lg trans flex justify-center items-center flex-col `}>
       {currentContainers.map((containerData, index) => (
         <HashLink
-          to={`/ViewAllPost/${containerList.length - index - 1}#top`} // Adjust the index calculation for reverse order
+          to={`/ViewAllPost/${containerList.length - index - 1}#top`} 
           key={containerList.length - index - 1}
         >
           <Container
+          editMode={editMode}
             key={index}
             imageSrc={containerData.image}
             heading={containerData.heading}

@@ -1,13 +1,10 @@
-import  { useEffect } from 'react';
+import { useEffect } from 'react';
 import { tsParticles } from "tsparticles-engine";
 import { loadPolygonPath } from "tsparticles-path-polygon";
 const ParticleComponent = () => {
   useEffect(() => {
     const initializeParticles = async () => {
-      // Load necessary resources
       await loadPolygonPath(tsParticles);
-
-      // Load tsParticles with specified configurations
       await tsParticles.load({
         particles: {
           color: {
@@ -93,15 +90,12 @@ const ParticleComponent = () => {
         }
       });
     };
-
-    // Call the initialization function
     initializeParticles();
-  }, []); // Empty dependency array ensures this runs only once on component mount
+  }, []);
 
   return (
-    // Your JSX for the particle container or any additional elements
     <div className="particle-container">
-      {/* Add any other components or HTML elements as needed */}
+      { }
     </div>
   );
 };
