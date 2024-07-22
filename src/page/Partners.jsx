@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import CorporateFareIcon from "@mui/icons-material/CorporateFare";
 import EmailIcon from "@mui/icons-material/Email";

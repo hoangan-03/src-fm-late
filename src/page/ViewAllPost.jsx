@@ -1,10 +1,9 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import PictureGrid from "../components/PictureGrid";
 import Scroll from "../components/Scroll";
 import TextField from "@mui/material/TextField";
 // import { HashLink } from "react-router-hash-link";
-import { useTranslation } from "react-i18next";
 import { HashLink } from "react-router-hash-link";
 const ViewAllPost = ({ containerData }) => {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -14,7 +13,6 @@ const ViewAllPost = ({ containerData }) => {
     setInputText(lowerCase);
   };
 
-  const { t } = useTranslation();
 
   return (
     <div

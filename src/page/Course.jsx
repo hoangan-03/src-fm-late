@@ -1,10 +1,9 @@
-import React from "react";
 import { HashLink } from "react-router-hash-link";
 import a1 from "../assets/pic/1.jpg"
 import a2 from "../assets/pic/2.jpg"
 import CourseList from "../components/CourseList";
 import data from "../components/mockdata";
-const Course = ({containerData}) => {
+const Course = () => {
   return (
     <section className="bg-sky-100 overflow-hidden">
       <section id="hero" className="w-screen h-auto lg:h-screen flex flex-col lg:flex-row airbnb ">

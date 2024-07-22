@@ -1,4 +1,3 @@
-import React from "react";
 import { Bolt, PlayArrowRounded, Star } from "@mui/icons-material";
 import FlareIcon from "@mui/icons-material/Flare";
 import { HashLink } from "react-router-hash-link";

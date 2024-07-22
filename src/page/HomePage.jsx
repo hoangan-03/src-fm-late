@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable react/prop-types */
+import  { useState, useEffect } from "react";
 import Slick from "../components/Slick";
 import Scroll from "../components/Scroll";
 //import { useSpring } from "react-spring";
@@ -266,7 +267,7 @@ const HomePage = ({ containerData }) => {
               {[2, 3, 4].map((offset) => {
                 if (containerData.length < offset) {
                   return (
-                    <div className="w-full h-[80px] lg:w-1/3 lg:h-full airbnb bg-sky-800 shadow-2xl shadow-black rounded-2xl flex flex-row lg:flex-col hover:scale-125 transition-all duration-300"></div>
+                    <div key ={offset} className="w-full h-[80px] lg:w-1/3 lg:h-full airbnb bg-sky-800 shadow-2xl shadow-black rounded-2xl flex flex-row lg:flex-col hover:scale-125 transition-all duration-300"></div>
                   );
                 }
                 const currentItem = containerData[containerData.length - offset];

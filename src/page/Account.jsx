@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import React from "react";
 import avatar from "../assets/pic/man.png";
 import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
@@ -480,7 +479,7 @@ const Account = () => {
                   }`}
                 >
                   <i
-                    class={`text-4xl flex justify-center items-center fi fi-br-male ${
+                    className={`text-4xl flex justify-center items-center fi fi-br-male ${
                       gender === "Male" ? "text-white" : "text-black"
                     }`}
                   ></i>
@@ -501,7 +500,7 @@ const Account = () => {
                   }`}
                 >
                   <i
-                    class={`text-4xl flex justify-center items-center fi fi-br-female ${
+                    className={`text-4xl flex justify-center items-center fi fi-br-female ${
                       gender === "Female" ? "text-white" : "text-black"
                     }`}
                   ></i>
@@ -522,7 +521,7 @@ const Account = () => {
                   }`}
                 >
                   <i
-                    class={`text-4xl flex justify-center items-center fi fi-br-question ${
+                    className={`text-4xl flex justify-center items-center fi fi-br-question ${
                       gender === "Other" ? "text-white" : "text-black"
                     }`}
                   ></i>

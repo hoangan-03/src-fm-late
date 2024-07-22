@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+
 import { ArrowRightAltRounded } from "@mui/icons-material";
 import { HashLink } from "react-router-hash-link";
 import { Circle } from "@mui/icons-material";

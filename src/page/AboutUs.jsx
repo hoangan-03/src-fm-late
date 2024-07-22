@@ -1,4 +1,3 @@
-import React from "react";
 import mouseup from "../assets/pic/mouse-cursor (1).png";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
