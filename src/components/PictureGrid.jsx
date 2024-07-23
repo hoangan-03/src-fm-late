@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
-import  { useState } from 'react';
-import { HashLink } from 'react-router-hash-link';
+import { useState } from 'react';
 import Container from './Container'; // Assuming you have a Container component
 import Pagination from './Pagination'; // Assuming you have a Pagination component
 
-const PictureGrid = ({ containersPerPage, containerList, input,editMode }) => {
+const PictureGrid = ({ containersPerPage, containerList, input, editMode }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(containerList.length / containersPerPage);
@@ -22,7 +21,7 @@ const PictureGrid = ({ containersPerPage, containerList, input,editMode }) => {
   });
   const reversedContainers = [...filteredData].reverse();
   const indexOfLastContainer = currentPage * containersPerPage;
-  const indexOfFirstContainer = Math.max(0, indexOfLastContainer - containersPerPage); 
+  const indexOfFirstContainer = Math.max(0, indexOfLastContainer - containersPerPage);
   const currentContainers = reversedContainers.slice(
     indexOfFirstContainer,
     indexOfLastContainer
@@ -31,20 +30,18 @@ const PictureGrid = ({ containersPerPage, containerList, input,editMode }) => {
   return (
     <div className={`bg-white shadow-2xl rounded-2xl backdrop-blur-lg trans flex justify-center items-center flex-col `}>
       {currentContainers.map((containerData, index) => (
-        <HashLink
-          to={`/ViewAllPost/${containerList.length - index - 1}#top`} 
-          key={containerList.length - index - 1}
-        >
+        <div key={containerData._id}>
           <Container
-          editMode={editMode}
-            key={index}
+            index={containerList.length - index - 1}
+            editMode={editMode}
+            postId={containerData._id}
             imageSrc={containerData.image}
             heading={containerData.heading}
             date={containerData.date}
             p={containerData.p}
             category={containerData.category}
           />
-        </HashLink>
+        </div>
       ))}
 
       <Pagination

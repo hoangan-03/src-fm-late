@@ -14,7 +14,6 @@ const ViewAllPost = ({ containerData }) => {
   };
   const [isEditMode, setEditMode] = useState(false);
 
-
   return (
     <div
       className={`bg-sky-100 w-[100vw] h-auto min-h-screen perspective flex-col  flex items-center gap-9 justify-center absolute top-0`}
@@ -22,39 +21,44 @@ const ViewAllPost = ({ containerData }) => {
     >
       <Scroll />
       <div className="w-full flex justify-center  mt-[150px] h-auto items-center gap-5 flex-row">
-        <button className={`button-54 h-[60px]  text-black  ${user && user.role === "Admin" ? "block" : "hidden"} `}  >
+        <button
+          className={`button-54 h-[60px]  text-black  ${
+            user && user.role === "Admin" ? "block" : "hidden"
+          } `}
+        >
           <HashLink
             className={`h-full w-full px-4 flex items-center text-center no-underline`}
             to="./post"
-          
           >
             <h2 className="text-xl font-semibold ">{"Đăng bài viết"}</h2>
-            
           </HashLink>
         </button>
-        <button className={`button-54 h-[60px]  text-black  ${user && user.role === "Admin" ? "block" : "hidden"} `}  >
+        <button
+          className={`button-54 h-[60px]  text-black  ${
+            user && user.role === "Admin" ? "block" : "hidden"
+          } `}
+        >
           <HashLink
             className={`h-full w-full px-4 flex items-center text-center no-underline`}
-            onClick={()=>setEditMode(!isEditMode)}
+            onClick={() => setEditMode(!isEditMode)}
           >
             <h2 className="text-xl font-semibold ">{"Chế độ chỉnh sửa"}</h2>
-            
           </HashLink>
         </button>
       </div>
-
       <div
-        className={`search w-[60%] xl:w-[60%]  ${user && user.role === "Admin" ? "mt-0" : "mt-[150px]"
-          }  `}
+        className={`search w-[60%] xl:w-[60%]  ${
+          user && user.role === "Admin" ? "mt-0" : "mt-[150px]"
+        }`}
       >
         <TextField
           id="outlined-basic"
           onChange={inputHandler}
           variant="outlined"
           fullWidth
-          label={"Tìm kiếm bài viết"}
+          label={"Tìm kiếm"}
           InputLabelProps={{
-            style: { fontWeight: "bold" },
+            style: { fontWeight: "bold", fontSize: "20px", marginLeft: "30px"},
           }}
           InputProps={{
             classes: {
@@ -63,6 +67,15 @@ const ViewAllPost = ({ containerData }) => {
             style: {
               color: "black",
               fontWeight: "bold",
+              fontSize: "20px",
+            },
+          }}
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              borderRadius: "28px",
+              paddingLeft: "15px",
+              paddingRight: "15px",
+              backgroundColor: "white",
             },
           }}
         />

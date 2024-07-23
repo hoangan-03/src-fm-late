@@ -41,7 +41,6 @@ const Post = () => {
   const handleActive = (boole) => {
     setActive(boole);
   };
-  console.log("active", active);
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
   const [title, setTitle] = useState("");
@@ -113,7 +112,7 @@ const Post = () => {
   };
 
   return (
-    <section className="w-screen h-screen flex flex-col justify-center items-center">
+    <section className="w-screen h-auto flex flex-col justify-center items-center">
       <Modal
         open={open}
         onClose={handleClose}
@@ -169,7 +168,7 @@ const Post = () => {
         </div>
       </Modal>
 
-      <div className="flex flex-col mb-[200px] w-[70vw]  h-screen pt-[15vh] gap-1 md:gap-3  justify-start ">
+      <div className="flex flex-col mb-[50px] w-[70vw]  h-auto gap-1 md:gap-3  justify-start ">
         <div className="w-[150px] h-[45px] md:h-[40px] mt-[120px] text-base md:text-base">
           <select
             className="w-full h-full border-[1px]  border-black p-1"
