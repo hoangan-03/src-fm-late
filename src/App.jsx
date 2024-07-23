@@ -25,7 +25,7 @@ function App() {
   const source = axios.CancelToken.source(); 
 
   axios
-    .get(baseUrl + "/api/posts", { cancelToken: source.token }) 
+    .get(baseUrl + "/posts", { cancelToken: source.token }) 
     .then((response) => {
       setContainerData(response.data);
     })
