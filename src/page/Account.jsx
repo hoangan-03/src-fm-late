@@ -59,9 +59,7 @@ const Account = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.post(baseUrl + "/api/users", {
-          name: username,
-        });
+        const response = await axios.get(`${baseUrl}/users/${username}`);
         if (response.status === 200) {
           const user = response.data[0];
           setFullname(user.fullname);
@@ -165,18 +163,16 @@ const Account = () => {
         aria-describedby="modal-modal-description"
       >
         <div
-          className={`absolute border-b-[8px] ${
-            success ? "border-b-green-500" : "border-b-amber-600"
-          }  left-1/2 gap-1 top-1/2 flex h-[100px] w-[620px] -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center rounded-2xl bg-white`}
+          className={`absolute border-b-[8px] ${success ? "border-b-green-500" : "border-b-amber-600"
+            }  left-1/2 gap-1 top-1/2 flex h-[100px] w-[620px] -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center rounded-2xl bg-white`}
         >
           <div
             className={`flex flex-row gap-4 h-full w-full justify-between px-4`}
           >
             <div className="flex flex-row gap-4 h-full w-full">
               <div
-                className={`h-[45px] w-[45px] p-1 self-center rounded-xl flex justify-center items-center ${
-                  success ? "bg-green-500/20" : "bg-amber-600/20"
-                } `}
+                className={`h-[45px] w-[45px] p-1 self-center rounded-xl flex justify-center items-center ${success ? "bg-green-500/20" : "bg-amber-600/20"
+                  } `}
               >
                 <img
                   className="w-[30px] h-[30px]"
@@ -251,85 +247,73 @@ const Account = () => {
           <div className="w-full h-[70%] bg-gray-200 flex flex-col justify-between items-center">
             <div className="h-auto w-full flex flex-col justify-start items-center">
               <div
-                className={`flex cursor-pointer flex-row w-full pl-5 py-2 justify-start items-center border-l-4 gap-3  ${
-                  active === 1
+                className={`flex cursor-pointer flex-row w-full pl-5 py-2 justify-start items-center border-l-4 gap-3  ${active === 1
                     ? "bg-white border-sky-700"
                     : "hover:bg-white hover:border-black"
-                } `}
+                  } `}
                 onClick={() => changeActive(1)}
               >
                 <i
-                  className={`fi w-auto h-auto flex justify-center items-center text-lg fi-rr-info text-center self-center ${
-                    active === 1 ? "text-sky-700" : "text-black"
-                  }`}
+                  className={`fi w-auto h-auto flex justify-center items-center text-lg fi-rr-info text-center self-center ${active === 1 ? "text-sky-700" : "text-black"
+                    }`}
                 ></i>
                 <h1
-                  className={`text-lg flex mb-1 justify-center items-center ${
-                    active === 1 ? "font-bold text-sky-700" : "font-semibold"
-                  }`}
+                  className={`text-lg flex mb-1 justify-center items-center ${active === 1 ? "font-bold text-sky-700" : "font-semibold"
+                    }`}
                 >
                   Thông tin cá nhân
                 </h1>
               </div>
               <div
-                className={`flex cursor-pointer flex-row w-full pl-5 py-2 justify-start items-center border-l-4 gap-3  ${
-                  active === 2
+                className={`flex cursor-pointer flex-row w-full pl-5 py-2 justify-start items-center border-l-4 gap-3  ${active === 2
                     ? "bg-white border-sky-700"
                     : "hover:bg-white hover:border-black"
-                } `}
+                  } `}
                 onClick={() => changeActive(2)}
               >
                 <i
-                  className={`fi w-auto h-auto flex justify-center items-center text-lg fi-rr-shopping-cart-add text-center self-center ${
-                    active === 2 ? "text-sky-700" : "text-black"
-                  }`}
+                  className={`fi w-auto h-auto flex justify-center items-center text-lg fi-rr-shopping-cart-add text-center self-center ${active === 2 ? "text-sky-700" : "text-black"
+                    }`}
                 ></i>
                 <h1
-                  className={`text-lg flex mb-1 justify-center items-center ${
-                    active === 2 ? "font-bold text-sky-700" : "font-semibold"
-                  }`}
+                  className={`text-lg flex mb-1 justify-center items-center ${active === 2 ? "font-bold text-sky-700" : "font-semibold"
+                    }`}
                 >
                   Quản lí đơn hàng
                 </h1>
               </div>
               <div
-                className={`flex cursor-pointer flex-row w-full pl-5 py-2 justify-start items-center border-l-4 gap-3 ${
-                  active === 3
+                className={`flex cursor-pointer flex-row w-full pl-5 py-2 justify-start items-center border-l-4 gap-3 ${active === 3
                     ? "bg-white border-sky-700"
                     : "hover:bg-white hover:border-black"
-                } `}
+                  } `}
                 onClick={() => changeActive(3)}
               >
                 <i
-                  className={`fi w-auto h-auto flex justify-center items-center text-lg fi-rr-e-learning text-center self-center ${
-                    active === 3 ? "text-sky-700" : "text-black"
-                  }`}
+                  className={`fi w-auto h-auto flex justify-center items-center text-lg fi-rr-e-learning text-center self-center ${active === 3 ? "text-sky-700" : "text-black"
+                    }`}
                 ></i>
                 <h1
-                  className={`text-lg flex mb-1 justify-center items-center ${
-                    active === 3 ? "font-bold text-sky-700" : "font-semibold"
-                  }`}
+                  className={`text-lg flex mb-1 justify-center items-center ${active === 3 ? "font-bold text-sky-700" : "font-semibold"
+                    }`}
                 >
                   Quản lí khóa học
                 </h1>
               </div>
               <div
-                className={`flex cursor-pointer flex-row w-full pl-5 py-2 justify-start items-center border-l-4 gap-3 ${
-                  active === 4
+                className={`flex cursor-pointer flex-row w-full pl-5 py-2 justify-start items-center border-l-4 gap-3 ${active === 4
                     ? "bg-white border-sky-700"
                     : "hover:bg-white hover:border-black"
-                } `}
+                  } `}
                 onClick={() => changeActive(4)}
               >
                 <i
-                  className={`fi w-auto h-auto flex justify-center items-center text-lg fi-rr-credit-card text-center self-center ${
-                    active === 4 ? "text-sky-700" : "text-black"
-                  }`}
+                  className={`fi w-auto h-auto flex justify-center items-center text-lg fi-rr-credit-card text-center self-center ${active === 4 ? "text-sky-700" : "text-black"
+                    }`}
                 ></i>
                 <h1
-                  className={`text-lg flex mb-1 justify-center items-center ${
-                    active === 4 ? "font-bold text-sky-700" : "font-semibold"
-                  }`}
+                  className={`text-lg flex mb-1 justify-center items-center ${active === 4 ? "font-bold text-sky-700" : "font-semibold"
+                    }`}
                 >
                   Phương thức thanh toán
                 </h1>
@@ -472,63 +456,54 @@ const Account = () => {
               <div className="flex flex-row h-[100px] gap-4">
                 <div
                   onClick={() => setGender("Male")}
-                  className={`w-[120px] cursor-pointer h-full flex flex-col justify-center gap-1 pt-3 items-center rounded-md   ${
-                    gender === "Male"
+                  className={`w-[120px] cursor-pointer h-full flex flex-col justify-center gap-1 pt-3 items-center rounded-md   ${gender === "Male"
                       ? "bg-sky-600 "
                       : "bg-white border-2 border-gray-200"
-                  }`}
+                    }`}
                 >
                   <i
-                    className={`text-4xl flex justify-center items-center fi fi-br-male ${
-                      gender === "Male" ? "text-white" : "text-black"
-                    }`}
+                    className={`text-4xl flex justify-center items-center fi fi-br-male ${gender === "Male" ? "text-white" : "text-black"
+                      }`}
                   ></i>
                   <h2
-                    className={`text-xl ${
-                      gender === "Male" ? "text-white" : "text-gray-700"
-                    }`}
+                    className={`text-xl ${gender === "Male" ? "text-white" : "text-gray-700"
+                      }`}
                   >
                     Nam
                   </h2>
                 </div>
                 <div
                   onClick={() => setGender("Female")}
-                  className={`w-[120px] cursor-pointer h-full flex flex-col justify-center gap-1 pt-3 items-center rounded-md   ${
-                    gender === "Female"
+                  className={`w-[120px] cursor-pointer h-full flex flex-col justify-center gap-1 pt-3 items-center rounded-md   ${gender === "Female"
                       ? "bg-sky-600 "
                       : "bg-white border-2 border-gray-200"
-                  }`}
+                    }`}
                 >
                   <i
-                    className={`text-4xl flex justify-center items-center fi fi-br-female ${
-                      gender === "Female" ? "text-white" : "text-black"
-                    }`}
+                    className={`text-4xl flex justify-center items-center fi fi-br-female ${gender === "Female" ? "text-white" : "text-black"
+                      }`}
                   ></i>
                   <h2
-                    className={`text-xl ${
-                      gender === "Female" ? "text-white" : "text-gray-700"
-                    }`}
+                    className={`text-xl ${gender === "Female" ? "text-white" : "text-gray-700"
+                      }`}
                   >
                     Nữ
                   </h2>
                 </div>
                 <div
                   onClick={() => setGender("Other")}
-                  className={`w-[120px] cursor-pointer h-full flex flex-col justify-center gap-1 pt-3 items-center rounded-md   ${
-                    gender === "Other"
+                  className={`w-[120px] cursor-pointer h-full flex flex-col justify-center gap-1 pt-3 items-center rounded-md   ${gender === "Other"
                       ? "bg-sky-600 "
                       : "bg-white border-2 border-gray-200"
-                  }`}
+                    }`}
                 >
                   <i
-                    className={`text-4xl flex justify-center items-center fi fi-br-question ${
-                      gender === "Other" ? "text-white" : "text-black"
-                    }`}
+                    className={`text-4xl flex justify-center items-center fi fi-br-question ${gender === "Other" ? "text-white" : "text-black"
+                      }`}
                   ></i>
                   <h2
-                    className={`text-xl ${
-                      gender === "Other" ? "text-white" : "text-gray-700"
-                    }`}
+                    className={`text-xl ${gender === "Other" ? "text-white" : "text-gray-700"
+                      }`}
                   >
                     Khác
                   </h2>

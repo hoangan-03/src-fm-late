@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import a1 from "../assets/pic/1.jpg";
@@ -13,19 +13,19 @@ import { useGoogleLogin } from "@react-oauth/google";
 const Auth = () => {
   const navigate = useNavigate();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
       navigate("/");
     }
   }, [navigate]);
-  const [shouldNavigate, setShouldNavigate] = React.useState(false);
+  const [shouldNavigate, setShouldNavigate] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (shouldNavigate) {
       navigate("/");
     }
-  }, [shouldNavigate,navigate]);
+  }, [shouldNavigate, navigate]);
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const [isLogin, setIsLogin] = useState(true);
   const [name, setUsername] = useState("");
@@ -103,7 +103,7 @@ const Auth = () => {
       };
 
       axios
-        .post(baseUrl + "/addUser", user)
+        .post(baseUrl + "/register", user)
         .then(() => {
           setOpen(true);
           setRegisterError("");
@@ -127,7 +127,7 @@ const Auth = () => {
   };
   const handleGoogleRegister = (user) => {
     axios
-      .post(baseUrl + "/addUser", user)
+      .post(baseUrl + "/register", user)
       .then((res) => {
         if (res.data.success) {
           localStorage.setItem("user", JSON.stringify(res.data.user));

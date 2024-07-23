@@ -6,7 +6,7 @@ import Annoucement from "./page/Annoucement";
 import NavBar from "./components/NavBar";
 import Post from "./page/Post";
 import PictureInfo from "./components/PictureInfo";
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import axios from "axios";
 import Error from "./components/Error";
 import { CourseInfo } from "./page/CourseInfo";
@@ -25,7 +25,7 @@ function App() {
   const source = axios.CancelToken.source(); 
 
   axios
-    .post(baseUrl + "/api/datas", { cancelToken: source.token }) 
+    .get(baseUrl + "/api/posts", { cancelToken: source.token }) 
     .then((response) => {
       setContainerData(response.data);
     })

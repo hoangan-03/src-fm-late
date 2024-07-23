@@ -35,7 +35,7 @@ const ViewAllPost = ({ containerData }) => {
         <button className={`button-54 h-[60px]  text-black  ${user && user.role === "Admin" ? "block" : "hidden"} `}  >
           <HashLink
             className={`h-full w-full px-4 flex items-center text-center no-underline`}
-            onClick={()=>setEditMode(true)}
+            onClick={()=>setEditMode(!isEditMode)}
           >
             <h2 className="text-xl font-semibold ">{"Chế độ chỉnh sửa"}</h2>
             
