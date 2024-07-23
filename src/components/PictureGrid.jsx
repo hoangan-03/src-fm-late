@@ -43,7 +43,6 @@ const PictureGrid = ({ containersPerPage, containerList, input, editMode }) => {
           />
         </div>
       ))}
-
       <Pagination
         totalPages={totalPages}
         currentPage={currentPage}
@@ -52,5 +51,4 @@ const PictureGrid = ({ containersPerPage, containerList, input, editMode }) => {
     </div>
   );
 };
-
 export default PictureGrid;

@@ -6,6 +6,7 @@ import deleteIcon from "../assets/pic/delete.png";
 import axios from "axios";
 import { HashLink } from 'react-router-hash-link';
 function Container({ imageSrc, heading, date, p, category, editMode, postId, index }) {
+  
   function removeHeadingTags(inputString) {
     return inputString.replace(/<\/?(h[1-3])>/gi, "");
   }
@@ -32,19 +33,21 @@ function Container({ imageSrc, heading, date, p, category, editMode, postId, ind
       console.error(error);
     }
   };
-
   return (
     <HashLink key={postId} to={`/ViewAllPost/${index}#top`}
       className={`container relative  md:w-[975px] justify-center text-black items-center md:h-[224px] p-5 mt-3 flex flex-col md:flex-row gap-4 border-black border-b-[1px] `}
     >
       <div className={`w-[50px] h-auto flex flex-col bg-white gap-3 absolute right-[-50px] top-0 px-2 py-2 rounded-tr-xl rounded-br-xl ${editMode ? "block" : "hidden"}`}>
-        <img className="w-7 h-7 object-cover" alt="Edit" src={edit}></img>
         <img onClick={(event) => {
+          event.preventDefault();
+          event.stopPropagation();
+        }} className="w-7 h-7 object-cover" alt="Edit" src={edit}></img>
+        <img onClick={(event) => {
+          event.preventDefault();
           event.stopPropagation();
           handleDelete(postId);
         }} className="w-7 h-7 object-cover" alt="Delete" src={deleteIcon}></img>
       </div>
-
       <img
         src={imageSrc}
         alt="Container"
