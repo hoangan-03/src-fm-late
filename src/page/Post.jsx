@@ -1,4 +1,5 @@
-import  { useState, useEffect, useRef } from "react";
+/* eslint-disable no-constant-condition */
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import ReactQuill from "react-quill";
 import Modal from "@mui/material/Modal";
@@ -11,6 +12,62 @@ import tick from "../assets/pic/accept.png";
 import info from "../assets/pic/info.png";
 import close from "../assets/pic/close.png";
 Quill.register("modules/emoji", Emoji);
+const MAX_WIDTH = 1280;
+const MAX_HEIGHT = 720;
+const MAX_SIZE = 100000; // 100kb
+
+async function resize(img, type = 'jpeg') {
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+
+  ctx.drawImage(img, 0, 0);
+
+  let width = img.width;
+  let height = img.height;
+  let start = 0;
+  let end = 1;
+  let last, accepted, blob;
+
+  // keep portration
+  if (width > height) {
+    if (width > MAX_WIDTH) {
+      height *= MAX_WIDTH / width;
+      width = MAX_WIDTH;
+    }
+  } else {
+    if (height > MAX_HEIGHT) {
+      width *= MAX_HEIGHT / height;
+      height = MAX_HEIGHT;
+    }
+  }
+  canvas.width = width;
+  canvas.height = height;
+  console.log('Scaling image down to max 1280x720 while keeping aspect ratio');
+  ctx.drawImage(img, 0, 0, width, height);
+
+  accepted = blob = await new Promise(rs => canvas.toBlob(rs, 'image/' + type, 1));
+
+  if (blob.size < MAX_SIZE) {
+    console.log('No quality change needed');
+    return blob;
+  } else {
+    console.log(`Image size after scaling ${blob.size} bytes`);
+    console.log('Image sample after resizing with lossless compression:', URL.createObjectURL(blob));
+  }
+
+  // Binary search for the right size
+  while (true) {
+    const mid = Math.round(((start + end) / 2) * 100) / 100;
+    if (mid === last) break;
+    last = mid;
+    blob = await new Promise(rs => canvas.toBlob(rs, 'image/' + type, mid));
+    console.log(`Quality set to ${mid} gave a Blob size of ${blob.size} bytes`);
+    if (blob.size > MAX_SIZE) { end = mid; }
+    if (blob.size < MAX_SIZE) { start = mid; accepted = blob; }
+  }
+
+  return accepted;
+}
 const TOOLBAR_OPTIONS = [
   ["bold", "italic", "underline", "strike"],
   ["blockquote", "code-block"],
@@ -47,14 +104,19 @@ const Post = () => {
   const [selectedCategory, setSelectedCategory] = useState("Thông báo");
   const [imageUrl, setImageUrl] = useState("");
   const fileInputRef = useRef(null);
-  const handleImageUpload = (e) => {
+  const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setImageUrl(reader.result);
+      const img = new Image();
+      img.src = URL.createObjectURL(file);
+      img.onload = async () => {
+        const resizedBlob = await resize(img);
+        const reader = new FileReader();
+        reader.onload = () => {
+          setImageUrl(reader.result);
+        };
+        reader.readAsDataURL(resizedBlob);
       };
-      reader.readAsDataURL(file);
     }
   };
   const handlePublish = async () => {
@@ -73,7 +135,7 @@ const Post = () => {
     const month = currentDate.getMonth();
     const year = currentDate.getFullYear();
     const date = dates[currentDate.getDay()];
-    const formattedDate = `${date}, ${day}/${month+1}/${year}`;
+    const formattedDate = `${date}, ${day}/${month + 1}/${year}`;
     try {
       const newData = {
         heading: title,
@@ -120,18 +182,16 @@ const Post = () => {
         aria-describedby="modal-modal-description"
       >
         <div
-          className={`absolute border-b-[8px] ${
-            active ? "border-b-green-500" : "border-b-amber-600"
-          }  left-1/2 gap-1 top-1/2 flex h-[100px] w-[620px] -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center rounded-2xl bg-white`}
+          className={`absolute border-b-[8px] ${active ? "border-b-green-500" : "border-b-amber-600"
+            }  left-1/2 gap-1 top-1/2 flex h-[100px] w-[620px] -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center rounded-2xl bg-white`}
         >
           <div
             className={`flex flex-row gap-4 h-full w-full justify-between px-4`}
           >
             <div className="flex flex-row gap-4 h-full w-full">
               <div
-                className={`h-[45px] w-[45px] p-1 self-center rounded-xl flex justify-center items-center ${
-                  active ? "bg-green-500/20" : "bg-amber-600/20"
-                } `}
+                className={`h-[45px] w-[45px] p-1 self-center rounded-xl flex justify-center items-center ${active ? "bg-green-500/20" : "bg-amber-600/20"
+                  } `}
               >
                 <img
                   className="w-[30px] h-[30px]"
@@ -226,9 +286,8 @@ const Post = () => {
           </button>
         </div>
         <div
-          className={`preview w-full h-[220px] flex flex-col aspect-video ${
-            imageUrl ? "flex" : "hidden"
-          }`}
+          className={`preview w-full h-[220px] flex flex-col aspect-video ${imageUrl ? "flex" : "hidden"
+            }`}
         >
           <div className={`justify-center mt-3 flex `}>
             {imageUrl && (
@@ -241,9 +300,8 @@ const Post = () => {
           </div>
         </div>
         <div
-          className={`w-full h-[35px]  flex flex-col  ${
-            imageUrl ? "hidden" : "flex"
-          }`}
+          className={`w-full h-[35px]  flex flex-col  ${imageUrl ? "hidden" : "flex"
+            }`}
         >
           <p className="text-sm md:text-base self-center font-semibold ">
             Tải hình nền lên (bắt buộc)
