@@ -65,7 +65,7 @@ function App() {
             element={<PictureInfo pictures={containerData} />}
           />
           <Route path="/ViewAllPost/Post" element={<Post />} />
-          <Route path="/ViewAllPost/Edit" element={<Edit />} />
+          <Route path="/ViewAllPost/Edit/:postId" element={<Edit />} />
           <Route path="/ViewAllPost/Error" element={<Error />} />
           <Route path="/Course" element={<Course containerData={containerData} />} />
           <Route path="/Partners" element={<Partners />} />

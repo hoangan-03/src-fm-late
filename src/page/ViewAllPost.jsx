@@ -44,7 +44,7 @@ const ViewAllPost = ({ containerData }) => {
             className={`h-full w-full px-4 flex items-center text-center no-underline`}
             onClick={() => setEditMode(!isEditMode)}
           >
-            <h2 className="text-xl font-semibold ">{isEditMode ? "Chế độ xem" : "Chế độ chỉnh sửa"}</h2>
+            <h2 className="text-xl font-semibold ">{!isEditMode ? "Chế độ xem" : "Chế độ chỉnh sửa"}</h2>
           </HashLink>
         </button>
       </div>
