@@ -13,9 +13,9 @@ const Course = () => {
             <span className="text-sky-800 border-teal-400 border-2 px-4 rounded-full py-1">
               SRC-FM
             </span>{" "}
-            
+
           </h1>
-          <HashLink className="w-auto h-auto px-6 py-4 rounded-[40px] text-white text-lg lg:text-3xl bg-sky-800 hover:bg-gray-100 hover:text-sky-700" >
+          <HashLink to="#courses" className="w-auto h-auto px-6 py-4 rounded-[40px] text-white text-lg lg:text-3xl bg-sky-800 hover:bg-gray-100 hover:text-sky-700" >
             Tìm hiểu ngay
           </HashLink>
         </div>
@@ -39,11 +39,10 @@ const Course = () => {
  
 
       </section> */}
-      <section className="w-screen h-auto lg:h-screen flex flex-col gap-3 px-4 lg:px-[100px] pt-[170px] pb-0 lg:pb-[30px]">
+      <section id="courses" className="w-screen h-auto lg:h-screen flex flex-col gap-3 px-4 lg:px-[100px] pt-[170px] pb-0 lg:pb-[30px]">
         <h1 className="text-3xl font-bold uppercase text-sky-700 ">Y đa khoa - Cơ sở ngành</h1>
-        <h1 className="text-xl lg:text-4xl text-black mb-8 ">Bắt đầu học ngay hôm nay</h1>
-        <div className="overflow-scroll h-[400px] w-full">
-        <CourseList containerList={data} containersPerPage={4}/>
+        <div className="overflow-scroll h-auto py-2 px-3 w-full">
+          <CourseList containerList={data} containersPerPage={4} />
         </div>
       </section>
     </section>

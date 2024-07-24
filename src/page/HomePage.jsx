@@ -316,14 +316,14 @@ const HomePage = ({ containerData }) => {
                 smooth
                 to="/Course#hero"
                 onClick={handleHover}
-                className="w-auto hover:bg-white hover:text-sky-800  rounded-[30px]  mt-0 lg:mt-4 airbnb h-full py-2 px-6 text-sm lg:text-xl flex justify-center items-center text-gray-800 bg-sky-300  "
+                className="w-auto hover:bg-white hover:text-sky-800  rounded-[30px]  mt-0 lg:mt-4 airbnb h-full py-2 px-6 text-sm lg:text-xl flex justify-center items-center text-gray-800 bg-teal-300  "
               >
                 Khóa học - Dự án
               </HashLink>{" "}
             </div>
             <HashLink
               to="/Course#hero"
-              className="w-full h-[120px] lg:h-[250px] flex flex-row bg-sky-300  shadow-2xl shadow-black rounded-2xl hover:scale-110 transition-all duration-300 "
+              className="w-full h-[120px] lg:h-[250px] flex flex-row bg-teal-300  shadow-2xl shadow-black rounded-2xl hover:scale-110 transition-all duration-300 "
             >
               <div className="w-[60%] h-full">
                 <img
@@ -344,7 +344,7 @@ const HomePage = ({ containerData }) => {
             </HashLink>
             <HashLink
               to="/Course#hero"
-              className="w-full h-[129px] lg:h-[250px] flex flex-row bg-sky-300  rounded-2xl shadow-2xl shadow-black hover:scale-110 ransition-all duration-300"
+              className="w-full h-[129px] lg:h-[250px] flex flex-row bg-teal-300  rounded-2xl shadow-2xl shadow-black hover:scale-110 ransition-all duration-300"
             >
               <div className="w-[40%] h-full airbnb flex flex-col  px-3 py-4 gap-2">
                 <h2 className="text-base lg:text-2xl  h-auto w-full text-black">
@@ -399,7 +399,7 @@ const HomePage = ({ containerData }) => {
                 : order === 3
                   ? "bg-sky-800"
                   : order === 4
-                    ? "bg-sky-300 "
+                    ? "bg-teal-300 "
                     : "bg-white"
                 }    "overflow-hidden" `}
             >
@@ -423,7 +423,7 @@ const HomePage = ({ containerData }) => {
                 <img
                   className={`object-cover absolute  w-[95%] lg:w-[70%] transition-all duration-500  h-[45%] lg:h-[70%] rounded-3xl ${order === 4 ? "opacity-100" : "opacity-0"
                     } `}
-                  src={a6}
+                  src={dna}
                   alt=""
                 ></img>
                 <img

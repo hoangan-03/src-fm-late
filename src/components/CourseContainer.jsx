@@ -7,17 +7,17 @@ import lock from "../assets/pic/lock.png"
 function CourseContainer({ heading, description, price }) {
   return (
     <div
-      className={`relative shadow-2xl shadow-sky-700 hover:scale-125 transition-all duration-300 hover:z-[100] bg-sky-100 rounded-2xl border-2 md:w-[280px] justify-center text-black items-center  lg:h-full flex flex-col md:flex-col gap-2`}
+      className={`relative cursor-pointer transition-all duration-300 hover:z-[100] border-sky-800 rounded-3xl border-2 md:w-[280px] justify-center text-black items-center  lg:h-full flex flex-col md:flex-col gap-2`}
     >
 
-      <div className="absolute bg-black/30 w-full h-full rounded-2xl flex justify-center items-center">
+      <div className="absolute bg-black/30 w-full h-full rounded-3xl flex justify-center items-center">
         <img src={lock} alt="Lock" className="w-[70px] object-cover" />
       </div>
-      <div className="h-[100px] w-full rounded-tl-xl rounded-tr-xl md:w-full md:h-[200px] md:min-h-[150px]">
+      <div className="h-[100px] w-full rounded-tl-3xl rounded-tr-3xl md:w-full md:h-[200px] md:min-h-[150px]">
         <img
           src={backgoodd}
           alt="Container"
-          className="object-cover h-full w-full rounded-tl-xl rounded-tr-xl "
+          className="object-cover h-full w-full rounded-tl-3xl rounded-tr-3xl "
         />
       </div>
       <h2 className="rounded-b-md text-[12px] md:text-[17px] w-full h-auto text-start merry block font-semibold ml-6">
