@@ -1,6 +1,6 @@
 const MAX_WIDTH = 1920;
 const MAX_HEIGHT = 1080;
-const MAX_SIZE = 150000;
+const MAX_SIZE = 250000;
 
 export async function resizeImage(img, type = 'jpeg') {
   const canvas = document.createElement('canvas');

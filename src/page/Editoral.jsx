@@ -8,14 +8,16 @@ import "react-quill/dist/quill.snow.css";
 import "quill-emoji/dist/quill-emoji.css";
 import image from "../assets/pic/add-image.png";
 import CustomModal from "../components/CustomModal";
-import { resizeImage } from "../components/resizeImage";
+import { resizeImage } from "../functions/resizeImage";
 import { useParams } from "react-router-dom";
-import ToolbarOptions from "../components/ToolbarOptions";
+import ToolbarOptions from "../functions/ToolbarOptions";
+import { useNavigate } from 'react-router-dom';
 Quill.register("modules/emoji", Emoji);
 
 const categoryOptions = ["Thông báo", "Sự kiện"];
 const Editoral = () => {
   const { postId } = useParams();
+  const navigate = useNavigate();
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const [currentData, setCurrentData] = useState({})
   useEffect(() => {
@@ -98,10 +100,13 @@ const Editoral = () => {
       setSelectedCategory(null);
       handleActive(true);
       setOpen(true);
+      
+
     } catch (error) {
       handleActive(false);
       setOpen(true);
     }
+   
   };
   useEffect(() => {
     const fileInput = fileInputRef.current;
@@ -117,6 +122,7 @@ const Editoral = () => {
   }, []);
   const handleClose = () => {
     setOpen(false);
+    navigate(`/ViewAllPost`);
   };
   return (
     <section className="w-screen h-auto flex flex-col justify-center items-center">

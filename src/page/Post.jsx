@@ -7,8 +7,8 @@ import Quill from "quill";
 import "react-quill/dist/quill.snow.css";
 import "quill-emoji/dist/quill-emoji.css";
 import image from "../assets/pic/add-image.png";
-import { resizeImage } from "../components/resizeImage";
-import ToolbarOptions from "../components/ToolbarOptions";
+import { resizeImage } from "../functions/resizeImage";
+import ToolbarOptions from "../functions/ToolbarOptions";
 import CustomModal from "../components/CustomModal";
 Quill.register("modules/emoji", Emoji);
 
