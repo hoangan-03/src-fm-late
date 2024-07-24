@@ -14,6 +14,7 @@ import Modal from "@mui/material/Modal";
 import tick from "../assets/pic/accept.png";
 import info from "../assets/pic/info.png";
 import close from "../assets/pic/close.png";
+import { resizeImage } from "../functions/resizeImage";
 const BlueOutlinedTextField = styled(TextField)(() => ({
   "& .MuiOutlinedInput-root": {
     "& fieldset": {
@@ -105,11 +106,16 @@ const Account = () => {
   const handleImageUploaddd = (e) => {
     const file = e.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setAvatarUrl(reader.result);
+      const img = new Image();
+      img.src = URL.createObjectURL(file);
+      img.onload = async () => {
+        const resizedBlob = await resizeImage(img);
+        const reader = new FileReader();
+        reader.onload = () => {
+          setAvatarUrl(reader.result);
+        };
+        reader.readAsDataURL(resizedBlob);
       };
-      reader.readAsDataURL(file);
     }
   };
   const saveChanges = async () => {
