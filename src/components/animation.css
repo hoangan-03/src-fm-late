@@ -155,11 +155,11 @@ ul {
 }
 
 :root {
-  --color-1: #0c1721; /* Deep Space Blue */
-  --color-2: #2a9a9f; /* Teal */
-  --color-3: #f1b211; /* Sunflower Yellow */
-  --color-4: #ff6f61; /* Sky Blue */
-  --color-5: #11c1e8; /* Coral */
+  --color-1: #0c1721; 
+  --color-2: #2a9a9f; 
+  --color-3: #f1b211;
+  --color-4: #ff6f61; 
+  --color-5: #11c1e8; 
 }
 
 .wrapperr {

@@ -11,11 +11,11 @@ import a7 from "../assets/pic/7.jpg";
 // import a8 from "../assets/pic/8.jpg";
 // import a9 from "../assets/pic/9.jpg";
 // import a10 from "../assets/pic/10.jpg";
-import taichinh from "../assets/pic/taichinh.jpg"
-import haucan from "../assets/pic/haucan.jpg"
-import chunhiem from "../assets/pic/chunhiem.jpg"
-import noidung from "../assets/pic/noidung.jpg"
-import prit from "../assets/pic/prit.jpeg"
+import taichinh from "../assets/pic/taichinh.jpg";
+import haucan from "../assets/pic/haucan.jpg";
+import chunhiem from "../assets/pic/chunhiem.jpg";
+import noidung from "../assets/pic/noidung.jpg";
+import prit from "../assets/pic/prit.jpeg";
 import Scroll from "../components/Scroll";
 import "../components/animation.css";
 export default function Aboutus() {
@@ -60,7 +60,8 @@ export default function Aboutus() {
       <Scroll />
       <section
         id="mission"
-        className="w-screen h-auto lg:h-screen relative  flex pt-[100px] flex-col gap-[60px]">
+        className="w-screen h-auto lg:h-screen relative  flex pt-[100px] flex-col gap-[60px]"
+      >
         <div className="w-full h-auto lg:h-[200px] justify-center ">
           <div className="w-[auto] h-full flex flex-col lg:flex-row gap-0 lg:gap-[200px]  justify-center bg-gray-200 mt-[20px] lg:mt-0 items-center text-center ">
             <div className="flex flex-col items-center lg:items-start animate gap-[8px] lg:gap-[20px] m-0 lg:ml-[200px]  lg:mt-[20px]">
@@ -158,10 +159,15 @@ export default function Aboutus() {
         </div>
   */}
         <div className="absolute wrapperr w-[800px] self-center rounded-2xl backdrop-blur-2xl bg-sky-100/90 h-auto bottom-[10px] px-3 text-white text-base lg:text-4xl text-center airbnb flex justify-center items-center ">
-          <div className="special-text">Khơi nguồn tri thức - Kiến tạo tương lai</div>
+          <div className="special-text">
+            Khơi nguồn tri thức - Kiến tạo tương lai
+          </div>
         </div>
       </section>
-      <section className="w-screen h-[600px] lg:h-screen relative animate  " id="vision1">
+      <section
+        className="w-screen h-[600px] lg:h-screen relative animate  "
+        id="vision1"
+      >
         <div className="w-screen h-full flex justify-center   flex-col items-center gap-8">
           <div className="w-full h-auto justify-center mt-[10px] mb-[20px] lg:mb-0 lg:gap-8">
             <div className="w-[auto] h-auto flex flex-row gap-[100px]  justify-center items-center text-center ">
@@ -263,7 +269,9 @@ export default function Aboutus() {
             ></img>
             <div className="absolute airbnb h-auto backdrop-blur-[1px] text-white w-full flex justify-center items-center bg-black/20 pl-2  bottom-2 lg:bottom-4 flex-col">
               <h2 className="text-base ">Đặng Lê Minh Khang</h2>
-              <h2 className="text-base ">Phó chủ nhiệm - Trưởng ban Nội Dung</h2>
+              <h2 className="text-base ">
+                Phó chủ nhiệm - Trưởng ban Nội Dung
+              </h2>
             </div>
           </div>
           <div className="w-full lg:w-[20%] h-1/5 lg:h-1/2 relative">
@@ -285,7 +293,9 @@ export default function Aboutus() {
             ></img>
             <div className="absolute airbnb h-auto backdrop-blur-[1px] text-white w-full flex justify-center items-center bg-black/20 pl-2  bottom-2 lg:bottom-4 flex-col">
               <h2 className="text-base ">Thạch Đặng Minh Uyên</h2>
-              <h2 className="text-base  ">Phó chủ nhiệm - Trưởng ban Hậu Cần</h2>
+              <h2 className="text-base  ">
+                Phó chủ nhiệm - Trưởng ban Hậu Cần
+              </h2>
             </div>
           </div>
           <div className="w-full lg:w-[20%] h-1/5 lg:h-1/2 relative">
@@ -299,8 +309,6 @@ export default function Aboutus() {
               <h2 className="text-base  ">Trưởng ban Tài Chính</h2>
             </div>
           </div>
-
-
 
           {/* <div className="flex flex-col w-[25%] gap-5 h-full ">
             <div className="w-full h-1/3 relative">

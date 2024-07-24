@@ -11,7 +11,7 @@ import CustomModal from "../components/CustomModal";
 import { resizeImage } from "../functions/resizeImage";
 import { useParams } from "react-router-dom";
 import ToolbarOptions from "../functions/ToolbarOptions";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 Quill.register("modules/emoji", Emoji);
 
 const categoryOptions = ["Thông báo", "Sự kiện"];
@@ -19,7 +19,7 @@ const Editoral = () => {
   const { postId } = useParams();
   const navigate = useNavigate();
   const baseUrl = import.meta.env.VITE_BASE_URL;
-  const [currentData, setCurrentData] = useState({})
+  const [currentData, setCurrentData] = useState({});
   useEffect(() => {
     axios
       .get(baseUrl + `/posts/${postId}`)
@@ -35,16 +35,16 @@ const Editoral = () => {
     setActive(boole);
   };
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState('');
-  const [title, setTitle] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('Sự kiện');
+  const [value, setValue] = useState("");
+  const [title, setTitle] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("Sự kiện");
   const [imageUrl, setImageUrl] = useState(currentData?.image);
   useEffect(() => {
     if (currentData) {
-      setValue(currentData.p || '');
-      setTitle(currentData.heading || '');
-      setSelectedCategory(currentData.category || '');
-      setImageUrl(currentData.image || '');
+      setValue(currentData.p || "");
+      setTitle(currentData.heading || "");
+      setSelectedCategory(currentData.category || "");
+      setImageUrl(currentData.image || "");
     }
   }, [currentData]);
   console.log("value: " + value);
@@ -90,23 +90,17 @@ const Editoral = () => {
         p: value,
         image: imageUrl,
       };
-      await axios.put(
-        `${baseUrl}/updatePost/${postId}`,
-        updatedPostData
-      );
+      await axios.put(`${baseUrl}/updatePost/${postId}`, updatedPostData);
       setImageUrl(null);
       setTitle("");
       setValue(null);
       setSelectedCategory(null);
       handleActive(true);
       setOpen(true);
-      
-
     } catch (error) {
       handleActive(false);
       setOpen(true);
     }
-   
   };
   useEffect(() => {
     const fileInput = fileInputRef.current;
@@ -126,7 +120,13 @@ const Editoral = () => {
   };
   return (
     <section className="w-screen h-auto flex flex-col justify-center items-center">
-      <CustomModal isSuccess={active} onClose={handleClose} open={open} action={"Cập nhật bài viết"} errorMes={""} />
+      <CustomModal
+        isSuccess={active}
+        onClose={handleClose}
+        open={open}
+        action={"Cập nhật bài viết"}
+        errorMes={""}
+      />
       <div className="flex flex-col mb-[50px] w-[70vw]  h-auto gap-1 md:gap-3  justify-start ">
         <div className="w-[150px] h-[45px] md:h-[40px] mt-[120px] text-base md:text-base">
           <select
@@ -184,7 +184,11 @@ const Editoral = () => {
             </label>
           </button>
         </div>
-        <div className={`preview w-full h-[220px] flex flex-col aspect-video ${imageUrl ? "flex" : "hidden"}`}>
+        <div
+          className={`preview w-full h-[220px] flex flex-col aspect-video ${
+            imageUrl ? "flex" : "hidden"
+          }`}
+        >
           <div className={`justify-center mt-3 flex `}>
             {imageUrl && (
               <img
@@ -196,8 +200,9 @@ const Editoral = () => {
           </div>
         </div>
         <div
-          className={`w-full h-[35px]  flex flex-col  ${imageUrl ? "hidden" : "flex"
-            }`}
+          className={`w-full h-[35px]  flex flex-col  ${
+            imageUrl ? "hidden" : "flex"
+          }`}
         >
           <p className="text-sm md:text-base self-center font-semibold ">
             Tải hình nền lên (bắt buộc)

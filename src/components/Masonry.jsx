@@ -1,11 +1,10 @@
-import  { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import useMeasure from "react-use-measure";
 import { useTransition, a } from "@react-spring/web";
 import shuffle from "lodash.shuffle";
 import useMedia from "./useMedia";
 import data from "./data";
 import styles from "./styles.module.css";
-
 
 const Masonry = () => {
   const columns = useMedia(
@@ -16,7 +15,7 @@ const Masonry = () => {
   const [ref, { width }] = useMeasure();
   const [items, set] = useState(data);
   useEffect(() => {
-    const t = setInterval(() => set(shuffle), 500);
+    const t = setInterval(() => set(shuffle), 4000);
     return () => clearInterval(t);
   }, []);
   const [heights, gridItems] = useMemo(() => {
@@ -37,11 +36,10 @@ const Masonry = () => {
   }, [columns, items, width]);
   const transitions = useTransition(gridItems, {
     key: (item) => item.css,
-    from: ({ x, y, width, height }) => ({ x, y, width, height, opacity: 1 }),
-    enter: ({ x, y, width, height }) => ({ x, y, width, height, opacity: 1 }),
+    from: { opacity: 1 },
+    enter: { opacity: 1 },
     update: ({ x, y, width, height }) => ({ x, y, width, height }),
-    leave: { height: 0, opacity: 0 },
-    config: { mass: 5, tension: 500, friction: 100 },
+    config: { mass: 5, tension: 700, friction: 200 },
     trail: 25,
   });
   return (

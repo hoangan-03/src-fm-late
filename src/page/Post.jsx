@@ -14,7 +14,6 @@ Quill.register("modules/emoji", Emoji);
 
 const categoryOptions = ["Thông báo", "Sự kiện"];
 const Post = () => {
-
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const [active, setActive] = useState(null);
   const handleActive = (boole) => {
@@ -95,10 +94,15 @@ const Post = () => {
     setOpen(false);
   };
 
-
   return (
     <section className="w-screen h-auto flex flex-col justify-center items-center">
-      <CustomModal isSuccess={active} onClose={handleClose} open={open} action={"Đăng tải bài viết"} errorMes={""} />
+      <CustomModal
+        isSuccess={active}
+        onClose={handleClose}
+        open={open}
+        action={"Đăng tải bài viết"}
+        errorMes={""}
+      />
       <div className="flex flex-col mb-[50px] w-[70vw]  h-auto gap-1 md:gap-3  justify-start ">
         <div className="w-[150px] h-[45px] md:h-[40px] mt-[120px] text-base md:text-base">
           <select
@@ -156,7 +160,11 @@ const Post = () => {
             </label>
           </button>
         </div>
-        <div className={`preview w-full h-[220px] flex flex-col aspect-video ${imageUrl ? "flex" : "hidden"}`}>
+        <div
+          className={`preview w-full h-[220px] flex flex-col aspect-video ${
+            imageUrl ? "flex" : "hidden"
+          }`}
+        >
           <div className={`justify-center mt-3 flex `}>
             {imageUrl && (
               <img
@@ -168,8 +176,9 @@ const Post = () => {
           </div>
         </div>
         <div
-          className={`w-full h-[35px]  flex flex-col  ${imageUrl ? "hidden" : "flex"
-            }`}
+          className={`w-full h-[35px]  flex flex-col  ${
+            imageUrl ? "hidden" : "flex"
+          }`}
         >
           <p className="text-sm md:text-base self-center font-semibold ">
             Tải hình nền lên (bắt buộc)
