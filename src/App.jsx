@@ -16,7 +16,7 @@ import ViewAllPost from "./page/ViewAllPost";
 import Auth from "./page/Auth";
 import Header from "./components/Header";
 import Account from "./page/Account";
-
+import Edit from "./page/Editoral";
 function App() {
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const [containerData, setContainerData] = useState([]);
@@ -65,12 +65,14 @@ function App() {
             element={<PictureInfo pictures={containerData} />}
           />
           <Route path="/ViewAllPost/Post" element={<Post />} />
+          <Route path="/ViewAllPost/Edit" element={<Edit />} />
           <Route path="/ViewAllPost/Error" element={<Error />} />
           <Route path="/Course" element={<Course containerData={containerData} />} />
           <Route path="/Partners" element={<Partners />} />
           <Route path="/CourseInfo" element={<CourseInfo />} />
           <Route path="/Auth" element={<Auth />} />
           <Route path="/Account" element={<Account />} />
+
         </Routes>
       </BrowserRouter>
     </div>

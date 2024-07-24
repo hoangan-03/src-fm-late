@@ -7,6 +7,7 @@ import closewhite from "../assets/pic/closewhite.png";
 import arrowleft from "../assets/pic/left.png";
 const PictureInfo = ({ pictures }) => {
   const { id } = useParams();
+
   const [show, setshow] = useState(false);
   const handleClick = () => {
     setshow(!show);
@@ -14,7 +15,9 @@ const PictureInfo = ({ pictures }) => {
   if (!pictures || pictures.length === 0) {
     return null;
   }
+
   const picture = pictures[id];
+  console.log(picture);
 
   return (
     <div
@@ -40,7 +43,7 @@ const PictureInfo = ({ pictures }) => {
           <img
             src={picture.image}
             alt=""
-            className="w-full h-full border-black border-2 object-cover"
+            className="w-full h-full border-black border-[1px] trans object-cover"
           />
         </div>
         <h3 className="text-[32px] text-justify leading-[110%] lg:leading-[160%] merry w-[90%] mb-[70px] mt-[25px] lg:mt-[60px] custom-text ">
@@ -49,8 +52,8 @@ const PictureInfo = ({ pictures }) => {
       </div>
       <button
         className={`absolute top-[120px] right-0 w-[25px] lg:w-[50px] h-[25px] lg:h-[50px]  rounded-l-lg lg:rounded-l-2xl bg-sky-800 flex flex-row px-1 py-1 gap-4 justify-start items-center ${show
-            ? "  justify-center"
-            : ""
+          ? "  justify-center"
+          : ""
           }`}
         onClick={() => handleClick()}
       >

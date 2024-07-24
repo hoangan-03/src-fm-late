@@ -1,4 +1,4 @@
-
+import FacebookEmbedded from "./FacebookEmbedded";
 const Footer = () => {
   return (
     <div className=" w-screen h-[40vh] flex flex-col bg-gray-900">
@@ -17,31 +17,12 @@ const Footer = () => {
         <div className="w-1/2 h-full flex text-white flex-col gap-2">
           <h2 className="text-xl airbnb mb-2 ">Kết nối </h2>
           <h2 className="text-white text-lg airbnb-thin">Facebook</h2>
-          <div
-            className="fb-page"
-            data-href="https://www.facebook.com/CLBNCKHKhoaY"
-            data-tabs=""
-            data-width="400"
-            data-height="200"
-            data-small-header="false"
-            data-adapt-container-width="true"
-            data-hide-cover="false"
-            data-show-facepile="true"
-          >
-            <blockquote
-              cite="https://www.facebook.com/CLBNCKHKhoaY"
-              className="fb-xfbml-parse-ignore"
-            >
-              <a href="https://www.facebook.com/CLBNCKHKhoaY">
-                CLB Nghiên Cứu Khoa Học - Khoa Y
-              </a>
-            </blockquote>
-          </div>
+          <FacebookEmbedded />
           <h2 className="text-white text-lg airbnb-thin">Email: <span className="underline cursor-pointer text-lg ">src.fmed.ump@gmail.com</span></h2>
         </div>
       </div>
-      <div className="w-full h-[10%]  flex">
-        <h3 className="text-white text-base w-full text-center">
+      <div className="w-full h-auto  flex">
+        <h3 className="text-white text-sm w-full text-center">
           Copyright © 2024 SRC-FM. All rights reserved.
         </h3>
       </div>

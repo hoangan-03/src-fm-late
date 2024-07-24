@@ -15,6 +15,8 @@ import { resizeImage } from "../components/resizeImage";
 Quill.register("modules/emoji", Emoji);
 
 
+  
+
 const TOOLBAR_OPTIONS = [
   ["bold", "italic", "underline", "strike"],
   ["blockquote", "code-block"],
@@ -38,7 +40,7 @@ const TOOLBAR_OPTIONS = [
 
 const categoryOptions = ["Thông báo", "Sự kiện"];
 
-const Post = () => {
+const Editoral = () => {
 
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const [active, setActive] = useState(null);
@@ -66,7 +68,7 @@ const Post = () => {
       };
     }
   };
-  const handlePublish = async () => {
+  const handleEdit = async () => {
     const dates = [
       "Thứ hai",
       "Thứ ba",
@@ -257,7 +259,7 @@ const Post = () => {
 
         <button
           className=" button-89 w-[170px] h-[60px] text-center text-sm md:text-base  self-center bt font-bold text-black"
-          onClick={handlePublish}
+          onClick={handleEdit}
         >
           Đăng bài viết
         </button>
@@ -266,4 +268,4 @@ const Post = () => {
   );
 };
 
-export default Post;
+export default Editoral;

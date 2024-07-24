@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
-import Container from './Container'; // Assuming you have a Container component
-import Pagination from './Pagination'; // Assuming you have a Pagination component
+import Container from './Container'; 
+import Pagination from './Pagination'; 
 
 const PictureGrid = ({ containersPerPage, containerList, input, editMode }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -28,7 +28,7 @@ const PictureGrid = ({ containersPerPage, containerList, input, editMode }) => {
   );
 
   return (
-    <div className={`bg-white shadow-2xl rounded-2xl backdrop-blur-lg trans flex justify-center items-center flex-col `}>
+    <div className={`bg-white shadow-2xl rounded-3xl backdrop-blur-lg mb-10 trans flex justify-center items-center flex-col `}>
       {currentContainers.map((containerData, index) => (
         <div key={containerData._id}>
           <Container

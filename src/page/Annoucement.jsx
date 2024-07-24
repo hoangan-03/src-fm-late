@@ -44,10 +44,10 @@ const Annoucement = ({ containerData }) => {
               Tin tức - Sự kiện
             </h2>
             <HashLink
-              className="w-auto flex flex-row gap-2 hover:bg-gray-300/20 p-1 lg:p-2 rounded-xl"
+              className="w-auto flex float flex-row gap-2 hover:bg-gray-300/20 p-1 lg:p-2 rounded-xl"
               to="../ViewAllPost"
             >
-              <h3 className="text-sm lg:text-lg font-thin italic">Tất cả bài viết</h3>
+              <h3 className="text-sm lg:text-lg font-thin italic ">Tất cả bài viết</h3>
               <ArrowRightAltRounded />
             </HashLink>
           </div>

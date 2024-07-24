@@ -771,12 +771,25 @@ p {
 .perspective{
   perspective: 1600px;
 }
+@keyframes float {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-10px);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+}
 .trans{
-  transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
   box-shadow: 22px 22px 60px hsla(219, 81%, 53%, 0.25);
-  border-radius: 0.25rem;
-  transition: .3s;
-
+}
+.float{
+  animation: float 1s ease-in-out infinite;
 }
 &:hover .d3d{
   transform: rotate(0);
@@ -798,8 +811,4 @@ p {
   .arrow-icon {
     font-size: 30px;
   }
-}
-.css-14lo706{
-  padding-right: 30px !important;
-  padding-left: 0 !important;
 }
