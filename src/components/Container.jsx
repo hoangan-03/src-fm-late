@@ -7,8 +7,8 @@ import deleteIcon from "../assets/pic/delete.png";
 import axios from "axios";
 import { HashLink } from 'react-router-hash-link';
 import CustomModal from "./CustomModal"
+import { useNavigate } from 'react-router-dom';
 function Container({ imageSrc, heading, date, p, category, editMode, postId, index }) {
-
   function removeHeadingTags(inputString) {
     return inputString.replace(/<\/?(h[1-3])>/gi, "");
   }
@@ -32,16 +32,16 @@ function Container({ imageSrc, heading, date, p, category, editMode, postId, ind
         `${baseUrl}/deletePost/${postId}`,
       );
       setOpenModal(true);
-    
+
     } catch (error) {
       console.error(error);
     }
   };
-
+  const navigate = useNavigate();
   const [openModal, setOpenModal] = useState(false);
   const handleCloseModal = () => {
     setOpenModal(false);
-    window.location.reload(); 
+    window.location.reload();
   };
   return (
     <div className="relative">
@@ -49,10 +49,11 @@ function Container({ imageSrc, heading, date, p, category, editMode, postId, ind
       <HashLink key={postId} to={`/ViewAllPost/${index}#top`}
         className={`container relative  md:w-[975px] justify-center text-black items-center md:h-[224px] p-5 mt-3 flex flex-col md:flex-row gap-4 border-black border-b-[1px] `}
       >
-        <div className={`w-[50px] h-auto flex flex-col bg-white gap-3 absolute right-[-50px] top-0 px-2 py-2 rounded-tr-xl rounded-br-xl ${editMode ? "block" : "hidden"}`}>
+        <div className={`w-[50px] h-auto flex flex-col bg-white gap-3 absolute right-[-50px] top-2 px-2 py-2 rounded-tr-xl rounded-br-xl ${editMode ? "block" : "hidden"}`}>
           <img onClick={(event) => {
             event.preventDefault();
             event.stopPropagation();
+            navigate(`/ViewAllPost/Edit/${postId}`);
           }} className="w-7 h-7 object-cover" alt="Edit" src={edit}></img>
           <img onClick={(event) => {
             event.preventDefault();

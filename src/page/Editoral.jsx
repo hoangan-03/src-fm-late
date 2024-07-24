@@ -2,56 +2,50 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import ReactQuill from "react-quill";
-import Modal from "@mui/material/Modal";
 import * as Emoji from "quill-emoji";
 import Quill from "quill";
 import "react-quill/dist/quill.snow.css";
 import "quill-emoji/dist/quill-emoji.css";
 import image from "../assets/pic/add-image.png";
-import tick from "../assets/pic/accept.png";
-import info from "../assets/pic/info.png";
-import close from "../assets/pic/close.png";
+import CustomModal from "../components/CustomModal";
 import { resizeImage } from "../components/resizeImage";
+import { useParams } from "react-router-dom";
+import ToolbarOptions from "../components/ToolbarOptions";
 Quill.register("modules/emoji", Emoji);
 
-
-  
-
-const TOOLBAR_OPTIONS = [
-  ["bold", "italic", "underline", "strike"],
-  ["blockquote", "code-block"],
-
-  [{ header: 1 }, { header: 2 }],
-  [{ list: "ordered" }, { list: "bullet" }],
-  [{ script: "sub" }, { script: "super" }],
-  [{ indent: "-1" }, { indent: "+1" }],
-  [{ direction: "rtl" }],
-
-  [{ size: ["small", false, "large", "huge"] }],
-  [{ header: [1, 2, 3, 4, false] }],
-
-  [{ color: [] }, { background: [] }],
-  [{ font: [] }],
-  [{ align: [] }],
-  ["link", "image"],
-
-  ["clean"],
-];
-
 const categoryOptions = ["Thông báo", "Sự kiện"];
-
 const Editoral = () => {
-
+  const { postId } = useParams();
   const baseUrl = import.meta.env.VITE_BASE_URL;
+  const [currentData, setCurrentData] = useState({})
+  useEffect(() => {
+    axios
+      .get(baseUrl + `/posts/${postId}`)
+      .then((response) => {
+        setCurrentData(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [baseUrl, postId]);
   const [active, setActive] = useState(null);
   const handleActive = (boole) => {
     setActive(boole);
   };
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState("");
-  const [title, setTitle] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("Thông báo");
-  const [imageUrl, setImageUrl] = useState("");
+  const [value, setValue] = useState('');
+  const [title, setTitle] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('Sự kiện');
+  const [imageUrl, setImageUrl] = useState(currentData?.image);
+  useEffect(() => {
+    if (currentData) {
+      setValue(currentData.p || '');
+      setTitle(currentData.heading || '');
+      setSelectedCategory(currentData.category || '');
+      setImageUrl(currentData.image || '');
+    }
+  }, [currentData]);
+  console.log("value: " + value);
   const fileInputRef = useRef(null);
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
@@ -68,6 +62,7 @@ const Editoral = () => {
       };
     }
   };
+  console.log("postId", postId);
   const handleEdit = async () => {
     const dates = [
       "Thứ hai",
@@ -86,15 +81,17 @@ const Editoral = () => {
     const date = dates[currentDate.getDay()];
     const formattedDate = `${date}, ${day}/${month + 1}/${year}`;
     try {
-      const newData = {
+      const updatedPostData = {
         heading: title,
         date: formattedDate,
         category: selectedCategory,
         p: value,
         image: imageUrl,
       };
-
-      await axios.post(baseUrl + "/addPost", newData);
+      await axios.put(
+        `${baseUrl}/updatePost/${postId}`,
+        updatedPostData
+      );
       setImageUrl(null);
       setTitle("");
       setValue(null);
@@ -121,65 +118,9 @@ const Editoral = () => {
   const handleClose = () => {
     setOpen(false);
   };
-
-
-
   return (
     <section className="w-screen h-auto flex flex-col justify-center items-center">
-
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <div
-          className={`absolute border-b-[8px] ${active ? "border-b-green-500" : "border-b-amber-600"
-            }  left-1/2 gap-1 top-1/2 flex h-[100px] w-[620px] -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center rounded-2xl bg-white`}
-        >
-          <div
-            className={`flex flex-row gap-4 h-full w-full justify-between px-4`}
-          >
-            <div className="flex flex-row gap-4 h-full w-full">
-              <div
-                className={`h-[45px] w-[45px] p-1 self-center rounded-xl flex justify-center items-center ${active ? "bg-green-500/20" : "bg-amber-600/20"
-                  } `}
-              >
-                <img
-                  className="w-[30px] h-[30px]"
-                  alt=""
-                  src={`${active ? tick : info}`}
-                ></img>
-              </div>
-              <div className="w-auto h-[70px] self-center flex flex-col text-start justify-center items-start">
-                <h2
-                  className={`  w-auto text-start items-start text-2xl  font-bold text-black`}
-                >
-                  {active ? "Đăng tải thành công" : "Đăng tải thất bại"}
-                </h2>
-                <h1
-                  className={`  w-auto text-start items-start text-base font-semibold text-gray-700`}
-                >
-                  {active
-                    ? "Bài viết đã được đăng tải"
-                    : "Đăng tải bài viết thất bại. Kiểm tra lại các mục cần được điền."}
-                </h1>
-              </div>
-            </div>
-            <button
-              onClick={() => handleClose()}
-              className="w-[40px] h-[40px] flex self-center rounded-full justify-center items-center p-3 hover:bg-gray-200/30"
-            >
-              <img
-                alt=""
-                className="w-full h-full object-cover"
-                src={close}
-              ></img>
-            </button>
-          </div>
-        </div>
-      </Modal>
-
+      <CustomModal isSuccess={active} onClose={handleClose} open={open} action={"Cập nhật bài viết"} errorMes={""} />
       <div className="flex flex-col mb-[50px] w-[70vw]  h-auto gap-1 md:gap-3  justify-start ">
         <div className="w-[150px] h-[45px] md:h-[40px] mt-[120px] text-base md:text-base">
           <select
@@ -216,7 +157,7 @@ const Editoral = () => {
             placeholder="Nội dung bài viết"
             modules={{
               toolbar: {
-                container: TOOLBAR_OPTIONS,
+                container: ToolbarOptions,
               },
               "emoji-toolbar": true,
               "emoji-textarea": false,
@@ -258,10 +199,10 @@ const Editoral = () => {
         </div>
 
         <button
-          className=" button-89 w-[170px] h-[60px] text-center text-sm md:text-base  self-center bt font-bold text-black"
+          className=" button-89 w-auto h-[60px] text-center text-sm md:text-base self-center bt font-bold text-black"
           onClick={handleEdit}
         >
-          Đăng bài viết
+          Cập nhật bài viết
         </button>
       </div>
     </section>
