@@ -17,6 +17,7 @@ import chunhiem from "../assets/pic/chunhiem.jpg"
 import noidung from "../assets/pic/noidung.jpg"
 import prit from "../assets/pic/prit.jpeg"
 import Scroll from "../components/Scroll";
+import "../components/animation.css";
 export default function Aboutus() {
   const location = useLocation();
 
@@ -156,11 +157,10 @@ export default function Aboutus() {
           </div>
         </div>
   */}
-        <div className="aboslute w-full h-auto bg-cyan-800 bottom-0 py-2 lg:py-7 px-3 text-white text-base lg:text-4xl text-center airbnb ">
-          SRC-FM - Khơi nguồn tri thức - Kiến tạo tương lai
+        <div className="absolute wrapperr w-[800px] self-center rounded-2xl backdrop-blur-2xl bg-sky-100/90 h-auto bottom-[10px] px-3 text-white text-base lg:text-4xl text-center airbnb flex justify-center items-center ">
+          <div className="special-text">Khơi nguồn tri thức - Kiến tạo tương lai</div>
         </div>
       </section>
-
       <section className="w-screen h-[600px] lg:h-screen relative animate  " id="vision1">
         <div className="w-screen h-full flex justify-center   flex-col items-center gap-8">
           <div className="w-full h-auto justify-center mt-[10px] mb-[20px] lg:mb-0 lg:gap-8">
