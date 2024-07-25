@@ -155,11 +155,11 @@ ul {
 }
 
 :root {
-  --color-1: #0c1721; 
-  --color-2: #2a9a9f; 
+  --color-1: #0c1721;
+  --color-2: #2a9a9f;
   --color-3: #f1b211;
-  --color-4: #ff6f61; 
-  --color-5: #11c1e8; 
+  --color-4: #ff6f61;
+  --color-5: #11c1e8;
 }
 
 .wrapperr {
@@ -193,4 +193,32 @@ ul {
   -webkit-background-clip: text;
   color: transparent;
   overflow-wrap: break-word;
+}
+
+strong {
+  position: relative;
+}
+
+strong::after {
+  content: '';
+  position: absolute;
+  bottom: -0.125rem ;
+  left: -0.5rem;
+  right: -0.5rem;
+  height: 0.75rem;
+  z-index: 1;
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/664131/underline.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+p > strong {
+  font-weight: 400;
+}
+
+p > strong::after {
+  bottom: -0.2rem;
+  height: 0.5rem;
+  left: -0.25rem;
+  right: -0.25rem;
 }

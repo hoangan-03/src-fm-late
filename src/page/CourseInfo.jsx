@@ -3,32 +3,57 @@ import FlareIcon from "@mui/icons-material/Flare";
 import { HashLink } from "react-router-hash-link";
 import { PlayArrow } from "@mui/icons-material";
 import Scroll from "../components/Scroll";
+import duration from "../assets/pic/repeat.png";
+import video from "../assets/pic/video.png";
+import chapter from "../assets/pic/chapter.png";
+import quiz from "../assets/pic/quiz.png";
+import level from "../assets/pic/signal.png";
+import numpeople from "../assets/pic/numpeople.png";
+import like from "../assets/pic/like.png";
+import star from "../assets/pic/star.png";
+import "../components/animation.css";
 export const CourseInfo = () => {
+    const chapterName = [
+        "Introduction to Hematology",
+        "Structure and Function of Blood",
+        "The Hematopoietic System",
+        "Blood Disorders",
+        "Hematology Testing Techniques",
+        "Treatment and Management of Hematological Diseases",
+        "Clinical Hematology and Research",
+    ];
     return (
         <section className="airbnb w-screen bg-sky-100 h-[300vh]">
             <Scroll />
-            <section className="w-screen h-screen flex flex-col gap-5 mt-[120px]" id="hero">
-                <div className="w-full h-auto flex flex-row gap-[100px] ">
+            <section
+                className="w-screen h-screen flex flex-col gap-5 mt-[120px]"
+                id="hero"
+            >
+                <div className="w-full h-auto flex flex-row gap-[100px]  ">
                     <div className="w-[20%] h-auto"></div>
-                    <div className="w-[20vw] h-auto text-sky-800 text-6xl fixed leading-[80px] mx-[60px] z-[20]">
-                        Y Học Sinh Sản
+                    <div className="w-[20vw] h-auto text-sky-800 text-6xl fixed uppercase leading-[80px] ml-[110px] self-center z-[20]">
+                        huyết học
                     </div>
 
-                    <div className="w-full h-full flex flex-col gap-5 mx-[100px]">
-                        <div className="text-6xl text-black archares font-bold">
+                    <div className="w-full h-full flex flex-col gap-8 mx-[100px]">
+                        {/* <div className="text-6xl text-black archares font-bold">
                             Tất cả những{" "}
                            kiến thức cốt lõi 
-                            của Y Học Sinh Sản mà một bác sĩ cần biết
-                        </div>
+                            của Huyết học mà một bác sĩ cần biết
+                        </div> */}
                         <div className="w-full h-auto bg-sky-200 flex px-6 py-5 gap-3 justify-center items-start  flex-col">
                             <h1 className="text-xl text-black">
-                                <span className="text-teal-800">Y học sinh sản</span> là một
-                                nhánh của y học liên quan đến các vấn đề phòng ngừa, chẩn đoán và quản lý sinh sản.
+                                <span className="text-teal-800">Huyết học</span> là phân ngành y
+                                học quan tâm đến việc nghiên cứu, chẩn đoán, điều trị và phòng
+                                các bệnh liên qua đến máu
                             </h1>
-                            <div className="flex flex-row w-full gap-2 text-teal-800">
+                            <a
+                                href="https://vi.wikipedia.org/wiki/Huy%E1%BA%BFt_h%E1%BB%8Dc"
+                                className="flex flex-row w-full gap-2 text-teal-800"
+                            >
                                 <PlayArrowRounded />
                                 <h2 className="text-xl">Wikipedias</h2>
-                            </div>
+                            </a>
                         </div>
                         <div className="flex flex-row gap-4 items-center">
                             <button className="w-auto px-6 py-3 text-white bg-sky-800 hover:bg-teal-800 text-xl rounded-[60px]">
@@ -38,39 +63,101 @@ export const CourseInfo = () => {
                                 Khóa học khả dụng đến 2/2026
                             </h2>
                         </div>
+                        <div className="flex flex-row gap-10 items-center">
+                            <div className="flex flex-row gap-3 justify-center items-center">
+                                <img
+                                    src={level}
+                                    alt=""
+                                    className="w-8 h-8 object-cover flex justify-center items-center"
+                                ></img>
+                                <h2 className="text-base text-black">Trình độ Cơ bản</h2>
+                            </div>
+                            <div className="flex flex-row gap-3 justify-center items-center">
+                                <img
+                                    src={duration}
+                                    alt=""
+                                    className="w-8 h-8 object-cover flex justify-center items-center"
+                                ></img>
+                                <h2 className="text-base text-black">160 giờ</h2>
+                            </div>
+                            <div className="flex flex-row gap-3 justify-center items-center">
+                                <img
+                                    src={chapter}
+                                    alt=""
+                                    className="w-8 h-8 object-cover flex justify-center items-center"
+                                ></img>
+                                <h2 className="text-base text-black">7 chương</h2>
+                            </div>
+                            <div className="flex flex-row gap-3 justify-center items-center">
+                                <img
+                                    src={video}
+                                    alt=""
+                                    className="w-8 h-8 object-cover flex justify-center items-center"
+                                ></img>
+                                <h2 className="text-base text-black">49 video</h2>
+                            </div>
+                            <div className="flex flex-row gap-3 justify-center items-center">
+                                <img
+                                    src={quiz}
+                                    alt=""
+                                    className="w-8 h-8 object-cover flex justify-center items-center"
+                                ></img>
+                                <h2 className="text-base text-black">3 bài test</h2>
+                            </div>
+                            <div className="flex flex-row gap-3 justify-center items-center">
+                                <img
+                                    src={numpeople}
+                                    alt=""
+                                    className="w-8 h-8 object-cover flex justify-center items-center"
+                                ></img>
+                                <h2 className="text-base text-black">44 lượt đăng kí</h2>
+                            </div>
+                        </div>
+                        <div className="flex flex-row gap-20 items-center">
+                            <div className="flex flex-row gap-3 justify-center items-center border-r-2 border-black pr-20">
+                                <h2 className="text-base text-black">4.9</h2>
+                                <img
+                                    src={star}
+                                    alt=""
+                                    className="w-8 h-8 object-cover flex justify-center items-center"
+                                ></img>
+                                <h2 className="text-sm text-gray-800">(22 lượt reviews)</h2>
+                            </div>
+                            <div className="flex flex-row gap-3 justify-center items-center">
+                                <img
+                                    src={like}
+                                    alt=""
+                                    className="w-6 h-6 object-cover flex justify-center items-center"
+                                ></img>
+                                <h2 className="text-base text-black">91%</h2>
+                            </div>
+                        </div>
                     </div>
                     <div className="absolute bottom-0 h-[220px] bg-white w-full pl-[25%] flex flex-col py-[20px] gap-[20px]">
-                        <h1 className="text-3xl ">
-                            You will{" "}
-                            <span className="bg-emerald-800 text-white py-1">learn</span>{" "}
-                        </h1>
+                        <p className="text-3xl">
+                            Bạn sẽ <strong>học được</strong>
+                        </p>
                         <div className="flex flex-row gap-16">
                             <div className="flex flex-col h-full w-auto gap-4">
                                 <div className="w-[60px] h-[60px] rounded-full flex justify-center items-center bg-sky-100">
                                     <FlareIcon style={{ fontSize: 40 }} />
                                 </div>
 
-                                <h1 className="w-[300px] h-auto text-xl">
-                                    Essential mindset for independent work
-                                </h1>
+                                <h1 className="w-[300px] h-auto text-xl">Kĩ năng cần thiết</h1>
                             </div>
                             <div className="flex flex-col h-full w-auto gap-4">
                                 <div className="w-[60px] h-[60px] rounded-full flex justify-center items-center bg-sky-100">
                                     <Star style={{ fontSize: 40 }} />
                                 </div>
 
-                                <h1 className="w-[300px] h-auto text-xl">
-                                    Practical frameworks to run your business
-                                </h1>
+                                <h1 className="w-[300px] h-auto text-xl">Kiến thức nền tảng</h1>
                             </div>
                             <div className="flex flex-col h-full w-auto gap-4">
                                 <div className="w-[60px] h-[60px] rounded-full flex justify-center items-center bg-sky-100">
                                     <Bolt style={{ fontSize: 40 }} />
                                 </div>
 
-                                <h1 className="w-[300px] h-auto text-xl">
-                                    Management tips based on real-world interactions
-                                </h1>
+                                <h1 className="w-[300px] h-auto text-xl">Mẹo làm đề thi</h1>
                             </div>
                         </div>
                     </div>
@@ -78,14 +165,19 @@ export const CourseInfo = () => {
             </section>
             <section className="w-screen pl-[25%] h-screen flex flex-col gap-7 pr-[200px]">
                 <div className="text-7xl text-black archares font-bold">
-                    Tất cả những video học tập mà bạn cần cho khóa học này
+                    Nội dung xem trước
                 </div>
 
                 <div className="text-xl text-black airbnb-thin font-semibold">
                     <span className="airbnb text-teal-800">
                         The course is broken into 7 chapters
                     </span>{" "}
-                    — each includes a video with advice, lessons, and stories from my own freelance practice. Some chapters also include external resources and bonus content to help you along. The live office hour sessions are an opportunity to ask questions, get advice, and hear from other guest freelancers who join the calls! You can go through the lessons at your own pace - you’ll always have access.
+                    — each includes a video with advice, lessons, and stories from my own
+                    freelance practice. Some chapters also include external resources and
+                    bonus content to help you along. The live office hour sessions are an
+                    opportunity to ask questions, get advice, and hear from other guest
+                    freelancers who join the calls! You can go through the lessons at your
+                    own pace - you’ll always have access.
                 </div>
 
                 <div className="flex flex-col items-start justify-center w-full">
@@ -95,8 +187,8 @@ export const CourseInfo = () => {
                             className="flex flex-row border-t-[1px] justify-between py-5 border-gray-400 hover:bg-white hover:px-6 transition-all duration-300  w-full"
                         >
                             <div className="flex flex-row  gap-[200px] justify-start items-center">
-                                <div className="text-2xl text-teal-800">Chapter {chapter}</div>
-                                <div className="text-4xl text-black">Introduction</div>
+                                <div className="text-2xl text-teal-800 w-[150px]">Chương {chapter}</div>
+                                <div className="text-4xl text-black w-[400px]">{chapterName[chapter - 1]}</div>
                             </div>
 
                             <div className="flex flex-row  gap-[20px] justify-start items-center">

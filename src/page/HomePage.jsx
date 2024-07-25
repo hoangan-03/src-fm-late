@@ -224,7 +224,7 @@ const HomePage = ({ containerData }) => {
               <HashLink
                 smooth
                 to="/Annoucement#hero"
-                className="w-auto hover:bg-white hover:text-sky-800 rounded-[30px]  mt-0 lg:mt-4 airbnb h-full py-2 px-6 text-sm lg:text-xl flex justify-center items-center text-white bg-sky-800"
+                className="w-auto hover:bg-white  hover:text-sky-800 rounded-[30px]  mt-0 lg:mt-4 airbnb h-full py-2 px-6 text-sm lg:text-xl flex justify-center items-center text-white bg-sky-800 "
               >
                 Tin tức - Sự kiện
               </HashLink>{" "}
@@ -246,12 +246,12 @@ const HomePage = ({ containerData }) => {
                 ></img>
               </div>
               <div className="w-[40%] h-full airbnb flex flex-col px-2 py-3  lg:px-3 lg:py-4 gap-2">
-                <h2 className="text-xs lg:text-2xl  h-auto w-full text-white">
+                <h2 className="text-xs lg:text-2xl  h-auto w-full text-white ">
                   {containerData.length > 0 || !containerData
                     ? containerData[containerData.length - 1].heading
                     : "No heading available"}
                 </h2>
-                <h4 className="hidden lg:block text-sm h-auto w-full text-gray-200">
+                <h4 className="hidden lg:block text-sm h-auto w-full text-gray-200 ">
                   {containerData.length > 0 || !containerData
                     ? containerData[containerData.length - 1].date.substring(8, 20)
                     : "No date available"}
