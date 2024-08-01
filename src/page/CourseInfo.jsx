@@ -12,6 +12,30 @@ import numpeople from "../assets/pic/numpeople.png";
 import like from "../assets/pic/like.png";
 import star from "../assets/pic/star.png";
 import "../components/animation.css";
+
+
+
+
+
+
+const InfoItem = ({ src, text }) => (
+    <div className="flex flex-row gap-3 justify-center items-center">
+        <img
+            src={src}
+            alt=""
+            className="w-8 h-8 object-cover flex justify-center items-center"
+        />
+        <h2 className="text-base text-black">{text}</h2>
+    </div>
+);
+const infoItems = [
+    { src: level, text: 'Trình độ Cơ bản' },
+    { src: duration, text: '160 giờ' },
+    { src: chapter, text: '7 chương' },
+    { src: video, text: '49 video' },
+    { src: quiz, text: '3 bài test' },
+    { src: numpeople, text: '44 lượt đăng kí' },
+];
 export const CourseInfo = () => {
     const chapterName = [
         "Introduction to Hematology",
@@ -64,54 +88,9 @@ export const CourseInfo = () => {
                             </h2>
                         </div>
                         <div className="flex flex-row gap-10 items-center">
-                            <div className="flex flex-row gap-3 justify-center items-center">
-                                <img
-                                    src={level}
-                                    alt=""
-                                    className="w-8 h-8 object-cover flex justify-center items-center"
-                                ></img>
-                                <h2 className="text-base text-black">Trình độ Cơ bản</h2>
-                            </div>
-                            <div className="flex flex-row gap-3 justify-center items-center">
-                                <img
-                                    src={duration}
-                                    alt=""
-                                    className="w-8 h-8 object-cover flex justify-center items-center"
-                                ></img>
-                                <h2 className="text-base text-black">160 giờ</h2>
-                            </div>
-                            <div className="flex flex-row gap-3 justify-center items-center">
-                                <img
-                                    src={chapter}
-                                    alt=""
-                                    className="w-8 h-8 object-cover flex justify-center items-center"
-                                ></img>
-                                <h2 className="text-base text-black">7 chương</h2>
-                            </div>
-                            <div className="flex flex-row gap-3 justify-center items-center">
-                                <img
-                                    src={video}
-                                    alt=""
-                                    className="w-8 h-8 object-cover flex justify-center items-center"
-                                ></img>
-                                <h2 className="text-base text-black">49 video</h2>
-                            </div>
-                            <div className="flex flex-row gap-3 justify-center items-center">
-                                <img
-                                    src={quiz}
-                                    alt=""
-                                    className="w-8 h-8 object-cover flex justify-center items-center"
-                                ></img>
-                                <h2 className="text-base text-black">3 bài test</h2>
-                            </div>
-                            <div className="flex flex-row gap-3 justify-center items-center">
-                                <img
-                                    src={numpeople}
-                                    alt=""
-                                    className="w-8 h-8 object-cover flex justify-center items-center"
-                                ></img>
-                                <h2 className="text-base text-black">44 lượt đăng kí</h2>
-                            </div>
+                            {infoItems.map((item, index) => (
+                                <InfoItem key={index} src={item.src} text={item.text} />
+                            ))}
                         </div>
                         <div className="flex flex-row gap-20 items-center">
                             <div className="flex flex-row gap-3 justify-center items-center border-r-2 border-black pr-20">
