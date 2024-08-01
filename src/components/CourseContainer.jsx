@@ -3,10 +3,10 @@
 import { School } from "@mui/icons-material";
 import backgoodd from "../assets/pic/backgoodd.jpeg"
 import lock from "../assets/pic/lock.png"
-// import { HashLink } from "react-router-hash-link";
+import { HashLink } from "react-router-hash-link";
 function CourseContainer({ heading, description, price }) {
   return (
-    <div
+    <HashLink to="/CourseInfo#hero"
       className={`relative cursor-pointer transition-all duration-300 hover:z-[100] border-sky-800 rounded-3xl border-2 md:w-[280px] justify-center text-black items-center  lg:h-full flex flex-col md:flex-col gap-2`}
     >
 
@@ -40,7 +40,7 @@ function CourseContainer({ heading, description, price }) {
           <School />
         </div>
       </div>
-    </div>
+    </HashLink>
   );
 }
 
