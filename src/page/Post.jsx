@@ -95,7 +95,7 @@ const Post = () => {
     const handleFileChange = async (event) => {
       const file = event.target.files[0];
       if (file) {
-        if (file.size > 3 * 1024 * 1024) {
+        if (file.size > 9 * 1024 * 1024) {
           setError("Kích thước ảnh vượt quá 3MB. Vui lòng thử ảnh khác");
           handleActive(false)
           setOpen(true);
