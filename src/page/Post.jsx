@@ -7,7 +7,7 @@ import Quill from "quill";
 import "react-quill/dist/quill.snow.css";
 import "quill-emoji/dist/quill-emoji.css";
 import image from "../assets/pic/add-image.png";
-import { resizeImage } from "../functions/resizeImage";
+// import { resizeImage } from "../functions/resizeImage";
 import ToolbarOptions from "../functions/ToolbarOptions";
 import CustomModal from "../components/CustomModal";
 Quill.register("modules/emoji", Emoji);
@@ -24,20 +24,28 @@ const Post = () => {
   const [title, setTitle] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Thông báo");
   const [imageUrl, setImageUrl] = useState("");
+  const [error, setError] = useState("");
   const fileInputRef = useRef(null);
-  const handleImageUpload = async (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const img = new Image();
-      img.src = URL.createObjectURL(file);
-      img.onload = async () => {
-        const resizedBlob = await resizeImage(img);
-        const reader = new FileReader();
-        reader.onload = () => {
-          setImageUrl(reader.result);
-        };
-        reader.readAsDataURL(resizedBlob);
-      };
+  const handleImageUpload = async (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    try {
+      const response = await fetch(`${baseUrl}/upload`, {
+        method: 'POST',
+        body: formData,
+      });
+      if (response.ok) {
+        const data = await response.json();
+        const uploadedImageUrl = data?.file?.path;
+        setImageUrl(uploadedImageUrl);
+        return uploadedImageUrl;
+      } else {
+        console.error('Failed to upload image');
+        return null;
+      }
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      return null;
     }
   };
   const handlePublish = async () => {
@@ -52,20 +60,24 @@ const Post = () => {
     ];
     const currentDate = new Date();
     const day = currentDate.getDate();
-
     const month = currentDate.getMonth();
     const year = currentDate.getFullYear();
     const date = dates[currentDate.getDay()];
     const formattedDate = `${date}, ${day}/${month + 1}/${year}`;
     try {
+      const file = fileInputRef.current.files[0];
+      let uploadedImageUrl = imageUrl;
+
+      if (file && !uploadedImageUrl) {
+        uploadedImageUrl = await handleImageUpload(file);
+      }
       const newData = {
         heading: title,
         date: formattedDate,
         category: selectedCategory,
         p: value,
-        image: imageUrl,
+        image: uploadedImageUrl,
       };
-
       await axios.post(baseUrl + "/addPost", newData);
       setImageUrl(null);
       setTitle("");
@@ -80,20 +92,31 @@ const Post = () => {
   };
   useEffect(() => {
     const fileInput = fileInputRef.current;
-    if (fileInput) {
-      fileInput.addEventListener("change", handleImageUpload);
-    }
-
-    return () => {
-      if (fileInput) {
-        fileInput.removeEventListener("change", handleImageUpload);
+    const handleFileChange = async (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        if (file.size > 3 * 1024 * 1024) {
+          setError("Kích thước ảnh vượt quá 3MB. Vui lòng thử ảnh khác");
+          handleActive(false)
+          setOpen(true);
+          return;
+        }
+        const uploadedImageUrl = await handleImageUpload(file);
+        setImageUrl(uploadedImageUrl);
       }
     };
-  }, []);
+    if (fileInput) {
+      fileInput.addEventListener("change", handleFileChange);
+    }
+    return () => {
+      if (fileInput) {
+        fileInput.removeEventListener("change", handleFileChange);
+      }
+    };
+  });
   const handleClose = () => {
     setOpen(false);
   };
-
   return (
     <section className="w-screen h-auto flex flex-col justify-center items-center">
       <CustomModal
@@ -101,7 +124,7 @@ const Post = () => {
         onClose={handleClose}
         open={open}
         action={"Đăng tải bài viết"}
-        errorMes={""}
+        errorMes={error}
       />
       <div className="flex flex-col mb-[50px] w-[70vw]  h-auto gap-1 md:gap-3  justify-start ">
         <div className="w-[150px] h-[45px] md:h-[40px] mt-[120px] text-base md:text-base">
@@ -161,9 +184,8 @@ const Post = () => {
           </button>
         </div>
         <div
-          className={`preview w-full h-[220px] flex flex-col aspect-video ${
-            imageUrl ? "flex" : "hidden"
-          }`}
+          className={`preview w-full h-[220px] flex flex-col aspect-video ${imageUrl ? "flex" : "hidden"
+            }`}
         >
           <div className={`justify-center mt-3 flex `}>
             {imageUrl && (
@@ -176,12 +198,11 @@ const Post = () => {
           </div>
         </div>
         <div
-          className={`w-full h-[35px]  flex flex-col  ${
-            imageUrl ? "hidden" : "flex"
-          }`}
+          className={`w-full h-[35px]  flex flex-col  ${imageUrl ? "hidden" : "flex"
+            }`}
         >
           <p className="text-sm md:text-base self-center font-semibold ">
-            Tải hình nền lên (bắt buộc)
+            Tải hình nền lên (kích thước dưới 3MB)
           </p>
         </div>
 

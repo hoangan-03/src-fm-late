@@ -24,8 +24,10 @@ export default function NavBar() {
           const response = await axios.get(`${baseUrl}/users/${user.name}`);
           if (response.status === 200) {
             const userData = response.data[0];
-            setFullname(userData.fullname);
-            setAvatarUrl(userData.avatarurl);
+            if (userData) {
+              setFullname(userData.fullname);
+              setAvatarUrl(userData.avatarurl);
+            }
           } else {
             console.log(
               "Error retrieving user data:",
@@ -155,8 +157,8 @@ export default function NavBar() {
             <HashLink
               smooth
               className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[20px] md:pl-[30px] cursor-pointer ${activePage === "/Home"
-                  ? "bg-blue-500 text-white"
-                  : "bg-transparent"
+                ? "bg-blue-500 text-white"
+                : "bg-transparent"
                 }`}
               to="/Home#hero"
             >
@@ -165,8 +167,8 @@ export default function NavBar() {
             <HashLink
               smooth
               className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[20px] md:pl-[30px] cursor-pointer ${activePage === "/About"
-                  ? "bg-blue-500 text-white"
-                  : "bg-transparent"
+                ? "bg-blue-500 text-white"
+                : "bg-transparent"
                 }`}
               to="/About#mission"
             >
@@ -175,8 +177,8 @@ export default function NavBar() {
             <HashLink
               smooth
               className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[20px] md:pl-[30px] cursor-pointer ${activePage === "/Annoucement"
-                  ? "bg-blue-500 text-white"
-                  : "bg-transparent"
+                ? "bg-blue-500 text-white"
+                : "bg-transparent"
                 }`}
               to="/Annoucement#hero"
             >
@@ -185,8 +187,8 @@ export default function NavBar() {
             <HashLink
               smooth
               className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[20px] md:pl-[30px] cursor-pointer ${activePage === "/Course"
-                  ? "bg-blue-500 text-white"
-                  : "bg-transparent"
+                ? "bg-blue-500 text-white"
+                : "bg-transparent"
                 }`}
               to="/Course"
             >
@@ -196,8 +198,8 @@ export default function NavBar() {
             <HashLink
               smooth
               className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[20px] md:pl-[30px] cursor-pointer ${activePage === "/Partners"
-                  ? "bg-blue-500 text-white"
-                  : "bg-transparent"
+                ? "bg-blue-500 text-white"
+                : "bg-transparent"
                 }`}
               to="/Partners#Partners"
             >

@@ -14,7 +14,7 @@ import Modal from "@mui/material/Modal";
 import tick from "../assets/pic/accept.png";
 import info from "../assets/pic/info.png";
 import close from "../assets/pic/close.png";
-import { resizeImage } from "../functions/resizeImage";
+
 const BlueOutlinedTextField = styled(TextField)(() => ({
   "& .MuiOutlinedInput-root": {
     "& fieldset": {
@@ -42,6 +42,7 @@ const Account = () => {
 
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user")) || {};
+
   const [fullname, setFullname] = useState("");
   const [role, setRole] = useState("");
   const [username, setUsername] = useState(user.name || "");
@@ -63,15 +64,15 @@ const Account = () => {
         const response = await axios.get(`${baseUrl}/users/${username}`);
         if (response.status === 200) {
           const user = response.data[0];
-          setFullname(user.fullname);
+          setFullname(user?.fullname);
           setRole(user.role);
           setUsername(user.name);
-          setEmail(user.email);
-          setPassword(user.password);
-          setPhonenumber(user.phonenumber);
-          setGender(user.gender);
-          setYearOfBirth(user.yearofbirth);
-          setAvatarUrl(user.avatarurl);
+          setEmail(user?.email);
+          setPassword(user?.password);
+          setPhonenumber(user?.phonenumber);
+          setGender(user?.gender);
+          setYearOfBirth(user?.yearofbirth);
+          setAvatarUrl(user?.avatarurl);
         } else {
           console.log(
             "Error retrieving user data:",
@@ -103,23 +104,36 @@ const Account = () => {
   const handleYOBChange = (date) => {
     setYearOfBirth(date.format("YYYY-MM-DD"));
   };
-  const handleImageUploaddd = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const img = new Image();
-      img.src = URL.createObjectURL(file);
-      img.onload = async () => {
-        const resizedBlob = await resizeImage(img);
-        const reader = new FileReader();
-        reader.onload = () => {
-          setAvatarUrl(reader.result);
-        };
-        reader.readAsDataURL(resizedBlob);
-      };
+  const handleImageUpload = async (file) => {
+    const formData = new FormData();
+    formData.append("file", file);
+    try {
+      const response = await fetch(`${baseUrl}/upload`, {
+        method: "POST",
+        body: formData,
+      });
+      if (response.ok) {
+        const data = await response.json();
+        const uploadedImageUrl = data?.file?.path;
+        setAvatarUrl(uploadedImageUrl);
+        return uploadedImageUrl;
+      } else {
+        console.error("Failed to upload image");
+        return null;
+      }
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      return null;
     }
   };
   const saveChanges = async () => {
     try {
+      const file = fileInputRef.current.files[0];
+      let uploadedAvatarUrl = avatarUrl;
+
+      if (file && !uploadedAvatarUrl) {
+        uploadedAvatarUrl = await handleImageUpload(file);
+      }
       const response = await axios.put(baseUrl + `/updateUser/${username}`, {
         name: username,
         email: email,
@@ -128,11 +142,10 @@ const Account = () => {
         phonenumber: phonenumber,
         gender: gender,
         yearofbirth: yearofbirth,
-        avatarurl: avatarUrl === avatar ? "" : avatarUrl,
+        avatarurl: uploadedAvatarUrl === avatar ? "" : uploadedAvatarUrl,
         password: password,
       });
       if (response.status === 200) {
-
         handleState(true);
         setOpen(true);
       } else {
@@ -146,16 +159,22 @@ const Account = () => {
   };
   useEffect(() => {
     const fileInput = fileInputRef.current;
-    if (fileInput) {
-      fileInput.addEventListener("change", handleImageUploaddd);
-    }
-
-    return () => {
-      if (fileInput) {
-        fileInput.removeEventListener("change", handleImageUploaddd);
+    const handleFileChange = async (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const uploadedImageUrl = await handleImageUpload(file);
+        setAvatarUrl(uploadedImageUrl);
       }
     };
-  }, []);
+    if (fileInput) {
+      fileInput.addEventListener("change", handleFileChange);
+    }
+    return () => {
+      if (fileInput) {
+        fileInput.removeEventListener("change", handleFileChange);
+      }
+    };
+  });
   const handleClose = () => {
     setOpen(false);
   };
@@ -190,7 +209,9 @@ const Account = () => {
                 <h2
                   className={`  w-auto text-start items-start text-2xl  font-bold text-black`}
                 >
-                  {active ? "Cập nhật thông tin thành công" : "Cập nhật thông tin thất bại"}
+                  {active
+                    ? "Cập nhật thông tin thành công"
+                    : "Cập nhật thông tin thất bại"}
                 </h2>
                 <h1
                   className={`  w-auto text-start items-start text-base font-semibold text-gray-700`}
@@ -254,8 +275,8 @@ const Account = () => {
             <div className="h-auto w-full flex flex-col justify-start items-center">
               <div
                 className={`flex cursor-pointer flex-row w-full pl-5 py-2 justify-start items-center border-l-4 gap-3  ${active === 1
-                    ? "bg-white border-sky-700"
-                    : "hover:bg-white hover:border-black"
+                  ? "bg-white border-sky-700"
+                  : "hover:bg-white hover:border-black"
                   } `}
                 onClick={() => changeActive(1)}
               >
@@ -272,8 +293,8 @@ const Account = () => {
               </div>
               <div
                 className={`flex cursor-pointer flex-row w-full pl-5 py-2 justify-start items-center border-l-4 gap-3  ${active === 2
-                    ? "bg-white border-sky-700"
-                    : "hover:bg-white hover:border-black"
+                  ? "bg-white border-sky-700"
+                  : "hover:bg-white hover:border-black"
                   } `}
                 onClick={() => changeActive(2)}
               >
@@ -290,8 +311,8 @@ const Account = () => {
               </div>
               <div
                 className={`flex cursor-pointer flex-row w-full pl-5 py-2 justify-start items-center border-l-4 gap-3 ${active === 3
-                    ? "bg-white border-sky-700"
-                    : "hover:bg-white hover:border-black"
+                  ? "bg-white border-sky-700"
+                  : "hover:bg-white hover:border-black"
                   } `}
                 onClick={() => changeActive(3)}
               >
@@ -308,8 +329,8 @@ const Account = () => {
               </div>
               <div
                 className={`flex cursor-pointer flex-row w-full pl-5 py-2 justify-start items-center border-l-4 gap-3 ${active === 4
-                    ? "bg-white border-sky-700"
-                    : "hover:bg-white hover:border-black"
+                  ? "bg-white border-sky-700"
+                  : "hover:bg-white hover:border-black"
                   } `}
                 onClick={() => changeActive(4)}
               >
@@ -463,8 +484,8 @@ const Account = () => {
                 <div
                   onClick={() => setGender("Male")}
                   className={`w-[120px] cursor-pointer h-full flex flex-col justify-center gap-1 pt-3 items-center rounded-md   ${gender === "Male"
-                      ? "bg-sky-600 "
-                      : "bg-white border-2 border-gray-200"
+                    ? "bg-sky-600 "
+                    : "bg-white border-2 border-gray-200"
                     }`}
                 >
                   <i
@@ -481,8 +502,8 @@ const Account = () => {
                 <div
                   onClick={() => setGender("Female")}
                   className={`w-[120px] cursor-pointer h-full flex flex-col justify-center gap-1 pt-3 items-center rounded-md   ${gender === "Female"
-                      ? "bg-sky-600 "
-                      : "bg-white border-2 border-gray-200"
+                    ? "bg-sky-600 "
+                    : "bg-white border-2 border-gray-200"
                     }`}
                 >
                   <i
@@ -499,8 +520,8 @@ const Account = () => {
                 <div
                   onClick={() => setGender("Other")}
                   className={`w-[120px] cursor-pointer h-full flex flex-col justify-center gap-1 pt-3 items-center rounded-md   ${gender === "Other"
-                      ? "bg-sky-600 "
-                      : "bg-white border-2 border-gray-200"
+                    ? "bg-sky-600 "
+                    : "bg-white border-2 border-gray-200"
                     }`}
                 >
                   <i
