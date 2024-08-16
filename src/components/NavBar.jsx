@@ -59,8 +59,9 @@ export default function NavBar() {
   }, [location]);
   return (
     <div
-      className={`right-0 flex z-[1900000] fixed h-[100vh] w-[170px] lg:w-[270px] font-thin engine tracking-widest ${isActive ? " visible   " : "  invisible"
-        }  `}
+      className={`right-0 flex z-[1900000] fixed h-[100vh] w-[170px] lg:w-[270px] font-thin engine tracking-widest ${
+        isActive ? " visible   " : "  invisible"
+      }  `}
     >
       <div
         className={`absolute w-full top-0 h-full z-50 bg-white/70  backdrop-blur-xl `}
@@ -69,22 +70,25 @@ export default function NavBar() {
           <div className="w-full gap-3 h-auto text-white pt-[7px] lg:pt-[20px]  uppercase flex justify-start pl-[12px] lg:pl-[30px]  text-2xl mb-[60px] ">
             <HashLink
               to="/Auth"
-              className={`w-auto mt-1 h-auto px-2 lg:px-4 py-2 text-white bg-sky-800 text-xs lg:text-sm rounded-2xl airbnb hover:bg-cyan-800 ${user ? "hidden" : "block"
-                }`}
+              className={`w-auto mt-1 h-auto px-2 lg:px-4 py-2 text-white bg-sky-800 text-xs lg:text-sm rounded-2xl airbnb hover:bg-cyan-800 ${
+                user ? "hidden" : "block"
+              }`}
             >
               Đăng nhập
             </HashLink>
 
             <button
-              className={`rounded-full relative w-10 h-10 flex justify-center items-center ${user ? "block" : "hidden"
-                }`}
+              className={`rounded-full relative w-10 h-10 flex justify-center items-center ${
+                user ? "block" : "hidden"
+              }`}
               onClick={() => handleModal()}
             >
               <div
-                className={`open absolute left-0 flex flex-col justify-center items-start gap-1 px-3 py-8 top-[42px] w-[220px] h-[200px] bggray rounded-xl ${modal ? "block" : "hidden"
-                  }`}
+                className={`open absolute left-0 flex flex-col justify-center items-start gap-1 px-1 lg:px-3 py-5 lg:py-8 top-[42px] w-[150px] lg:w-[220px] h-[200px] bggray rounded-xl ${
+                  modal ? "block" : "hidden"
+                }`}
               >
-                <div className="flex flex-row gap-3 rounded-lg w-full pl-2 h-[40px] hover:bg-sky-800 py-1 items-center">
+                <div className="flex flex-row gap-1 lg:gap-3 rounded-lg w-full pl-2 h-[40px] hover:bg-sky-800 py-1 items-center">
                   <div className="w-8 h-8 flex justify-center items-center rounded-full bg-gray-200/20 ">
                     <img
                       className="w-full h-full object-cover rounded-full"
@@ -92,8 +96,10 @@ export default function NavBar() {
                       alt=""
                     ></img>
                   </div>
-                  <h1 className="text-xs text-white font-bold leading-4">
-                    {fullname}
+                  <h1 className="text-xs text-white font-bold w-auto max-w-20 lg:max-w-full leading-4">
+                    {fullname.length > 16
+                      ? fullname.substring(0, 16)
+                      : fullname}
                   </h1>
                 </div>
                 <HashLink
@@ -104,7 +110,7 @@ export default function NavBar() {
                     <Settings style={{ color: "white", fontSize: "18" }} />
                   </div>
 
-                  <h1 className="text-xs text-white font-bold leading-4">
+                  <h1 className="text-xs text-white font-bold w-auto max-w-20 lg:max-w-full leading-4">
                     Cài đặt tài khoản
                   </h1>
                 </HashLink>
@@ -116,7 +122,7 @@ export default function NavBar() {
                     />
                   </div>
 
-                  <h1 className="text-xs text-white font-bold leading-4">
+                  <h1 className="text-xs text-white font-bold w-auto max-w-20 lg:max-w-full leading-4">
                     Trợ năng
                   </h1>
                 </div>
@@ -133,7 +139,7 @@ export default function NavBar() {
                     <Logout style={{ color: "white", fontSize: "18" }} />
                   </div>
 
-                  <h1 className="text-xs text-white font-bold leading-4">
+                  <h1 className="text-xs text-white font-bold  max-w-20 lg:max-w-full leading-4">
                     Đăng xuất
                   </h1>
                 </button>
@@ -156,40 +162,44 @@ export default function NavBar() {
           <nav className="flex flex-col text-base lg:text-xl 2xl:text-2xl gap-1 lg:gap-2 text-center uppercase items-center   text-black  justify-start ">
             <HashLink
               smooth
-              className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[20px] md:pl-[30px] cursor-pointer ${activePage === "/Home"
-                ? "bg-blue-500 text-white"
-                : "bg-transparent"
-                }`}
+              className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[20px] md:pl-[30px] cursor-pointer ${
+                activePage === "/Home"
+                  ? "bg-blue-500 text-white"
+                  : "bg-transparent"
+              }`}
               to="/Home#hero"
             >
               Trang chủ
             </HashLink>
             <HashLink
               smooth
-              className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[20px] md:pl-[30px] cursor-pointer ${activePage === "/About"
-                ? "bg-blue-500 text-white"
-                : "bg-transparent"
-                }`}
+              className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[20px] md:pl-[30px] cursor-pointer ${
+                activePage === "/About"
+                  ? "bg-blue-500 text-white"
+                  : "bg-transparent"
+              }`}
               to="/About#mission"
             >
               Về chúng tôi
             </HashLink>
             <HashLink
               smooth
-              className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[20px] md:pl-[30px] cursor-pointer ${activePage === "/Annoucement"
-                ? "bg-blue-500 text-white"
-                : "bg-transparent"
-                }`}
+              className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[20px] md:pl-[30px] cursor-pointer ${
+                activePage === "/Annoucement"
+                  ? "bg-blue-500 text-white"
+                  : "bg-transparent"
+              }`}
               to="/Annoucement#hero"
             >
               Tin tức - Sự kiện
             </HashLink>
             <HashLink
               smooth
-              className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[20px] md:pl-[30px] cursor-pointer ${activePage === "/Course"
-                ? "bg-blue-500 text-white"
-                : "bg-transparent"
-                }`}
+              className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[20px] md:pl-[30px] cursor-pointer ${
+                activePage === "/Course"
+                  ? "bg-blue-500 text-white"
+                  : "bg-transparent"
+              }`}
               to="/Course"
             >
               Khóa học - Dự án
@@ -197,10 +207,11 @@ export default function NavBar() {
 
             <HashLink
               smooth
-              className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[20px] md:pl-[30px] cursor-pointer ${activePage === "/Partners"
-                ? "bg-blue-500 text-white"
-                : "bg-transparent"
-                }`}
+              className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[20px] md:pl-[30px] cursor-pointer ${
+                activePage === "/Partners"
+                  ? "bg-blue-500 text-white"
+                  : "bg-transparent"
+              }`}
               to="/Partners#Partners"
             >
               Hợp tác - Đối tác
@@ -234,15 +245,17 @@ export default function NavBar() {
       <img
         onClick={handleClick}
         alt="oh"
-        className={`w-[30px] lg:w-[40px] top-[10px] lg:top-[20px] right-[10px] lg:right-[30px] bg-white p-2 rounded-full fixed h-[30px] lg:h-[40px] block cursor-pointer z-[1900] ${isActive ? "invert block visible " : "invert-0 hidden"
-          }`}
+        className={`w-[30px] lg:w-[40px] top-[10px] lg:top-[20px] right-[10px] lg:right-[30px] bg-white p-2 rounded-full fixed h-[30px] lg:h-[40px] block cursor-pointer z-[1900] ${
+          isActive ? "invert block visible " : "invert-0 hidden"
+        }`}
         src={close}
       ></img>
       <img
         onClick={handleClick}
         alt="oh"
-        className={`w-[30px] lg:w-[40px] top-[10px] lg:top-[20px]    right-[10px] lg:right-[30px] bg-white p-2  rounded-full fixed h-[30px] lg:h-[40px] block cursor-pointer z-[1900]    ${isActive ? "invert hidden" : "invert-0 block  visible"
-          }`}
+        className={`w-[30px] lg:w-[40px] top-[10px] lg:top-[20px]    right-[10px] lg:right-[30px] bg-white p-2  rounded-full fixed h-[30px] lg:h-[40px] block cursor-pointer z-[1900]    ${
+          isActive ? "invert hidden" : "invert-0 block  visible"
+        }`}
         src={lines}
       ></img>
     </div>
