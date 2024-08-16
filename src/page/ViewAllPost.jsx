@@ -12,9 +12,6 @@ const ViewAllPost = ({ containerData }) => {
     var lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
   };
-  const [isEditMode, setEditMode] = useState(false);
- 
-
   return (
     <div
       className={`bg-sky-100 w-[100vw] h-auto min-h-screen perspective flex-col  flex items-center gap-9 justify-center absolute top-0`}
@@ -35,18 +32,7 @@ const ViewAllPost = ({ containerData }) => {
             <h2 className="text-xl font-semibold ">{"Đăng bài viết"}</h2>
           </HashLink>
         </button>
-        <button
-          className={`button-54 h-[60px] bg-white text-black  ${
-            user && user.role === "Admin" ? "block" : "hidden"
-          } `}
-        >
-          <HashLink
-            className={`h-full w-full px-4 flex items-center text-center no-underline`}
-            onClick={() => setEditMode(!isEditMode)}
-          >
-            <h2 className="text-xl font-semibold ">{!isEditMode ? "Chế độ xem" : "Chế độ chỉnh sửa"}</h2>
-          </HashLink>
-        </button>
+        
       </div>
       <div
         className={`search w-[60%] xl:w-[60%] mt-0"
@@ -86,7 +72,7 @@ const ViewAllPost = ({ containerData }) => {
         containersPerPage={10}
         containerList={containerData}
         input={inputText}
-        editMode={isEditMode}
+        editMode={user}
       />
     </div>
   );
