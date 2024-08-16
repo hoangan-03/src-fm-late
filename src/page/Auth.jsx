@@ -40,9 +40,9 @@ const Auth = () => {
   const [loginError, setLoginError] = useState("");
   const [usernameOrEmail, setUsernameOrEmail] = useState("");
 
-  const checkIfUserExists = async (email) => {
+  const checkIfUserExists = async (name) => {
     try {
-      const response = await axios.post(`${baseUrl}/checkUser`, { email });
+      const response = await axios.post(`${baseUrl}/checkUser`, { name });
       return response.data.exists;
     } catch (error) {
       console.error("Error checking user:", error);
