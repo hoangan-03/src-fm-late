@@ -39,6 +39,16 @@ const Auth = () => {
   const [registerError, setRegisterError] = useState("");
   const [loginError, setLoginError] = useState("");
   const [usernameOrEmail, setUsernameOrEmail] = useState("");
+
+  const checkIfUserExists = async (email) => {
+    try {
+      const response = await axios.post(`${baseUrl}/checkUser`, { email });
+      return response.data.exists;
+    } catch (error) {
+      console.error("Error checking user:", error);
+      return false;
+    }
+  };
   const login = useGoogleLogin({
     onSuccess: async (response) => {
       try {
@@ -65,8 +75,13 @@ const Auth = () => {
           usernameOrEmail: res.data.email,
           password: "",
         };
-        handleGoogleRegister(user);
-        handleGoogleLogin(userLogin);
+        const userExists = await checkIfUserExists(res.data.email);
+        if (userExists) {
+          handleGoogleLogin(userLogin);
+        } else {
+          handleGoogleRegister(user);
+          handleGoogleLogin(userLogin);
+        }
         setOpenLogin(true);
         setLoginError("");
       } catch (err) {
@@ -440,7 +455,7 @@ const Auth = () => {
           </button>
         </h2>
       </div>
-      <div className="w-1/2 h-full pt-[100px] pb-[50px] pr-[50px] rounded-3xl lg:block hidden">
+      <div className="w-1/2 h-full pt-[100px] pb-[50px] pr-[50px] rounded-3xl xl:block hidden">
         <img
           src={a1}
           className="w-full h-full object-cover rounded-3xl"
