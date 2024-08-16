@@ -3,6 +3,7 @@ import a1 from "../assets/pic/1.jpg"
 import a2 from "../assets/pic/2.jpg"
 import CourseList from "../components/CourseList";
 import data from "../components/mockdata";
+import Footer from "../components/Footer";
 const Course = () => {
   return (
     <section className="bg-sky-100 overflow-hidden">
@@ -45,6 +46,7 @@ const Course = () => {
           <CourseList containerList={data} containersPerPage={4} />
         </div>
       </section>
+      <Footer />
     </section>
   );
 };

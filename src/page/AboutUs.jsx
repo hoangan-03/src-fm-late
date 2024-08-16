@@ -18,6 +18,7 @@ import noidung from "../assets/pic/noidung.jpg";
 import prit from "../assets/pic/prit.jpeg";
 import Scroll from "../components/Scroll";
 import "../components/animation.css";
+import Footer from "../components/Footer";
 export default function Aboutus() {
   const location = useLocation();
 
@@ -81,83 +82,6 @@ export default function Aboutus() {
           </div>
         </div>
         <Masonry />
-        {/*
-        <div className="w-[1500px] h-auto lg:h-[450px] flex flex-col lg:flex-row gap-[60px] px-[15%] justify-center">
-          <div
-            id="float1"
-            className="h-full w-[220px] min-w-[270px] animate gap-[10px] flex flex-col"
-          >
-            <div className="h-1/2  w-full">
-              <img
-                src={mission}
-                className="w-full h-[225px] rounded-2xl object-cover"
-                alt=""
-              ></img>
-            </div>
-            <div className="h-[60px] lg:h-[200px] w-full  path1 bg-blue-300 flex justify-center items-center">
-              <h3 className="text-blue-800 uppercase text-4xl airbnb">TRUST</h3>
-            </div>
-            <div className="h-1/2 w-full">
-              <img
-                src={bck}
-                className="w-full h-[113px] rounded-2xl object-cover"
-                alt=""
-              ></img>
-            </div>
-          </div>
-          <div
-            id="float2"
-            className=" animate h-full w-[220px] min-w-[270px] flex flex-col gap-[10px] "
-          >
-            <div className="w-full h-[60px] lg:h-[30%] rounded-[120px] bg-amber-400 flex justify-center items-center">
-              <h3 className="text-blue-800 uppercase text-4xl airbnb">
-                success
-              </h3>
-            </div>
-            <div className="w-full h-full">
-              <img
-                src={bc}
-                className="w-full h-full object-cover rounded-2xl"
-                alt=""
-              ></img>
-            </div>
-          </div>
-          <div
-            id="float1"
-            className="animate h-full w-[220px] min-w-[270px] flex flex-col gap-[10px] "
-          >
-            <div className="w-full h-full">
-              <img
-                src={neon}
-                className="w-full h-full object-cover rounded-2xl"
-                alt=""
-              ></img>
-            </div>
-            <div className="w-full h-[60px] lg:h-[30%] rounded-[20px] bg-rose-400 flex justify-center items-center">
-              <h3 className="text-blue-800 uppercase text-4xl airbnb">
-                innovation
-              </h3>
-            </div>
-          </div>
-          <div
-            id="float2"
-            className="animate h-full w-[220px] min-w-[270px] flex flex-col gap-[10px] "
-          >
-            <div className="w-full h-[60px] lg:h-[30%] path2  bg-teal-400 flex justify-center items-center">
-              <h3 className="text-blue-800 uppercase text-4xl airbnb ">
-                diversity
-              </h3>
-            </div>
-            <div className="w-full h-full">
-              <img
-                src={dna}
-                className="w-full h-full object-cover rounded-2xl"
-                alt=""
-              ></img>
-            </div>
-          </div>
-        </div>
-  */}
         <div className="absolute wrapperr w-[800px] self-center rounded-2xl backdrop-blur-2xl bg-sky-100/90 h-auto bottom-[10px] px-3 text-white text-base lg:text-4xl text-center airbnb flex justify-center items-center ">
           <div className="special-text">
             Khơi nguồn tri thức - Kiến tạo tương lai
@@ -309,129 +233,9 @@ export default function Aboutus() {
               <h2 className="text-base  ">Trưởng ban Tài Chính</h2>
             </div>
           </div>
-
-          {/* <div className="flex flex-col w-[25%] gap-5 h-full ">
-            <div className="w-full h-1/3 relative">
-              <img
-                src={sample}
-                className=" absolute rounded-2xl object-cover w-full h-full"
-                alt=""
-              ></img>
-              <div className="w-auto absolute airbnb h-auto backdrop-blur-[1px] text-white ml-2 mt-1 left-4 bottom-5 flex flex-col">
-                <h2 className="text-2xl ">Nguyen Van A</h2>
-                <h2 className="text-xl  ">Chủ nhiệm</h2>
-              </div>
-            </div>
-            <div className="w-full h-1/3 relative">
-              <img
-                src={sample2}
-                className=" absolute rounded-2xl object-cover w-full h-full"
-                alt=""
-              ></img>
-              <div className="w-auto absolute airbnb h-auto backdrop-blur-[1px] text-white ml-2 mt-1 left-4 bottom-5 flex flex-col">
-                <h2 className="text-2xl ">Nguyen Hoai C</h2>
-                <h2 className="text-xl  ">Thư kí</h2>
-              </div>
-            </div>
-
-            <div className="w-full h-1/3 relative">
-              <img
-                src={sample}
-                className=" absolute rounded-2xl object-cover w-full h-full"
-                alt=""
-              ></img>
-              <div className="w-auto absolute airbnb h-auto backdrop-blur-[1px] text-white ml-2 mt-1 left-4 bottom-5 flex flex-col">
-                <h2 className="text-2xl ">Nguyen Van A</h2>
-                <h2 className="text-xl  ">Chủ nhiệm</h2>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col w-[25%] gap-5 h-full mt-[200px] ">
-            <div className="w-full h-1/3 relative">
-              <img
-                src={sample}
-                className=" absolute rounded-2xl object-cover w-full h-full"
-                alt=""
-              ></img>
-              <div className="w-auto absolute airbnb h-auto backdrop-blur-[1px] text-white ml-2 mt-1 left-4 bottom-5 flex flex-col">
-                <h2 className="text-2xl ">Nguyen Van A</h2>
-                <h2 className="text-xl  ">Chủ nhiệm</h2>
-              </div>
-            </div>
-            <div className="w-full h-1/3 relative">
-              <img
-                src={sample2}
-                className=" absolute rounded-2xl object-cover w-full h-full"
-                alt=""
-              ></img>
-              <div className="w-auto absolute airbnb h-auto backdrop-blur-[1px] text-white ml-2 mt-1 left-4 bottom-5 flex flex-col">
-                <h2 className="text-2xl ">Nguyen Hoai C</h2>
-                <h2 className="text-xl  ">Thư kí</h2>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col w-[25%] gap-5 h-full mt-[140px] ">
-            <div className="w-full h-1/3 relative">
-              <img
-                src={sample}
-                className=" absolute rounded-2xl object-cover w-full h-full"
-                alt=""
-              ></img>
-              <div className="w-auto absolute airbnb h-auto backdrop-blur-[1px] text-white ml-2 mt-1 left-4 bottom-5 flex flex-col">
-                <h2 className="text-2xl ">Nguyen Van A</h2>
-                <h2 className="text-xl  ">Chủ nhiệm</h2>
-              </div>
-            </div>
-            <div className="w-full h-1/3 relative">
-              <img
-                src={sample2}
-                className=" absolute rounded-2xl object-cover w-full h-full"
-                alt=""
-              ></img>
-              <div className="w-auto absolute airbnb h-auto backdrop-blur-[1px] text-white ml-2 mt-1 left-4 bottom-5 flex flex-col">
-                <h2 className="text-2xl ">Nguyen Hoai C</h2>
-                <h2 className="text-xl  ">Thư kí</h2>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col w-[25%] gap-5 h-full ">
-            <div className="w-full h-1/3 relative">
-              <img
-                src={sample}
-                className=" absolute rounded-2xl object-cover w-full h-full"
-                alt=""
-              ></img>
-              <div className="w-auto absolute airbnb h-auto backdrop-blur-[1px] text-white ml-2 mt-1 left-4 bottom-5 flex flex-col">
-                <h2 className="text-2xl ">Nguyen Van A</h2>
-                <h2 className="text-xl  ">Chủ nhiệm</h2>
-              </div>
-            </div>
-            <div className="w-full h-1/3 relative">
-              <img
-                src={sample2}
-                className=" absolute rounded-2xl object-cover w-full h-full"
-                alt=""
-              ></img>
-              <div className="w-auto absolute airbnb h-auto backdrop-blur-[1px] text-white ml-2 mt-1 left-4 bottom-5 flex flex-col">
-                <h2 className="text-2xl ">Nguyen Hoai C</h2>
-                <h2 className="text-xl  ">Thư kí</h2>
-              </div>
-            </div>
-
-            <div className="w-full h-1/3 relative">
-              <img
-                src={sample}
-                className=" absolute rounded-2xl object-cover w-full h-full"
-                alt=""
-              ></img>
-              <div className="w-auto absolute airbnb h-auto backdrop-blur-[1px] text-white ml-2 mt-1 left-4 bottom-5 flex flex-col">
-                <h2 className="text-2xl ">Nguyen Van A</h2>
-                <h2 className="text-xl  ">Chủ nhiệm</h2>
-              </div>
-            </div>
-          </div> */}
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

@@ -13,17 +13,13 @@ const ViewAllPost = ({ containerData }) => {
     setInputText(lowerCase);
   };
   return (
-    <div
-      className={`bg-sky-100 w-[100vw] h-auto min-h-screen perspective flex-col  flex items-center gap-9 justify-center absolute top-0`}
-      id="hero"
-    >
+    <div className={`bg-sky-100 w-[100vw] h-auto min-h-screen perspective flex-col  flex items-center gap-9 justify-center absolute top-0`}
+      id="hero">
       <Scroll />
-      
       <div className="w-full flex justify-center  mt-[150px] h-auto items-center gap-5 flex-row">
         <button
-          className={`button-54 h-[60px] bg-white text-black  ${
-            user && user.role === "Admin" ? "block" : "hidden"
-          } `}
+          className={`button-54 h-[60px] bg-white text-black  ${user && user.role === "Admin" ? "block" : "hidden"
+            } `}
         >
           <HashLink
             className={`h-full w-full px-4 flex items-center text-center no-underline`}
@@ -32,7 +28,6 @@ const ViewAllPost = ({ containerData }) => {
             <h2 className="text-xl font-semibold ">{"Đăng bài viết"}</h2>
           </HashLink>
         </button>
-        
       </div>
       <div
         className={`search w-[60%] xl:w-[60%] mt-0"
@@ -45,7 +40,7 @@ const ViewAllPost = ({ containerData }) => {
           fullWidth
           label={"Tìm kiếm"}
           InputLabelProps={{
-            style: { fontWeight: "bold", fontSize: "20px"},
+            style: { fontWeight: "bold", fontSize: "20px" },
           }}
           InputProps={{
             classes: {
@@ -67,7 +62,6 @@ const ViewAllPost = ({ containerData }) => {
           }}
         />
       </div>
-
       <PictureGrid
         containersPerPage={10}
         containerList={containerData}

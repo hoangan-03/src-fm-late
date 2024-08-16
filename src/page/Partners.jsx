@@ -8,6 +8,7 @@ import Input from "@mui/material/Input";
 import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
 import ReactQuill from "react-quill";
+import Footer from "../components/Footer";
 import a1 from "../assets/pic/1.jpg";
 import spon1 from "../assets/pic/sponsor1.png";
 // import spon3 from "../assets/pic/spon3.jpg";
@@ -47,7 +48,7 @@ const Partners = () => {
     </div>
   );
   return (
-    <section className="w-screen h-[200vh] overflow-hidden ">
+    <section className="w-screen h-auto overflow-hidden ">
       <section
         id="partners"
         className="w-screen h-screen px-[200px] justify-center items-center py-[200px] flex flex-col gap-10"
@@ -145,7 +146,7 @@ const Partners = () => {
           </div>
           <div className="w-full h-auto flex flex-row gap-2">
             <CustomInputField
-              label="Họ và tên"
+              label="Tên của bạn"
               startIcon={<AccountCircle />}
               uniqueId="nameField"
             />
@@ -170,7 +171,7 @@ const Partners = () => {
 
           <ReactQuill
             theme="snow"
-            placeholder="Viết gì đó cho chúng tôi"
+            placeholder="Viết góp ý của bạn ở đây. Ý kiến của bạn sẽ giúp chúng tôi phát triển."
             modules={{
               toolbar: false, 
               "emoji-toolbar": false,
@@ -180,17 +181,7 @@ const Partners = () => {
           />
         </div>
       </section>
-
-      <div className="w-full h-[150px] justify-center  ">
-        <div className="w-[auto] h-auto flex  justify-center items-center text-center ">
-          <div className="w-[400px] h-[100px] relative mt-[50px]">
-            <h3 className="  h-[100px] bg-white z-[20] relative  border-black border-4 py-4 px-5 w-[400px]  text-6xl airbnb uppercase text-black">
-              Sứ mệnh
-            </h3>
-            <div className="w-[400px] h-[100px] z-[1] bg-white border-black border-4 absolute top-0 left-0 translate-x-3 translate-y-3"></div>
-          </div>
-        </div>
-      </div>
+      <Footer />
     </section>
   );
 };
