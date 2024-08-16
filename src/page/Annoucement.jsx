@@ -8,7 +8,8 @@ import { Add } from "@mui/icons-material";
 import { useMediaQuery } from 'react-responsive';
 
 const Annoucement = ({ containerData }) => {
-  const isLargeScreen = useMediaQuery({ minDeviceWidth: 1024 });
+  const isLargeScreen = useMediaQuery({ query: '(min-width: 1024px)' });
+  console.log(isLargeScreen);
   if (!containerData || containerData.length === 0) {
     return null;
   }
@@ -44,7 +45,7 @@ const Annoucement = ({ containerData }) => {
               Tin tức - Sự kiện
             </h2>
             <HashLink
-              className="w-auto flex float flex-row gap-2 bg-white hover:bg-sky-800 hover:text-white p-1 lg:p-2 rounded-xl"
+              className="w-auto flex float flex-row gap-2 bg-white hover:bg-sky-800 hover:text-white p-2 lg:p-3 rounded-xl"
               to="../ViewAllPost"
             >
               <h3 className="text-sm lg:text-lg font-thin italic ">Tất cả bài viết</h3>
