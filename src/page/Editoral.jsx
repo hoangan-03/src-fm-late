@@ -8,7 +8,7 @@ import "react-quill/dist/quill.snow.css";
 import "quill-emoji/dist/quill-emoji.css";
 import image from "../assets/pic/add-image.png";
 import CustomModal from "../components/CustomModal";
-import { resizeImage } from "../functions/resizeImage";
+
 import { useParams } from "react-router-dom";
 import ToolbarOptions from "../functions/ToolbarOptions";
 import { useNavigate } from "react-router-dom";
@@ -48,20 +48,28 @@ const Editoral = () => {
     }
   }, [currentData]);
   console.log("value: " + value);
+  const [error, setError] = useState("");
   const fileInputRef = useRef(null);
-  const handleImageUpload = async (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const img = new Image();
-      img.src = URL.createObjectURL(file);
-      img.onload = async () => {
-        const resizedBlob = await resizeImage(img);
-        const reader = new FileReader();
-        reader.onload = () => {
-          setImageUrl(reader.result);
-        };
-        reader.readAsDataURL(resizedBlob);
-      };
+  const handleImageUpload = async (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    try {
+      const response = await fetch(`${baseUrl}/upload`, {
+        method: 'POST',
+        body: formData,
+      });
+      if (response.ok) {
+        const data = await response.json();
+        const uploadedImageUrl = data?.file?.path;
+        setImageUrl(uploadedImageUrl);
+        return uploadedImageUrl;
+      } else {
+        console.error('Failed to upload image',error);
+        return null;
+      }
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      return null;
     }
   };
   console.log("postId", postId);
@@ -83,12 +91,18 @@ const Editoral = () => {
     const date = dates[currentDate.getDay()];
     const formattedDate = `${date}, ${day}/${month + 1}/${year}`;
     try {
+      const file = fileInputRef.current.files[0];
+      let uploadedImageUrl = imageUrl;
+
+      if (file && !uploadedImageUrl) {
+        uploadedImageUrl = await handleImageUpload(file);
+      }
       const updatedPostData = {
         heading: title,
         date: formattedDate,
         category: selectedCategory,
         p: value,
-        image: imageUrl,
+        image: uploadedImageUrl,
       };
       await axios.put(`${baseUrl}/updatePost/${postId}`, updatedPostData);
       setImageUrl(null);
@@ -104,18 +118,31 @@ const Editoral = () => {
   };
   useEffect(() => {
     const fileInput = fileInputRef.current;
-    if (fileInput) {
-      fileInput.addEventListener("change", handleImageUpload);
-    }
-
-    return () => {
-      if (fileInput) {
-        fileInput.removeEventListener("change", handleImageUpload);
+    const handleFileChange = async (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        if (file.size > 9 * 1024 * 1024) {
+          setError("Kích thước ảnh vượt quá 10MB. Vui lòng thử ảnh khác");
+          handleActive(false)
+          setOpen(true);
+          return;
+        }
+        const uploadedImageUrl = await handleImageUpload(file);
+        setImageUrl(uploadedImageUrl);
       }
     };
-  }, []);
+    if (fileInput) {
+      fileInput.addEventListener("change", handleFileChange);
+    }
+    return () => {
+      if (fileInput) {
+        fileInput.removeEventListener("change", handleFileChange);
+      }
+    };
+  });
   const handleClose = () => {
     setOpen(false);
+    setError("");
     navigate(`/ViewAllPost`);
   };
   return (
@@ -125,7 +152,7 @@ const Editoral = () => {
         onClose={handleClose}
         open={open}
         action={"Cập nhật bài viết"}
-        errorMes={""}
+        errorMes={error}
       />
       <div className="flex flex-col mb-[50px] w-[70vw]  h-auto gap-1 md:gap-3  justify-start ">
         <div className="w-[150px] h-[45px] md:h-[40px] mt-[120px] text-base md:text-base">
@@ -205,7 +232,7 @@ const Editoral = () => {
           }`}
         >
           <p className="text-sm md:text-base self-center font-semibold ">
-            Tải hình nền lên (bắt buộc)
+            Tải hình nền lên (kich thước dưới 10MB)
           </p>
         </div>
 

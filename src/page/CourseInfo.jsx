@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Bolt, PlayArrowRounded, Star } from "@mui/icons-material";
 import FlareIcon from "@mui/icons-material/Flare";
 import { HashLink } from "react-router-hash-link";
@@ -12,11 +13,6 @@ import numpeople from "../assets/pic/numpeople.png";
 import like from "../assets/pic/like.png";
 import star from "../assets/pic/star.png";
 import "../components/animation.css";
-
-
-
-
-
 
 const InfoItem = ({ src, text }) => (
     <div className="flex flex-row gap-3 justify-center items-center">

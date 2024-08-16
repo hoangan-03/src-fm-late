@@ -30,17 +30,17 @@ const Post = () => {
     const formData = new FormData();
     formData.append('file', file);
     try {
-      const response = await fetch(`${baseUrl}/upload`, {
-        method: 'POST',
-        body: formData,
+      const response = await axios.post(`${baseUrl}/upload`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       });
-      if (response.ok) {
-        const data = await response.json();
-        const uploadedImageUrl = data?.file?.path;
+      if (response.status === 200) {
+        const uploadedImageUrl = response.data?.file?.path;
         setImageUrl(uploadedImageUrl);
         return uploadedImageUrl;
       } else {
-        console.error('Failed to upload image');
+        console.error('Failed to upload image', response.statusText);
         return null;
       }
     } catch (error) {
@@ -96,7 +96,7 @@ const Post = () => {
       const file = event.target.files[0];
       if (file) {
         if (file.size > 9 * 1024 * 1024) {
-          setError("Kích thước ảnh vượt quá 3MB. Vui lòng thử ảnh khác");
+          setError("Kích thước ảnh vượt quá 10MB. Vui lòng thử ảnh khác");
           handleActive(false)
           setOpen(true);
           return;
@@ -116,6 +116,7 @@ const Post = () => {
   });
   const handleClose = () => {
     setOpen(false);
+    setError("");
   };
   return (
     <section className="w-screen h-auto flex flex-col justify-center items-center">
@@ -202,7 +203,7 @@ const Post = () => {
             }`}
         >
           <p className="text-sm md:text-base self-center font-semibold ">
-            Tải hình nền lên (kích thước dưới 3MB)
+            Tải hình nền lên (kích thước dưới 10MB)
           </p>
         </div>
 
