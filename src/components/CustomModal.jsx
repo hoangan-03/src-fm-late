@@ -6,7 +6,7 @@ import Modal from "@mui/material/Modal";
 
 const CustomModal = ({ open, isSuccess, action, onClose, errorMes }) => {
   return (
-    <div>
+    <div className="z-[1900001]">
       <Modal
         open={open}
         onClose={onClose}
@@ -16,7 +16,7 @@ const CustomModal = ({ open, isSuccess, action, onClose, errorMes }) => {
         <div
           className={`absolute border-b-[8px] ${
             isSuccess ? "border-b-green-500" : "border-b-amber-600"
-          }  left-1/2 gap-1 top-1/2 flex h-[100px] w-[620px] -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center rounded-2xl bg-white`}
+          }  left-1/2 gap-1 top-1/2 flex z-[1900001] h-[100px] w-[620px] -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center rounded-2xl bg-white`}
         >
           <div
             className={`flex flex-row gap-4 h-full w-full justify-between px-4`}

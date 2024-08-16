@@ -40,9 +40,10 @@ const Auth = () => {
   const [loginError, setLoginError] = useState("");
   const [usernameOrEmail, setUsernameOrEmail] = useState("");
 
-  const checkIfUserExists = async (name) => {
+
+  const checkIfUserExists = async (email) => {
     try {
-      const response = await axios.post(`${baseUrl}/checkUser`, { name });
+      const response = await axios.post(`${baseUrl}/checkUser`, { email });
       return response.data.exists;
     } catch (error) {
       console.error("Error checking user:", error);
@@ -73,16 +74,15 @@ const Auth = () => {
         };
         const userLogin = {
           usernameOrEmail: res.data.email,
-          password: "",
         };
         const userExists = await checkIfUserExists(res.data.email);
         if (userExists) {
-          handleGoogleLogin(userLogin);
+          await handleGoogleLogin(userLogin);
+          setOpenLogin(true);
         } else {
-          handleGoogleRegister(user);
-          handleGoogleLogin(userLogin);
+          await handleGoogleRegister(user);
+          setOpen(true);
         }
-        setOpenLogin(true);
         setLoginError("");
       } catch (err) {
         console.log(err);
@@ -92,6 +92,12 @@ const Auth = () => {
 
   const switchMode = () => {
     setIsLogin((prevIsLogin) => !prevIsLogin);
+    setUsernameOrEmail("");
+    setPassword("");
+    setUsername("");
+    setEmail("");
+    setPasswordReType("");
+    setApiKey("");
   };
   const handleRegister = (event) => {
     event.preventDefault();
@@ -150,14 +156,14 @@ const Auth = () => {
       })
       .catch((err) => {
         if (err.response) {
-          console.log(err.response)
+          console.log(err.response);
         }
       });
   };
 
   const handleGoogleLogin = (user) => {
     axios
-      .post(baseUrl + "/login", user)
+      .post(baseUrl + "/loginWithGoogle", user)
       .then((res) => {
         if (res.data.success) {
           localStorage.setItem("user", JSON.stringify(res.data.user));
@@ -218,16 +224,18 @@ const Auth = () => {
         aria-describedby="modal-modal-description"
       >
         <div
-          className={`absolute border-b-[8px] ${loginError === "" ? "border-b-green-500" : "border-b-amber-600"
-            }  left-1/2 gap-1 top-1/2 flex h-[100px] w-[620px] -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center rounded-2xl bg-white`}
+          className={`absolute border-b-[8px] ${
+            loginError === "" ? "border-b-green-500" : "border-b-amber-600"
+          }  left-1/2 gap-1 top-1/2 flex h-[100px] w-[620px] -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center rounded-2xl bg-white`}
         >
           <div
             className={`flex flex-row gap-4 h-full w-full justify-between px-4`}
           >
             <div className="flex flex-row gap-4 h-full w-full">
               <div
-                className={`h-[45px] w-[45px] p-1 self-center rounded-xl flex justify-center items-center ${loginError === "" ? "bg-green-500/20" : "bg-amber-600/20"
-                  } `}
+                className={`h-[45px] w-[45px] p-1 self-center rounded-xl flex justify-center items-center ${
+                  loginError === "" ? "bg-green-500/20" : "bg-amber-600/20"
+                } `}
               >
                 <img
                   className="w-[30px] h-[30px]"
@@ -249,8 +257,8 @@ const Auth = () => {
                   {loginError === ""
                     ? ""
                     : loginError === "nonexist"
-                      ? "Tên tài khoản hoặc email không tồn tại"
-                      : "Mật khẩu đăng nhập không chính xác"}
+                    ? "Tên tài khoản hoặc email không tồn tại"
+                    : "Mật khẩu đăng nhập không chính xác"}
                 </h1>
               </div>
             </div>
@@ -274,16 +282,18 @@ const Auth = () => {
         aria-describedby="modal-modal-description"
       >
         <div
-          className={`absolute border-b-[8px] ${registerError === "" ? "border-b-green-500" : "border-b-amber-600"
-            }  left-1/2 gap-1 top-1/2 flex h-[100px] w-[620px] -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center rounded-2xl bg-white`}
+          className={`absolute border-b-[8px] ${
+            registerError === "" ? "border-b-green-500" : "border-b-amber-600"
+          }  left-1/2 gap-1 top-1/2 flex h-[100px] w-[620px] -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center rounded-2xl bg-white`}
         >
           <div
             className={`flex flex-row gap-4 h-full w-full justify-between px-4`}
           >
             <div className="flex flex-row gap-4 h-full w-full">
               <div
-                className={`h-[45px] w-[45px] p-1 self-center rounded-xl flex justify-center items-center ${registerError === "" ? "bg-green-500/20" : "bg-amber-600/20"
-                  } `}
+                className={`h-[45px] w-[45px] p-1 self-center rounded-xl flex justify-center items-center ${
+                  registerError === "" ? "bg-green-500/20" : "bg-amber-600/20"
+                } `}
               >
                 <img
                   className="w-[30px] h-[30px]"
@@ -305,12 +315,12 @@ const Auth = () => {
                   {registerError === ""
                     ? "Tài khoản của bạn đã được chấp thuận"
                     : registerError === "passwordlen"
-                      ? "Mật khẩu phải có độ dài từ 6 đến 16 kí tự"
-                      : registerError === "password"
-                        ? "Mật khẩu nhập lại không chính xác"
-                        : registerError === "username"
-                          ? "Tên tài khoản hoặc email đã tồn tại"
-                          : "Mã API không chính xác"}
+                    ? "Mật khẩu phải có độ dài từ 6 đến 16 kí tự"
+                    : registerError === "password"
+                    ? "Mật khẩu nhập lại không chính xác"
+                    : registerError === "username"
+                    ? "Tên tài khoản hoặc email đã tồn tại"
+                    : "Mã API không chính xác"}
                 </h1>
               </div>
             </div>
@@ -339,6 +349,7 @@ const Auth = () => {
                 type="text"
                 placeholder="Username or Email"
                 required
+                value={usernameOrEmail} 
                 onChange={(e) => setUsernameOrEmail(e.target.value)}
               />
               <input
@@ -346,6 +357,7 @@ const Auth = () => {
                 type="password"
                 placeholder="Password"
                 required
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
               <button className="text-black text-sm text-end mb-6">
@@ -390,6 +402,7 @@ const Auth = () => {
                 type="text"
                 placeholder="Tên tài khoản"
                 required
+                value={name} 
                 onChange={(e) => setUsername(e.target.value)}
               />
               <input
@@ -397,6 +410,7 @@ const Auth = () => {
                 type="email"
                 placeholder="Email"
                 required
+                value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
               <input
@@ -404,6 +418,7 @@ const Auth = () => {
                 type="password"
                 placeholder="Mật khẩu"
                 required
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
               <input
@@ -411,19 +426,23 @@ const Auth = () => {
                 type="password"
                 placeholder="Nhập lại mật khẩu"
                 required
+                value={passwordReType}
                 onChange={(e) => setPasswordReType(e.target.value)}
               />
               <FormControlLabel
                 control={<Checkbox />}
                 label="Đăng kí tài khoản quản trị viên"
                 style={{ color: "black", fontWeight: "bold" }}
+                value={checkedBox}
                 onChange={(e) => setCheckedBox(e.target.checked)}
               />
               <input
-                className={`px-7 py-2 border rounded-2xl ${checkedBox ? "block" : "hidden"
-                  }`}
+                className={`px-7 py-2 border rounded-2xl ${
+                  checkedBox ? "block" : "hidden"
+                }`}
                 type="text"
                 placeholder="Mã API"
+                value={apiKey}
                 onChange={(e) => setApiKey(e.target.value)}
               />
               <button
