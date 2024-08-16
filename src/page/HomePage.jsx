@@ -379,11 +379,11 @@ const HomePage = ({ containerData }) => {
                 Hợp tác - Đối tác
               </HashLink>{" "}
             </div>
-            <div className="h-[120px] lg:h-[250px] w-full flex flex-row bg-white">
-              <img className="h-full w-1/2 object-cover" alt="" src={dna}></img>
-              <img className="h-full w-1/2 object-cover" alt="" src={backgood}></img>
+            <div className="h-[120px] lg:h-[250px] w-full rounded-xl flex flex-row bg-white">
+              <img className="h-full w-1/2 object-cover rounded-tl-xl rounded-bl-xl" alt="" src={dna}></img>
+              <img className="h-full w-1/2 object-cover rounded-tr-xl rounded-br-xl" alt="" src={backgood}></img>
             </div>
-            <div className="h-[120px] lg:h-[250px] w-full flex flex-col justify-center items-center bg-white">
+            <div className="h-[120px] lg:h-[250px] rounded-xl w-full flex flex-col justify-center items-center bg-white">
 
               <img
                 className="object-cover h-[120px]  lg:h-[255px] w-[120px] lg:w-[255px] p-2 hover:scale-125 transition-all duration-200"

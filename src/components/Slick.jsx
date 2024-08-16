@@ -70,12 +70,12 @@ const Slick = () => {
   return (
     <div className="columns-container">
       <div className="overflow-hidden h-screen">
-        <div className="absolute bottom-0 left-[50%] w-auto  translate-x-[-50%] translate-y-[-50%] h-auto z-[2001] py-2 lg:py-4 px-4 lg:px-8 bg-white/70 backdrop-blur-md flex justify-center text-center items-center rounded-[30px] lg:rounded-[60px]">
+        <div className="absolute bottom-0 left-[50%] w-[70vw] lg:w-auto  translate-x-[-50%] translate-y-[-50%] h-auto z-[2001] py-2 lg:py-4 px-4 lg:px-8 bg-white/70 backdrop-blur-md flex justify-center text-center items-center rounded-[30px] lg:rounded-[60px]">
           <div className="text-base lg:text-2xl airbnb text-black">
             <div className="animate three">
               <span>C</span><span>L</span><span>B</span>&nbsp;
               <span>N</span><span>G</span><span>H</span><span>I</span><span>Ê</span><span>N</span>&nbsp;
-              <span>C</span><span>Ứ</span><span>Ư</span>&nbsp;
+              <span>C</span><span>Ứ</span><span>U</span>&nbsp;
               <span>K</span><span>H</span><span>O</span><span>A</span>&nbsp;
               <span>H</span><span>Ọ</span><span>C</span>&nbsp;
               <span>-</span>&nbsp;
