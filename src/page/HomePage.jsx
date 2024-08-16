@@ -21,6 +21,7 @@ import backgood from "../assets/pic/backgoodd.jpeg"
 import { HashLink } from "react-router-hash-link";
 import Footer from "../components/Footer";
 
+
 const HomePage = ({ containerData }) => {
   const [scrollY, setScrollY] = useState(0);
   const [isHover, setHover] = useState(false);
@@ -29,6 +30,7 @@ const HomePage = ({ containerData }) => {
     setHover(!isHover);
   };
   const [order, setOrder] = useState(1);
+
   useEffect(() => {
     const handleScroll = () => {
       let sections = document.querySelectorAll("section.animate,div.animate");
@@ -112,7 +114,7 @@ const HomePage = ({ containerData }) => {
   }
 
   return (
-    <section className="w-[100vw]  h-[650vh] flex flex-col" id="hero">
+    <section className="w-[100vw] h-auto  flex flex-col" id="hero">
       <div className="w-screen h-[100vh]">
         <div className="w-screen h-screen top-0 bg-black/30 z-[2000] absolute"></div>
         <Scroll />
@@ -145,10 +147,10 @@ const HomePage = ({ containerData }) => {
       </div>
 
       <div
-        className="bg-sky-100 h-[510vh]   w-screen px-[1%]  lg:px-[30px] flex flex-row"
+        className="bg-sky-100 h-auto  w-screen px-[1%]  lg:px-[30px] flex flex-row"
         id="start"
       >
-        <div className="w-full lg:w-[70%] h-full pic-wrap flex flex-col pt-[25vh] pb-[25vh] gap-y-[50vh] ">
+        <div className="w-full lg:w-[70%] h-full pic-wrap flex flex-col pt-[10vh] lg:pt-[25vh] pb-[25vh] gap-y-[20vh] lg:gap-y-[50vh] ">
           <div
             className="flex flex-col gap-3 lg:gap-10 px-6 w-full text-white h-auto floatsection  animate "
             id="section1"
@@ -162,7 +164,7 @@ const HomePage = ({ containerData }) => {
                 Về chúng tôi
               </HashLink>
             </div>
-            <div className="flex flex-col lg:flex-row  h-[500px]  gap-4">
+            <div className="flex flex-col lg:flex-row h-auto lg:h-[500px]  gap-4">
               <div className="relative w-full h-[105px] lg:w-1/3 lg:h-full bg-cyan-800 text-center items-center flex flex-col gap-2 shadow-red-700 shadow-2xl border-b-8 border-red-800">
                 <div className="w-full lg:w-[330px] h-[100px] lg:h-[420px] relative flex justify-center items-center  ">
                   <img
@@ -230,7 +232,7 @@ const HomePage = ({ containerData }) => {
               </HashLink>{" "}
             </div>
             <HashLink
-              className="w-full h-[80px] lg:h-[250px] flex flex-row bg-sky-800 shadow-2xl shadow-black rounded-2xl hover:scale-110 transition-all duration-300"
+              className="w-full h-[100px] lg:h-[250px] flex flex-row bg-sky-800 shadow-2xl shadow-black rounded-2xl hover:scale-110 transition-all duration-300"
               to={`/ViewAllPost/${containerData.length - 1}#top`}
               key={containerData.length - 1}
             >
@@ -263,11 +265,11 @@ const HomePage = ({ containerData }) => {
                 </p>
               </div>
             </HashLink>
-            <div className="w-full h-[250px] flex flex-col lg:flex-row gap-2 ">
+            <div className="w-full h-auto flex flex-col lg:flex-row gap-2 ">
               {[2, 3, 4].map((offset) => {
                 if (containerData.length < offset) {
                   return (
-                    <div key ={offset} className="w-full h-[80px] lg:w-1/3 lg:h-full airbnb bg-sky-800 shadow-2xl shadow-black rounded-2xl flex flex-row lg:flex-col hover:scale-125 transition-all duration-300"></div>
+                    <div key ={offset} className="w-full h-[80px] lg:w-1/3 lg:h-full airbnb bg-sky-800 shadow-lg shadow-black rounded-xl flex flex-row lg:flex-col hover:scale-110 transition-all duration-300"></div>
                   );
                 }
                 const currentItem = containerData[containerData.length - offset];
@@ -281,7 +283,7 @@ const HomePage = ({ containerData }) => {
                 return (
                   <HashLink
                     key={containerData.length - offset}
-                    className="w-full h-[80px] lg:w-1/3 lg:h-full airbnb bg-sky-800 shadow-2xl shadow-black rounded-2xl flex flex-row lg:flex-col hover:scale-125 transition-all duration-300"
+                    className="w-full h-[100px] lg:w-1/3 lg:h-[280px] airbnb bg-sky-800 shadow-lg shadow-black rounded-xl flex flex-row lg:flex-col hover:scale-110 transition-all duration-300"
                     to={`/ViewAllPost/${containerData.length - offset}#top`}
                   >
                     <div className="w-[60%] h-full lg:w-full lg:h-1/3">
@@ -352,7 +354,7 @@ const HomePage = ({ containerData }) => {
                 </h2>
 
                 <p className="hidden lg:block w-full h-auto text-sm text-gray-800 ">
-                  Các môn học cơ sở ngành, với nền móng là Giải Phẫu, Sinh Lý và Sinh Lý bệnh, là nền tảng kiến thức vững chắc cho một sinh viên y trước khi tiếp cận những tình huống lâm sàng, cũng như giải quyết các vấn đề nghiên cứu. Chương trình học Y Đa Khoa sẽ lần lượt dắt chúng ta qua các module cơ sở ngành của từng hệ cơ quan khác nhau như Huyết Học, Cơ Xương Khớp, Hệ Thần Kinh và Hành Vi, Y Học Sinh Sản,..
+                  Các môn học cơ sở ngành, với nền móng là Giải Phẫu, Sinh Lý và Sinh Lý bệnh, là nền tảng kiến thức vững chắc cho một sinh viên y trước khi tiếp cận những tình huống lâm sàng, cũng như giải quyết các vấn đề nghiên cứu.
                 </p>
               </div>
               <div className="w-[60%] h-full">
@@ -377,14 +379,14 @@ const HomePage = ({ containerData }) => {
                 Hợp tác - Đối tác
               </HashLink>{" "}
             </div>
-            <div className="h-[250px] w-full flex flex-row bg-white">
+            <div className="h-[120px] lg:h-[250px] w-full flex flex-row bg-white">
               <img className="h-full w-1/2 object-cover" alt="" src={dna}></img>
               <img className="h-full w-1/2 object-cover" alt="" src={backgood}></img>
             </div>
-            <div className="h-[250px] lg:h-full w-full flex flex-col justify-center items-center bg-white">
+            <div className="h-[120px] lg:h-[250px] w-full flex flex-col justify-center items-center bg-white">
 
               <img
-                className="object-cover h-[255px] w-[255px] p-8 hover:scale-125 transition-all duration-200"
+                className="object-cover h-[120px]  lg:h-[255px] w-[120px] lg:w-[255px] p-2 hover:scale-125 transition-all duration-200"
                 src={spon1}
                 alt=""
               ></img>
