@@ -61,7 +61,7 @@ export default function Aboutus() {
       <Scroll />
       <section
         id="mission"
-        className="w-screen h-auto lg:h-screen relative  flex pt-[100px] flex-col gap-[60px]"
+        className="w-screen h-auto lg:h-screen relative  flex pt-10 lg:pt-[100px] flex-col gap-2 lg:gap-[60px]"
       >
         <div className="w-full h-auto lg:h-[200px] justify-center ">
           <div className="w-[auto] h-full flex flex-col lg:flex-row gap-0 lg:gap-[200px]  justify-center bg-gray-200 mt-[20px] lg:mt-0 items-center text-center ">

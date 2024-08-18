@@ -9,7 +9,7 @@ const Course = () => {
     <section className="bg-sky-100 overflow-hidden">
       <section id="hero" className="w-screen h-auto lg:h-screen flex flex-col lg:flex-row airbnb ">
         <div className="w-full lg:w-1/2 mt-[100px] lg:mt-0 h-auto lg:h-full flex flex-col gap-8 justify-center items-center lg:items-start px-3 lg:pl-24 py-2">
-          <h1 className="text-3xl lg:text-7xl ">
+          <h1 className="text-3xl lg:text-6xl ">
             Tìm những khóa học phù hợp với nhu cầu của bạn với{" "}
             <span className="text-sky-800 border-teal-400 border-2 px-4 rounded-full py-1">
               SRC-FM
@@ -40,7 +40,7 @@ const Course = () => {
  
 
       </section> */}
-      <section id="courses" className="w-screen h-auto lg:h-screen flex flex-col gap-3 px-4 lg:px-[100px] pt-[170px] pb-0 lg:pb-[30px]">
+      <section id="courses" className="w-screen h-auto lg:h-screen flex flex-col gap-3 px-4 lg:px-[100px] pt-[170px] pb-[70px]">
         <h1 className="text-3xl font-bold uppercase text-sky-700 ">Y đa khoa - Cơ sở ngành</h1>
         <div className="overflow-scroll h-auto py-2 px-3 w-full">
           <CourseList containerList={data} containersPerPage={4} />

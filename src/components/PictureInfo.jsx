@@ -24,7 +24,7 @@ const PictureInfo = ({ pictures }) => {
       className="picture-info bg-sky-100 w-full transition-none overflow-hidden h-auto flex flex-row justify-center "
       id="top"
     >
-      <div className="w-auto h-auto flex flex-col items-center justify-start">
+      <div className={`${show ? "w-[70%]" : "w-[90%]"} h-auto flex flex-col items-center justify-start`}>
         <h2 className="text-[25px] lg:text-[32px] merry w-[90%] leading-[120%] text-left  mt-[160px] lg:mt-[200px] font-bold mb-[80px]">
           {picture.heading}
         </h2>
@@ -70,7 +70,7 @@ const PictureInfo = ({ pictures }) => {
       </button>
 
       <div
-        className={`w-[600px] gap-6 h-auto flex flex-col mt-[160px]  lg:mt-[200px] transition duration-500 ${show ? "right-0" : "absolute right-[-616px] hidden  "
+        className={`${show ? "w-[30%]" : ""} gap-6 h-auto flex flex-col mt-[160px]  lg:mt-[200px] transition duration-500 ${show ? "right-0" : "absolute right-[-616px] hidden  "
           }`}
       >
 

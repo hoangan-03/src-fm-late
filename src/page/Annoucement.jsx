@@ -138,7 +138,7 @@ const Annoucement = ({ containerData }) => {
             ></img>
             <HashLink
               to="../ViewAllPost"
-              className="text-xl font-semibold w-auto h-auto bg-white-200 text-black px-6 py-1 rounded-[40px] bg-white justify-center items-center flex flex-row z-[200] mb-2 hover:translate-x-9 transition-all duration-200 origin-center  hover:rotate-12"
+              className="text-xl font-semibold w-auto h-auto bg-white-200 text-black px-6 py-1 rounded-[40px] bg-white justify-center items-center flex flex-row z-[200] mb-2 hover:translate-x-9  origin-center  hover:rotate-12"
             >
               Xem tất cả
               <ArrowRightAltRounded style={{ fontSize: 50 }} />

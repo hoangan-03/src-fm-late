@@ -23,14 +23,14 @@ import spon1 from "../assets/pic/sponsor1.png";
 // import spon12 from "../assets/pic/spon12.jpg";
 // import spon13 from "../assets/pic/spon13.jpg";
 const Partners = () => {
-  const CustomInputField = ({ label, startIcon, uniqueId }) => (
+  const CustomInputField = ({ label, startIcon, uniqueId, fontSizee = "19px" }) => (
     <div className="w-1/2 h-auto flex items-end">
       <FormControl variant="standard">
         <InputLabel
           htmlFor={`input-with-icon-adornment-${uniqueId}`}
           style={{
             color: "black",
-            fontSize: "19px",
+            fontSize: {fontSizee},
             fontWeight: "600",
             transform: "translateY(-15px)",
           }}
@@ -51,11 +51,11 @@ const Partners = () => {
     <section className="w-screen h-auto overflow-hidden ">
       <section
         id="partners"
-        className="w-screen h-screen px-[200px] justify-center items-center py-[200px] flex flex-col gap-10"
+        className="w-screen h-screen p-8 lg:p-[200px] justify-center items-center  flex flex-col gap-10"
       >
-        <div className="w-full h-auto flex flex-row gap-10 justify-center items-center">
+        <div className="w-[70%] lg:w-full h-auto flex flex-row gap-10 justify-center items-center">
           <img
-            className="w-auto h-[280px] object-cover hover:scale-150 transition-all duration-300"
+            className="w-auto  object-cover hover:scale-150 transition-all duration-300"
             src={spon1}
             alt=""
           ></img>
@@ -122,10 +122,10 @@ const Partners = () => {
       </section>
       <section
         id="coop"
-        className="w-screen flex px-[100px] pt-[120px] flex-row h-screen bg-blue-200"
+        className="w-screen flex px-4 pt-2 lg:px-[100px] lg:pt-[120px] flex-row h-screen  bg-blue-200"
       >
-        <div className="w-[40%] h-full flex flex-col pt-[80px] gap-8  ">
-          <div className="w-full h-[300px]">
+        <div className="w-[40%] h-full lg:flex flex-col  hidden pt-[80px] gap-8  ">
+          <div className="w-full h-[300px] ">
             <img src={a1} className="w-full h-full object-cover" alt=""></img>
           </div>
           {/* <div className="w-full h-auto pr-[20px]">
@@ -138,7 +138,7 @@ const Partners = () => {
             </h4>
           </div> */}
         </div>
-        <div className="w-[60%] h-full flex  p-8 gap-10 flex-col bg-white mr-[100px]">
+        <div className="w-full lg:w-[60%] h-full flex  p-8 gap-10 flex-col bg-white  mr-0 lg:mr-[100px]">
           <div className="h-auto w-full ">
             <h2 className="text-4xl text-black airbnb">
               Liên hệ với chúng tôi

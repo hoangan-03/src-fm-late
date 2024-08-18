@@ -49,17 +49,17 @@ function Container({ imageSrc, heading, date, p, category, editMode, postId, ind
       <HashLink key={postId} to={`/ViewAllPost/${index}#top`}
         className={`container relative  md:w-[975px] justify-center text-black items-center md:h-[224px] p-5 mt-3 flex flex-col md:flex-row gap-4 border-black border-b-[1px] `}
       >
-        <div className={`w-[50px] h-auto flex flex-col bg-white  ${category === "Thông báo" ? "hover:bg-blue-700" : "hover:bg-cyan-700"} gap-3 absolute right-[-50px] top-2 px-2 py-2 rounded-tr-xl rounded-br-xl ${editMode ? "block" : "hidden"}`}>
+        <div className={`w-[50px] h-auto flex flex-col bg-white hover:bg-none  ${category === "Thông báo" ? "md:hover:bg-blue-700" : "md:hover:bg-cyan-700"} gap-3 absolute right-0 md:right-[-50px] top-2 px-2 py-2 rounded-tr-xl rounded-br-xl ${editMode ? "block" : "hidden"}`}>
           <img onClick={(event) => {
             event.preventDefault();
             event.stopPropagation();
             navigate(`/ViewAllPost/Edit/${postId}`);
-          }} className="w-7 h-7 object-cover hover:invert " alt="Edit" src={edit}></img>
+          }} className="w-7 h-7 object-cover hover:invert-0 md:hover:invert " alt="Edit" src={edit}></img>
           <img onClick={(event) => {
             event.preventDefault();
             event.stopPropagation();
             handleDelete(postId);
-          }} className="w-7 h-7 object-cover hover:invert " alt="Delete" src={deleteIcon}></img>
+          }} className="w-7 h-7 object-cover hover:invert-0 md:hover:invert " alt="Delete" src={deleteIcon}></img>
         </div>
         <img
           src={imageSrc}
