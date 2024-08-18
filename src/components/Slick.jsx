@@ -70,8 +70,8 @@ const Slick = () => {
   return (
     <div className="columns-container">
       <div className="overflow-hidden h-screen">
-        <div className="absolute bottom-0 left-[50%] w-[70vw] lg:w-auto  translate-x-[-50%] translate-y-[-50%] h-auto z-[2001] py-2 lg:py-4 px-4 lg:px-8 bg-white/70 backdrop-blur-md flex justify-center text-center items-center rounded-[30px] lg:rounded-[60px]">
-          <div className="text-base lg:text-2xl airbnb text-black">
+        <div className="absolute bottom-0 left-[50%] w-[90vw] sm:w-[70vw] lg:w-auto  translate-x-[-50%] translate-y-[-50%] h-auto z-[2001] py-2 lg:py-4 px-4 lg:px-8 bg-white/70 backdrop-blur-md flex justify-center text-center items-center rounded-[30px] lg:rounded-[60px]">
+          <div className={`text-base lg:text-2xl airbnb text-black hidden sm:block`}>
             <div className="animate three">
               <span>C</span><span>L</span><span>B</span>&nbsp;
               <span>N</span><span>G</span><span>H</span><span>I</span><span>Ê</span><span>N</span>&nbsp;
@@ -83,6 +83,11 @@ const Slick = () => {
               <span>Y</span>&nbsp;
              
             </div>
+          </div>
+          <div className={`text-sm uppercase airbnb text-black block sm:hidden`}>
+            <h3>CLB Nghiên cứu Khoa học </h3>
+            <h3>Khoa y</h3>
+
           </div>
         </div>
         <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[550px] h-[100px] z-[2001] flex flex-col justify-center items-center">
