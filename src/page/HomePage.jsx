@@ -23,6 +23,7 @@ import Footer from "../components/Footer";
 
 
 const HomePage = ({ containerData }) => {
+  
   const [scrollY, setScrollY] = useState(0);
   const [isHover, setHover] = useState(false);
 
@@ -112,6 +113,8 @@ const HomePage = ({ containerData }) => {
     const truncatedFirst30Words = `${first30Words}...`;
     return truncatedFirst30Words;
   }
+
+
 
   return (
     <section className="w-[100vw] h-auto  flex flex-col" id="hero">
