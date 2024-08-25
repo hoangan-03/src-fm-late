@@ -169,12 +169,10 @@ ul {
 }
 
 .special-text {
-  font-size: 2rem;
   width: auto;
   margin: auto;
   height: auto;
-  padding-top: 0.7rem;
-  padding-bottom: 0.7rem;
+
   display: flex;
   align-items: center;
   line-height: 2.5rem;

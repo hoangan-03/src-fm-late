@@ -64,7 +64,7 @@ export default function Aboutus() {
         className="w-screen h-auto lg:h-screen relative  flex pt-10 lg:pt-[100px] flex-col gap-2 lg:gap-[60px]"
       >
         <div className="w-full h-auto lg:h-[200px] justify-center ">
-          <div className="w-[auto] h-full flex flex-col lg:flex-row gap-0 lg:gap-[200px]  justify-center bg-gray-200 mt-[20px] lg:mt-0 items-center text-center ">
+          <div className="w-[auto] h-full flex flex-col lg:flex-row gap-0 lg:gap-[200px]  justify-center bg-gray-200 py-5 lg:py-0 mt-[20px] lg:mt-0 items-center text-center ">
             <div className="flex flex-col items-center lg:items-start animate gap-[8px] lg:gap-[20px] m-0 lg:ml-[200px]  lg:mt-[20px]">
               <div className="h-[5px] bg-red-700 w-[50px]"></div>
 
@@ -82,14 +82,14 @@ export default function Aboutus() {
           </div>
         </div>
         <Masonry />
-        <div className="absolute wrapperr w-[800px] self-center rounded-2xl backdrop-blur-2xl bg-sky-100/90 h-auto bottom-[10px] px-3 text-white text-base lg:text-4xl text-center airbnb flex justify-center items-center ">
-          <div className="special-text">
+        <div className="absolute wrapperr w-[90%] lg:w-[800px] self-center rounded-2xl backdrop-blur-2xl bg-sky-100/90 h-auto bottom-[-50px] lg:bottom-[10px]  text-white text-center airbnb flex justify-center items-center ">
+          <div className="special-text text-sm lg:text-3xl lg:px-4 lg:py-2 ">
             Khơi nguồn tri thức - Kiến tạo tương lai
           </div>
         </div>
       </section>
       <section
-        className="w-screen h-[600px] lg:h-screen relative animate  "
+        className="w-screen h-[600px] lg:h-screen mt-16 lg:mt-0 relative animate  "
         id="vision1"
       >
         <div className="w-screen h-full flex justify-center   flex-col items-center gap-8">
@@ -149,11 +149,11 @@ export default function Aboutus() {
         </div>
       </section>
       <section
-        className="w-screen overflow-auto h-auto lg:h-[120vh] relative bg-blue-200 flex pt-[20px] pb-[220px] lg:pb-[60px] flex-col gap-2 justify-center items-center"
+        className="w-screen overflow-auto h-auto lg:h-[120vh] relative bg-blue-200 flex pt-[20px] pb-[220px] lg:pb-[60px] flex-col gap-8 lg:gap-2 justify-center items-center"
         id="organization"
       >
         <a
-          className="absolute right-12 bottom-8 w-[50px] animate-bounce  h-[75px]"
+          className="absolute right-2 lg:right-12 bottom-8 w-[60px] lg:w-[90px] animate-bounce  h-auto"
           href="#mission"
         >
           <img
@@ -173,7 +173,7 @@ export default function Aboutus() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col lg:flex-row h-[1300px] w-screen lg:w-[1200px] lg:h-full gap-6 justify-center items-start px-5 lg:px-0">
+        <div className="flex flex-col lg:flex-row h-[1500px] w-screen lg:w-[1200px] lg:h-full gap-6 justify-center items-start px-12 lg:px-0">
           <div className="w-full lg:w-[20%] h-1/5 lg:h-1/2 relative">
             <img
               src={prit}
