@@ -253,7 +253,7 @@ export default function NavBar() {
       <img
         onClick={handleClick}
         alt="oh"
-        className={`w-[30px] lg:w-[40px] top-[10px] lg:top-[20px]    right-[10px] lg:right-[30px] bg-white p-2  rounded-full fixed h-[30px] lg:h-[40px] block cursor-pointer z-[1900]    ${
+        className={`w-[30px] lg:w-[40px] top-[10px] lg:top-[20px]  right-[10px] lg:right-[30px] bg-white p-2  rounded-full fixed h-[30px] lg:h-[40px] block cursor-pointer z-[1900]    ${
           isActive ? "invert hidden" : "invert-0 block  visible"
         }`}
         src={lines}

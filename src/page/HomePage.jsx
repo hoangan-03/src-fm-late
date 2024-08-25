@@ -115,7 +115,7 @@ const HomePage = ({ containerData }) => {
 
   return (
     <section className="w-[100vw] h-auto  flex flex-col" id="hero">
-      <div className="w-screen h-[100vh]">
+      <div className="w-screen h-screen">
         <div className="w-screen h-screen top-0 bg-black/30 z-[2000] absolute"></div>
         <Scroll />
         <Slick />

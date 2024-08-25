@@ -90,7 +90,7 @@ const Slick = () => {
 
           </div>
         </div>
-        <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[550px] h-[100px] z-[2001] flex flex-col justify-center items-center">
+        <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[80%] h-[100px] z-[2001] flex flex-col justify-center items-center">
           <div
             className={`w-full h-[400px] bg-red flex text-white flex-col airbnb-thin gap-8 justify-center overflow-hidden items-center `}
           >
@@ -148,7 +148,7 @@ const Slick = () => {
         </div>
         <div className="w-screen h-[300vh] flex flex-row box-content m-auto">
           <div
-            className="flex flex-col transition-all duration-500 ease-in relative w-[65%] translate-y-[-200vh]"
+            className="flex flex-col transition-all duration-500 ease-in relative w-1/2 translate-y-[-200vh]"
             style={{ transform: `translateY(${leftTransform}vh)` }}
           >
             <div className="pic third">
@@ -162,7 +162,7 @@ const Slick = () => {
             </div>
           </div>
           <div
-            className="w-[65%] translate-y-[-200vh] flex flex-col transition-all duration-500 ease-in relative"
+            className="w-1/2 translate-y-[-200vh] flex flex-col transition-all duration-500 ease-in relative"
             style={{ transform: `translateY(${rightTransform}vh)` }}
           >
             <div className="pic first">

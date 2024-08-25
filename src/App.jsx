@@ -41,8 +41,8 @@ function App() {
   }, [baseUrl]);
 
   return (
-    <div className="App flex justify-center ">
-      <BrowserRouter className="flex flex-col">
+    <div className="App flex justify-center w-screen ">
+      <BrowserRouter className="flex flex-col w-full ">
         <NavBar />
         <Header />
         <Routes>
