@@ -78,7 +78,7 @@ const Post = () => {
         p: value,
         image: uploadedImageUrl,
       };
-      await axios.post(baseUrl + "/addPost", newData);
+      await axios.post(baseUrl + "/posts/addPost", newData);
       setImageUrl(null);
       setTitle("");
       setValue(null);

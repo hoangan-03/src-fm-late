@@ -29,7 +29,7 @@ function Container({ imageSrc, heading, date, p, category, editMode, postId, ind
   const handleDelete = async (postId) => {
     try {
       await axios.delete(
-        `${baseUrl}/deletePost/${postId}`,
+        `${baseUrl}/posts/deletePost/${postId}`,
       );
       setOpenModal(true);
 

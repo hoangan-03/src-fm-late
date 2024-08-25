@@ -9,7 +9,6 @@ import { useMediaQuery } from 'react-responsive';
 
 const Annoucement = ({ containerData }) => {
   const isLargeScreen = useMediaQuery({ query: '(min-width: 1024px)' });
-  console.log(isLargeScreen);
   if (!containerData || containerData.length === 0) {
     return null;
   }

@@ -47,7 +47,6 @@ const Editoral = () => {
       setImageUrl(currentData.image || "");
     }
   }, [currentData]);
-  console.log("value: " + value);
   const [error, setError] = useState("");
   const fileInputRef = useRef(null);
   const handleImageUpload = async (file) => {
@@ -72,7 +71,6 @@ const Editoral = () => {
       return null;
     }
   };
-  console.log("postId", postId);
   const handleEdit = async () => {
     const dates = [
       "Thứ hai",
@@ -104,7 +102,7 @@ const Editoral = () => {
         p: value,
         image: uploadedImageUrl,
       };
-      await axios.put(`${baseUrl}/updatePost/${postId}`, updatedPostData);
+      await axios.put(`${baseUrl}/posts/updatePost/${postId}`, updatedPostData);
       setImageUrl(null);
       setTitle("");
       setValue(null);

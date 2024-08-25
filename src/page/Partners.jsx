@@ -55,7 +55,8 @@ const Partners = () => {
       >
         <div className="w-[70%] lg:w-full h-auto flex flex-row gap-10 justify-center items-center">
           <img
-            className="w-auto  object-cover hover:scale-150 transition-all duration-300"
+            className="w-auto 
+             object-cover hover:scale-150 transition-all duration-300"
             src={spon1}
             alt=""
           ></img>

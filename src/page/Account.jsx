@@ -134,7 +134,7 @@ const Account = () => {
       if (file && !uploadedAvatarUrl) {
         uploadedAvatarUrl = await handleImageUpload(file);
       }
-      const response = await axios.put(baseUrl + `/updateUser/${username}`, {
+      const response = await axios.put(baseUrl + `/users/updateUser/${username}`, {
         name: username,
         email: email,
         role: role,

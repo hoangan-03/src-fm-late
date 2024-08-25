@@ -43,7 +43,7 @@ const Auth = () => {
 
   const checkIfUserExists = async (email) => {
     try {
-      const response = await axios.post(`${baseUrl}/checkUser`, { email });
+      const response = await axios.post(`${baseUrl}/auth/checkUser`, { email });
       return response.data.exists;
     } catch (error) {
       console.error("Error checking user:", error);
@@ -124,7 +124,7 @@ const Auth = () => {
       };
 
       axios
-        .post(baseUrl + "/register", user)
+        .post(baseUrl + "/auth/register", user)
         .then(() => {
           setOpen(true);
           setRegisterError("");
@@ -148,7 +148,7 @@ const Auth = () => {
   };
   const handleGoogleRegister = (user) => {
     axios
-      .post(baseUrl + "/register", user)
+      .post(baseUrl + "/auth/register", user)
       .then((res) => {
         if (res.data.success) {
           localStorage.setItem("user", JSON.stringify(res.data.user));
@@ -163,7 +163,7 @@ const Auth = () => {
 
   const handleGoogleLogin = (user) => {
     axios
-      .post(baseUrl + "/loginWithGoogle", user)
+      .post(baseUrl + "/auth/loginWithGoogle", user)
       .then((res) => {
         if (res.data.success) {
           localStorage.setItem("user", JSON.stringify(res.data.user));
@@ -186,7 +186,7 @@ const Auth = () => {
       password,
     };
     axios
-      .post(baseUrl + "/login", user)
+      .post(baseUrl + "/auth/login", user)
       .then((res) => {
         if (res.data.success) {
           localStorage.setItem("user", JSON.stringify(res.data.user));

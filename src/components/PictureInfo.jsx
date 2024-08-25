@@ -17,7 +17,6 @@ const PictureInfo = ({ pictures }) => {
   }
 
   const picture = pictures[id];
-  console.log(picture);
 
   return (
     <div
