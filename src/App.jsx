@@ -30,7 +30,6 @@ function App() {
       const response = await axios.post(baseUrl + '/auth/refreshToken', { refreshToken });
       if (response.status === 200) {
         localStorage.setItem('accessToken', response.data.accessToken);
-        console.log('Access token refreshed');
       } else {
         console.log('Error refreshing access token:', response.data.message);
       }
@@ -38,11 +37,8 @@ function App() {
       console.error('Error refreshing access token:', error);
     }
   };
-  
+  setInterval(refreshAccessToken, 555555);
 
-  // Call the refreshAccessToken function every 10 minutes
-  setInterval(refreshAccessToken, 555555); // 600000 ms = 10 minutes
-  
   axios.interceptors.request.use(
     (config) => {
       if (!config.url.startsWith('https://www.googleapis.com/')) {
@@ -60,23 +56,14 @@ function App() {
   
   const [containerData, setContainerData] = useState([]);
   useEffect(() => {
-    const source = axios.CancelToken.source();
     axios
-      .get(baseUrl + "/posts", { cancelToken: source.token })
+      .get(baseUrl + "/posts")
       .then((response) => {
         setContainerData(response.data);
       })
       .catch((error) => {
-        if (axios.isCancel(error)) {
-          console.log('Request canceled\n', error.message);
-        } else {
-          console.error(error);
-        }
+        console.error(error);
       });
-
-    return () => {
-      source.cancel('Operation canceled by the user.');
-    };
   }, [baseUrl]);
 
   return (

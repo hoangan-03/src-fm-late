@@ -61,7 +61,6 @@ const Auth = () => {
   };
   const login = useGoogleLogin({
     onSuccess: async (response) => {
-      console.log("OAuth Response: ", response);
       try {
         const res = await axios.get(
           "https://www.googleapis.com/oauth2/v3/userinfo",
@@ -248,8 +247,6 @@ const Auth = () => {
         }
       });
   };
-
-  
   const handleClose1 = () => {
     setOpen(false);
   };
