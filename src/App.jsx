@@ -19,42 +19,45 @@ import Account from "./page/Account";
 import Edit from "./page/Editoral";
 function App() {
   const baseUrl = import.meta.env.VITE_BASE_URL;
-  // const refreshAccessToken = async () => {
-  //   const refreshToken = localStorage.getItem('refreshToken');
-  //   if (!refreshToken) {
-  //     console.log('No refresh token found. Redirecting to login...');
-  //     return;
-  //   }
+  const refreshAccessToken = async () => {
+    const refreshToken = localStorage.getItem('refreshToken');
+    if (!refreshToken) {
+      console.log('No refresh token found. Redirecting to login...');
+      return;
+    }
 
-  //   try {
-  //     const response = await axios.post(baseUrl + '/auth/refreshToken', { refreshToken });
-  //     if (response.status === 200) {
-  //       localStorage.setItem('accessToken', response.data.accessToken);
-  //       console.log('Access token refreshed');
-  //     } else {
-  //       console.log('Error refreshing access token:', response.data.message);
-  //     }
-  //   } catch (error) {
-  //     console.error('Error refreshing access token:', error);
-  //   }
-  // };
+    try {
+      const response = await axios.post(baseUrl + '/auth/refreshToken', { refreshToken });
+      if (response.status === 200) {
+        localStorage.setItem('accessToken', response.data.accessToken);
+        console.log('Access token refreshed');
+      } else {
+        console.log('Error refreshing access token:', response.data.message);
+      }
+    } catch (error) {
+      console.error('Error refreshing access token:', error);
+    }
+  };
+  
 
-  // // Call the refreshAccessToken function every 10 minutes
-  // setInterval(refreshAccessToken, 555555); // 600000 ms = 10 minutes
-
-  // // Axios request interceptor to add the access token to headers
-  // axios.interceptors.request.use(
-  //   (config) => {
-  //     const token = localStorage.getItem('accessToken');
-  //     if (token) {
-  //       config.headers['Authorization'] = `Bearer ${token}`;
-  //     }
-  //     return config;
-  //   },
-  //   (error) => {
-  //     return Promise.reject(error);
-  //   }
-  // );
+  // Call the refreshAccessToken function every 10 minutes
+  setInterval(refreshAccessToken, 555555); // 600000 ms = 10 minutes
+  
+  axios.interceptors.request.use(
+    (config) => {
+      if (!config.url.startsWith('https://www.googleapis.com/')) {
+        const token = localStorage.getItem('accessToken');
+        if (token) {
+          config.headers['Authorization'] = `Bearer ${token}`;
+        }
+      }
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
+  
   const [containerData, setContainerData] = useState([]);
   useEffect(() => {
     const source = axios.CancelToken.source();

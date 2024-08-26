@@ -50,8 +50,18 @@ const Auth = () => {
       return false;
     }
   };
+  const switchMode = () => {
+    setIsLogin((prevIsLogin) => !prevIsLogin);
+    setUsernameOrEmail("");
+    setPassword("");
+    setUsername("");
+    setEmail("");
+    setPasswordReType("");
+    setApiKey("");
+  };
   const login = useGoogleLogin({
     onSuccess: async (response) => {
+      console.log("OAuth Response: ", response);
       try {
         const res = await axios.get(
           "https://www.googleapis.com/oauth2/v3/userinfo",
@@ -85,19 +95,97 @@ const Auth = () => {
         }
         setLoginError("");
       } catch (err) {
-        console.log(err);
+        if (err.response) {
+          console.log("Error Response Data:", err.response.data);
+          console.log("Error Response Status:", err.response.status);
+        } else {
+          console.log("Error Message:", err.message);
+        }
       }
+      
     },
   });
+  const handleGoogleLogin = (user) => {
+    axios
+      .post(baseUrl + "/auth/loginWithGoogle", user)
+      .then((res) => {
+        if (res.data.success) {
+          localStorage.setItem("accessToken", res.data.accessToken);
+          localStorage.setItem("refreshToken", res.data.refreshToken);
+          localStorage.setItem("user", JSON.stringify(res.data.user));
+          setShouldNavigate(true);
+        }
+      })
+      .catch((err) => {
+        if (err.response) {
+          console.log(err.response.data.message);
+        } else {
+          console.error(err);
+        }
+      });
+  };
 
-  const switchMode = () => {
-    setIsLogin((prevIsLogin) => !prevIsLogin);
-    setUsernameOrEmail("");
-    setPassword("");
-    setUsername("");
-    setEmail("");
-    setPasswordReType("");
-    setApiKey("");
+  // const handleLogin = (event) => {
+  //   event.preventDefault();
+  //   const user = {
+  //     usernameOrEmail,
+  //     password,
+  //   };
+  //   axios
+  //     .post(baseUrl + "/auth/login", user)
+  //     .then((res) => {
+  //       if (res.data.success) {
+  //         localStorage.setItem("user", JSON.stringify(res.data.user));
+  //         setOpenLogin(true);
+  //         setLoginError("");
+  //         setShouldNavigate(true);
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       if (err.response) {
+  //         console.log(err.response.data.message);
+  //         if (err.response.status === 404) {
+  //           setLoginError("nonexist");
+  //         } else if (err.response.status === 403) {
+  //           setLoginError("wrong");
+  //         }
+  //         setOpenLogin(true);
+  //       } else {
+  //         console.error(err);
+  //       }
+  //     });
+  // };
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const user = {
+      usernameOrEmail,
+      password,
+    };
+    axios
+      .post(baseUrl + "/auth/login", user)
+      .then((res) => {
+        if (res.data.success) {
+          localStorage.setItem("accessToken", res.data.accessToken);
+          localStorage.setItem("refreshToken", res.data.refreshToken);
+          localStorage.setItem("user", JSON.stringify(res.data.user));
+          setOpenLogin(true);
+          setLoginError("");
+          setShouldNavigate(true);
+        }
+      })
+      .catch((err) => {
+        if (err.response) {
+          console.log(err.response.data.message);
+          if (err.response.status === 404) {
+            setLoginError("nonexist");
+          } else if (err.response.status === 403) {
+            setLoginError("wrong");
+          }
+          setOpenLogin(true);
+        } else {
+          console.error(err);
+        }
+      });
   };
   const handleRegister = (event) => {
     event.preventDefault();
@@ -161,54 +249,7 @@ const Auth = () => {
       });
   };
 
-  const handleGoogleLogin = (user) => {
-    axios
-      .post(baseUrl + "/auth/loginWithGoogle", user)
-      .then((res) => {
-        if (res.data.success) {
-          localStorage.setItem("user", JSON.stringify(res.data.user));
-          setShouldNavigate(true);
-        }
-      })
-      .catch((err) => {
-        if (err.response) {
-          console.log(err.response.data.message);
-        } else {
-          console.error(err);
-        }
-      });
-  };
-
-  const handleLogin = (event) => {
-    event.preventDefault();
-    const user = {
-      usernameOrEmail,
-      password,
-    };
-    axios
-      .post(baseUrl + "/auth/login", user)
-      .then((res) => {
-        if (res.data.success) {
-          localStorage.setItem("user", JSON.stringify(res.data.user));
-          setOpenLogin(true);
-          setLoginError("");
-          setShouldNavigate(true);
-        }
-      })
-      .catch((err) => {
-        if (err.response) {
-          console.log(err.response.data.message);
-          if (err.response.status === 404) {
-            setLoginError("nonexist");
-          } else if (err.response.status === 403) {
-            setLoginError("wrong");
-          }
-          setOpenLogin(true);
-        } else {
-          console.error(err);
-        }
-      });
-  };
+  
   const handleClose1 = () => {
     setOpen(false);
   };
