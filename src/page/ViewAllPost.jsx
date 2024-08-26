@@ -6,7 +6,9 @@ import TextField from "@mui/material/TextField";
 import { HashLink } from "react-router-hash-link";
 
 const ViewAllPost = ({ containerData }) => {
-  const user = JSON.parse(localStorage.getItem("user"));
+  const userLocalStorage = JSON.parse(localStorage.getItem("user"));
+  let userRole;
+  if (userLocalStorage.role === "Admin") { userRole = true } else { userRole = false }
   const [inputText, setInputText] = useState("");
   let inputHandler = (e) => {
     var lowerCase = e.target.value.toLowerCase();
@@ -18,7 +20,7 @@ const ViewAllPost = ({ containerData }) => {
       <Scroll />
       <div className="w-full flex justify-center  mt-[150px] h-auto items-center gap-5 flex-row">
         <button
-          className={`button-54 h-[60px] bg-white text-black  ${user && user.role === "Admin" ? "block" : "hidden"
+          className={`button-54 h-[60px] bg-white text-black  ${userRole ? "block" : "hidden"
             } `}
         >
           <HashLink
@@ -66,7 +68,7 @@ const ViewAllPost = ({ containerData }) => {
         containersPerPage={10}
         containerList={containerData}
         input={inputText}
-        editMode={user}
+        editMode={userRole}
       />
     </div>
   );
