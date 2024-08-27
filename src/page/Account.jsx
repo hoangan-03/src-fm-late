@@ -180,7 +180,7 @@ const Account = () => {
   };
 
   return (
-    <section className="w-screen flex justify-center bg-sky-100 items-center h-screen pt-[50px]">
+    <section className="w-screen flex justify-center bg-sky-100 items-center h-auto lg:h-screen pt-[50px] pb-[100px] lg:pb-0">
       <Modal
         open={open}
         onClose={handleClose}
@@ -235,10 +235,10 @@ const Account = () => {
           </div>
         </div>
       </Modal>
-      <div className="w-[900px] h-[90%] bg-white flex flex-row">
-        <div className="w-[35%] flex flex-col ">
-          <div className="w-full h-[30%] bg-gray-100 flex flex-col gap-4 justify-center items-center px-3 py-6">
-            <div className="w-full flex flex-row gap-4 justify-center items-center">
+      <div className="w-[90vw] lg:w-[900px]  h-full lg:h-[90%] bg-white pb-4 lg:pb-0 flex flex-col lg:flex-row">
+        <div className="w-full lg:w-[35%] flex flex-col ">
+          <div className="w-full h-auto lg:h-[30%] bg-gray-100 flex flex-col gap-4 justify-center items-center px-3 py-6">
+            <div className="w-full flex flex-row gap-1 lg:gap-4 justify-center items-center">
               <div className="w-[40%] h-full flex flex-col gap-2 justify-start items-center ">
                 <img
                   className="w-20 h-20 object-cover rounded-full"
@@ -246,9 +246,9 @@ const Account = () => {
                   alt=""
                 ></img>
               </div>
-              <div className="w-[60%] h-full flex flex-col justify-start items-start gap-3">
+              <div className="w-[60%] hidden  h-full lg:flex flex-col justify-start items-start gap-3">
                 <button
-                  className="w-full h-auto text-sm font-bold bg-sky-800 hover:bg-sky-700 text-white px-2 py-2 flex justify-center items-center rounded-2xl"
+                  className="w-[200px] lg:w-full h-auto text-sm font-bold bg-sky-800 hover:bg-sky-700 text-white px-6 lg:px-2 py-2 flex justify-center items-center rounded-2xl"
                   onClick={() => fileInputRef.current.click()}
                 >
                   Đổi ảnh đại diện
@@ -260,7 +260,7 @@ const Account = () => {
                   style={{ display: "none" }}
                 />
                 <button
-                  className="w-full h-auto text-sm font-bold bg-white text-red-700 hover:text-red-800 px-2 py-2 flex justify-center items-center rounded-2xl"
+                  className="w-[200px] lg:w-full h-auto text-sm font-bold bg-white text-red-700 hover:text-red-800 px-6 lg:px-2 py-2 flex justify-center items-center rounded-2xl"
                   onClick={() => setAvatarUrl(avatar)}
                 >
                   Xóa ảnh
@@ -271,10 +271,10 @@ const Account = () => {
               {fullname ? fullname : "Chưa biết"}
             </h1>
           </div>
-          <div className="w-full h-[70%] bg-gray-200 flex flex-col justify-between items-center">
-            <div className="h-auto w-full flex flex-col justify-start items-center">
+          <div className="w-full h-[70%] bg-gray-200 flex flex-row lg:flex-col justify-start lg:justify-between items-center">
+            <div className="h-auto w-[80%] flex flex-row lg:flex-col justify-start items-center">
               <div
-                className={`flex cursor-pointer flex-row w-full pl-5 py-2 justify-start items-center border-l-4 gap-3  ${active === 1
+                className={`flex cursor-pointer flex-row w-full pl-0 lg:pl-5 py-2 justify-center lg:justify-start items-center border-b-4 lg:border-l-4 gap-3  ${active === 1
                   ? "bg-white border-sky-700"
                   : "hover:bg-white hover:border-black"
                   } `}
@@ -285,14 +285,14 @@ const Account = () => {
                     }`}
                 ></i>
                 <h1
-                  className={`text-lg flex mb-1 justify-center items-center ${active === 1 ? "font-bold text-sky-700" : "font-semibold"
+                  className={`text-lg hidden lg:flex mb-1 justify-center items-center ${active === 1 ? "font-bold text-sky-700" : "font-semibold"
                     }`}
                 >
                   Thông tin cá nhân
                 </h1>
               </div>
               <div
-                className={`flex cursor-pointer flex-row w-full pl-5 py-2 justify-start items-center border-l-4 gap-3  ${active === 2
+                className={`flex cursor-pointer flex-row w-full pl-0 lg:pl-5 py-2 justify-center lg:justify-start items-center border-b-4 lg:border-l-4 gap-3  ${active === 2
                   ? "bg-white border-sky-700"
                   : "hover:bg-white hover:border-black"
                   } `}
@@ -303,14 +303,14 @@ const Account = () => {
                     }`}
                 ></i>
                 <h1
-                  className={`text-lg flex mb-1 justify-center items-center ${active === 2 ? "font-bold text-sky-700" : "font-semibold"
+                  className={`text-lg hidden lg:flex mb-1 justify-center items-center ${active === 2 ? "font-bold text-sky-700" : "font-semibold"
                     }`}
                 >
                   Quản lí đơn hàng
                 </h1>
               </div>
               <div
-                className={`flex cursor-pointer flex-row w-full pl-5 py-2 justify-start items-center border-l-4 gap-3 ${active === 3
+                className={`flex cursor-pointer flex-row w-full pl-0 lg:pl-5 py-2 justify-center lg:justify-start items-center border-b-4 lg:border-l-4 gap-3 ${active === 3
                   ? "bg-white border-sky-700"
                   : "hover:bg-white hover:border-black"
                   } `}
@@ -321,14 +321,14 @@ const Account = () => {
                     }`}
                 ></i>
                 <h1
-                  className={`text-lg flex mb-1 justify-center items-center ${active === 3 ? "font-bold text-sky-700" : "font-semibold"
+                  className={`text-lg hidden lg:flex mb-1 justify-center items-center ${active === 3 ? "font-bold text-sky-700" : "font-semibold"
                     }`}
                 >
                   Quản lí khóa học
                 </h1>
               </div>
               <div
-                className={`flex cursor-pointer flex-row w-full pl-5 py-2 justify-start items-center border-l-4 gap-3 ${active === 4
+                className={`flex cursor-pointer flex-row w-full pl-0 lg:pl-5 py-2 justify-center lg:justify-start items-center border-b-4 lg:border-l-4 gap-3 ${active === 4
                   ? "bg-white border-sky-700"
                   : "hover:bg-white hover:border-black"
                   } `}
@@ -339,7 +339,7 @@ const Account = () => {
                     }`}
                 ></i>
                 <h1
-                  className={`text-lg flex mb-1 justify-center items-center ${active === 4 ? "font-bold text-sky-700" : "font-semibold"
+                  className={`text-lg hidden lg:flex mb-1 justify-center items-center ${active === 4 ? "font-bold text-sky-700" : "font-semibold"
                     }`}
                 >
                   Phương thức thanh toán
@@ -347,7 +347,7 @@ const Account = () => {
               </div>
             </div>
             <div
-              className={`flex cursor-pointer flex-row w-full pl-5 py-2 justify-start items-center border-l-4 gap-3 hover:bg-white hover:border-black`}
+              className={`flex cursor-pointer flex-row w-auto lg:w-full pl-5 py-2 justify-start items-center border-l-4 gap-3 hover:bg-white hover:border-black`}
               onClick={() => {
                 localStorage.removeItem("user");
                 navigate("/Home#hero");
@@ -359,7 +359,7 @@ const Account = () => {
                 `}
               ></i>
               <h1
-                className={`text-lg flex mb-1 justify-center items-center 
+                className={`text-lg hidden lg:flex mb-1 justify-center items-center 
                   font-semibold
                 `}
               >
@@ -368,13 +368,13 @@ const Account = () => {
             </div>
           </div>
         </div>
-        <div className="w-[70%] px-[40px] py-[20px]">
+        <div className="w-full lg:w-[70%] px-4 lg:px-[40px] py-[20px]">
           <div className="flex flex-col gap-5 justify-start items-centers ">
-            <div className="flex flex-row h-[60px] w-full justify-start items-center gap-6">
+            <div className="flex flex-row h-auto lg:h-[60px] w-full justify-start items-center gap-6">
               <i
-                className={`fi w-auto h-auto flex justify-center items-center text-3xl fi-rr-info text-center self-centertext-sky-700 text-black`}
+                className={`fi w-auto h-auto flex justify-center items-center text-xl lg:text-3xl fi-rr-info text-center self-centertext-sky-700 text-black`}
               ></i>
-              <h1 className="font-bold text-3xl mb-1">Thông tin cá nhân</h1>
+              <h1 className="font-bold  text-xl lg:text-3xl mb-1">Thông tin cá nhân</h1>
             </div>
             <div className="w-full h-auto flex flex-col gap-4">
               <Box

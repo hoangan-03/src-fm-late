@@ -142,6 +142,7 @@ const Editoral = () => {
     setOpen(false);
     setError("");
     navigate(`/ViewAllPost`);
+    window.location.reload();
   };
   return (
     <section className="w-screen h-auto flex flex-col justify-center items-center">
