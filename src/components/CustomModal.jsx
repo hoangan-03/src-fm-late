@@ -16,14 +16,14 @@ const CustomModal = ({ open, isSuccess, action, onClose, errorMes }) => {
         <div
           className={`absolute border-b-[8px] ${
             isSuccess ? "border-b-green-500" : "border-b-amber-600"
-          }  left-1/2 gap-1 top-1/2 flex z-[1900001] h-[100px] w-[620px] -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center rounded-2xl bg-white`}
+          }  left-1/2 gap-1 top-1/2 flex z-[1900001] h-[auto] lg:-[100px] w-[90vw] lg:w-[620px] -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center rounded-2xl bg-white`}
         >
           <div
-            className={`flex flex-row gap-4 h-full w-full justify-between px-4`}
+            className={`flex flex-row gap-1 lg:gap-4 h-full w-full justify-between px-4`}
           >
             <div className="flex flex-row gap-4 h-full w-full">
               <div
-                className={`h-[45px] w-[45px] p-1 self-center rounded-xl flex justify-center items-center ${
+                className={`hidden h-[45px] w-[45px] p-1 self-center rounded-xl lg:flex justify-center items-center ${
                   isSuccess ? "bg-green-500/20" : "bg-amber-600/20"
                 } `}
               >
@@ -35,7 +35,7 @@ const CustomModal = ({ open, isSuccess, action, onClose, errorMes }) => {
               </div>
               <div className="w-auto h-[70px] self-center flex flex-col text-start justify-center items-start">
                 <h2
-                  className={`  w-auto text-start items-start text-2xl  font-bold text-black`}
+                  className={`  w-auto text-start items-start text-xl lg:text-2xl  font-bold text-black`}
                 >
                   {action} {isSuccess ? `thành công` : `thất bại`}
                 </h2>

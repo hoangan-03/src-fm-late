@@ -27,12 +27,12 @@ const ViewAllPost = ({ containerData }) => {
             className={`h-full w-full px-4 flex items-center text-center no-underline`}
             to="./post"
           >
-            <h2 className="text-xl font-semibold ">{"Đăng bài viết"}</h2>
+            <h2 className="text-base lg:text-xl font-semibold ">{"Đăng bài viết"}</h2>
           </HashLink>
         </button>
       </div>
       <div
-        className={`search w-[60%] xl:w-[60%] mt-0"
+        className={`search w-[90%] lg:w-[60%] xl:w-[60%] mt-0"
         }`}
       >
         <TextField

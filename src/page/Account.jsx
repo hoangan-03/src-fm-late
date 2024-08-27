@@ -189,14 +189,14 @@ const Account = () => {
       >
         <div
           className={`absolute border-b-[8px] ${success ? "border-b-green-500" : "border-b-amber-600"
-            }  left-1/2 gap-1 top-1/2 flex h-[100px] w-[620px] -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center rounded-2xl bg-white`}
+            }  left-1/2 gap-1 top-1/2 flex h-[100px] w-[90vw] lg:w-[620px] -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center rounded-2xl bg-white`}
         >
           <div
-            className={`flex flex-row gap-4 h-full w-full justify-between px-4`}
+            className={`flex flex-row gap-1 lg:gap-4 h-full w-full justify-center lg:justify-between px-1 lg:px-4 pl-5`}
           >
-            <div className="flex flex-row gap-4 h-full w-full">
+            <div className="flex lg:flex-row gap-4 h-full w-full">
               <div
-                className={`h-[45px] w-[45px] p-1 self-center rounded-xl flex justify-center items-center ${success ? "bg-green-500/20" : "bg-amber-600/20"
+                className={`hidden h-[45px] w-[45px] p-1 self-center rounded-xl lg:flex justify-center items-center ${success ? "bg-green-500/20" : "bg-amber-600/20"
                   } `}
               >
                 <img
@@ -207,7 +207,7 @@ const Account = () => {
               </div>
               <div className="w-auto h-[70px] self-center flex flex-col text-start justify-center items-start">
                 <h2
-                  className={`  w-auto text-start items-start text-2xl  font-bold text-black`}
+                  className={`  w-auto text-start items-start text-base lg:text-2xl  font-bold text-black`}
                 >
                   {active
                     ? "Cập nhật thông tin thành công"

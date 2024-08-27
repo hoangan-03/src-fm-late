@@ -65,10 +65,10 @@ function Container({ imageSrc, heading, date, p, category, editMode, postId, ind
           src={imageSrc}
           alt="Container"
           loading="lazy"
-          className="object-cover rounded-xl rounded-tl-none h-auto aspect-video w-2/3 md:w-auto md:h-full"
+          className="object-cover rounded-xl rounded-tl-none h-auto aspect-video w-[80%] lg:w-2/3 md:w-auto md:h-full"
         />
         <div
-          className={`flex flex-col gap-2 md:w-[700px] w-2/3 
+          className={`flex flex-col gap-2 md:w-[700px]  w-[80%] lg:w-2/3 
         `}
         >
           <h2 className="rounded-b-md text-[12px] md:text-[18px] w-full h-1/2 text-start merry block font-semibold">

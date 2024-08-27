@@ -128,7 +128,7 @@ const Post = () => {
         action={"Đăng tải bài viết"}
         errorMes={error}
       />
-      <div className="flex flex-col mb-[50px] w-[70vw]  h-auto gap-1 md:gap-3  justify-start ">
+      <div className="flex flex-col mb-[50px] w-[90vw] lg:w-[70vw]  h-auto gap-1 md:gap-3  justify-start ">
         <div className="w-[150px] h-[45px] md:h-[40px] mt-[120px] text-base md:text-base">
           <select
             className="w-full h-full border-[1px]  border-black p-1"
