@@ -272,9 +272,9 @@ const Account = () => {
             </h1>
           </div>
           <div className="w-full h-[70%] bg-gray-200 flex flex-row lg:flex-col justify-start lg:justify-between items-center">
-            <div className="h-auto w-[80%] flex flex-row lg:flex-col justify-start items-center">
+            <div className="h-auto w-[80%] lg:w-full flex flex-row lg:flex-col justify-start items-center">
               <div
-                className={`flex cursor-pointer flex-row w-full pl-0 lg:pl-5 py-2 justify-center lg:justify-start items-center border-b-4 lg:border-l-4 gap-3  ${active === 1
+                className={`flex cursor-pointer flex-row w-full pl-0 lg:pl-5 py-2 justify-center lg:justify-start items-center border-b-4 lg:border-l-4 lg:border-b-0 gap-3  ${active === 1
                   ? "bg-white border-sky-700"
                   : "hover:bg-white hover:border-black"
                   } `}
@@ -292,7 +292,7 @@ const Account = () => {
                 </h1>
               </div>
               <div
-                className={`flex cursor-pointer flex-row w-full pl-0 lg:pl-5 py-2 justify-center lg:justify-start items-center border-b-4 lg:border-l-4 gap-3  ${active === 2
+                className={`flex cursor-pointer flex-row w-full pl-0 lg:pl-5 py-2 justify-center lg:justify-start items-center border-b-4 lg:border-l-4 lg:border-b-0 gap-3  ${active === 2
                   ? "bg-white border-sky-700"
                   : "hover:bg-white hover:border-black"
                   } `}
@@ -310,7 +310,7 @@ const Account = () => {
                 </h1>
               </div>
               <div
-                className={`flex cursor-pointer flex-row w-full pl-0 lg:pl-5 py-2 justify-center lg:justify-start items-center border-b-4 lg:border-l-4 gap-3 ${active === 3
+                className={`flex cursor-pointer flex-row w-full pl-0 lg:pl-5 py-2 justify-center lg:justify-start items-center border-b-4 lg:border-l-4 lg:border-b-0 gap-3 ${active === 3
                   ? "bg-white border-sky-700"
                   : "hover:bg-white hover:border-black"
                   } `}
@@ -328,7 +328,7 @@ const Account = () => {
                 </h1>
               </div>
               <div
-                className={`flex cursor-pointer flex-row w-full pl-0 lg:pl-5 py-2 justify-center lg:justify-start items-center border-b-4 lg:border-l-4 gap-3 ${active === 4
+                className={`flex cursor-pointer flex-row w-full pl-0 lg:pl-5 py-2 justify-center lg:justify-start items-center border-b-4 lg:border-l-4 lg:border-b-0 gap-3 ${active === 4
                   ? "bg-white border-sky-700"
                   : "hover:bg-white hover:border-black"
                   } `}
@@ -347,7 +347,7 @@ const Account = () => {
               </div>
             </div>
             <div
-              className={`flex cursor-pointer flex-row w-auto lg:w-full pl-5 py-2 justify-start items-center border-l-4 gap-3 hover:bg-white hover:border-black`}
+              className={`flex cursor-pointer flex-row w-[20%] lg:w-full pl-0 lg:pl-5 py-2 justify-center lg:justify-start items-center lg:border-l-4 border-b-4 lg:border-b-0 gap-3 hover:bg-white hover:border-black`}
               onClick={() => {
                 localStorage.removeItem("user");
                 navigate("/Home#hero");
