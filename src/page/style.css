@@ -564,12 +564,31 @@ p {
 #float2.show-on-load {
   transform: translateY(0);
 }
-.floatsection {
+/* .floatsection {
   transition: transform 1.5s ease-in-out;
   transform: translateX(-100%);
 }
 .floatsection.show-animate {
   transform: translateX(0);
+} */
+
+/* .floatsection {
+  transition: transform 2.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transform: translateX(-100%);
+}
+
+.floatsection.show-animate {
+  transform: translateX(0);
+} */
+.floatsection {
+  transition: transform 1.5s ease-out, opacity 1.5s ease-out;
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.floatsection.show-animate {
+  transform: translateX(0);
+  opacity: 1;
 }
 
 .wavy img {

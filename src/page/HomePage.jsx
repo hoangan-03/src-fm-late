@@ -33,21 +33,31 @@ const HomePage = ({ containerData }) => {
   const [order, setOrder] = useState(1);
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      let sections = document.querySelectorAll("section.animate,div.animate");
-      let windowHeight = window.innerHeight;
-      let scrollY = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          let sections = document.querySelectorAll("section.animate, div.animate");
+          let windowHeight = window.innerHeight;
+          let scrollY = window.scrollY;
 
-      sections.forEach((sec) => {
-        let offset = sec.offsetTop + 200;
-        let height = sec.offsetHeight;
+          sections.forEach((sec) => {
+            let offset = sec.offsetTop + 200;
+            let height = sec.offsetHeight;
 
-        if (scrollY + windowHeight >= offset && scrollY < offset + height) {
-          sec.classList.add("show-animate");
-        } else {
-          sec.classList.remove("show-animate");
-        }
-      });
+            if (scrollY + windowHeight >= offset && scrollY < offset + height) {
+              sec.classList.add("show-animate");
+            } else {
+              sec.classList.remove("show-animate");
+            }
+          });
+
+          ticking = false;
+        });
+
+        ticking = true;
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
