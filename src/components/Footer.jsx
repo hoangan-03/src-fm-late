@@ -19,7 +19,7 @@ const Footer = () => {
         <div className="w-1/2 h-full flex text-white flex-col gap-2">
           <h2 className="text-sm lg:text-xl airbnb mb-2 ">Kết nối </h2>
           <h2 className="text-white text-xs lg:text-lg airbnb-thin">Facebook</h2>
-          <FacebookEmbedded width={isLargeScreen ? "340" : "140"}/>
+          <FacebookEmbedded width={isLargeScreen ? 340 : 140}/>
           <h2 className="text-white text-xs lg:text-lg airbnb-thin">Email: <span className="underline cursor-pointer text-xs lg:text-lg ">src.fmed.ump@gmail.com</span></h2>
         </div>
       </div>

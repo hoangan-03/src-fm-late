@@ -90,7 +90,7 @@ function Container({ imageSrc, heading, date, p, category, editMode, postId, ind
             </h2>
           </div>
         </div>
-        <div className={`ml-5 hidden lg:absolute left-0 md:flex  top-0 w-auto h-[20px]  rounded-tl-lg rounded-tr-lg ${category === "Thông báo" ? "bg-blue-700" : "bg-cyan-700"} `}>
+        <div className={`ml-5 hidden lg:absolute left-0 lg:flex  top-0 w-auto h-[20px]  rounded-tl-lg rounded-tr-lg ${category === "Thông báo" ? "bg-blue-700" : "bg-cyan-700"} `}>
           <h2 className="text-xs lg:text-xs font-serif text-center py-1 px-3 uppercase airbnb text-white font-thin whitespace-pre-line">
             {category}
           </h2>
