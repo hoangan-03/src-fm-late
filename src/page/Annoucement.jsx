@@ -35,7 +35,7 @@ const Annoucement = ({ containerData }) => {
     return truncatedFirst30Words;
   }
   return (
-    <section className="w-screen h-screen airbnb pt-0 lg:pt-[100px] bg-sky-100 px-5 lg:px-[150px] pb-[50px] airbnb">
+    <section className="w-screen h-auto lg:h-screen airbnb pt-0 lg:pt-[100px] bg-sky-100 px-5 lg:px-[150px] pb-[50px] airbnb">
       
       <div className="w-full h-auto lg:h-full flex flex-col lg:flex-row gap-5">
         <div className="w-full lg:w-[60%] h-full flex flex-col gap-3">
@@ -120,6 +120,43 @@ const Annoucement = ({ containerData }) => {
               src={
                 reversedContainers.length > 0 || !reversedContainers
                   ? reversedContainers[1].image
+                  : "No heading available"
+              }
+              alt=""
+            ></img>
+          </div>
+          <div className="block lg:hidden w-full h-[220px] lg:h-2/3 rounded-3xl bg-gray-400 relative">
+            <div className="absolute top-2 left-2 lg:left-10 flex flex-col gap-4 ">
+              <div className="bg-transparent backdrop-blur-lg max-w-[120px] w-auto flex flex-row justify-center items-center h-auto border-white gap-3 rounded-3xl px-3 py-2">
+                <Circle style={{ fontSize: 10, color: "white" }} />
+                <h2 className="text-white text-xs lg:text-sm">
+                  {reversedContainers[2].category}
+                </h2>
+              </div>
+            </div>
+
+            <div className="absolute h-auto lg:h-[120px] bottom-12 lg:top-12 right-2 lg:left-6 bg-white/60 backdrop-blur-lg py-1 lg:py-2 rounded-2xl px-4 lg:px-5 text-xs lg:text-xl font-bold w-[70%] leading-[1.2rem] lg:leading-[2rem]">
+              <div className="text-black text-start h-auto">
+                {reversedContainers[2].heading}
+              </div>
+            </div>
+            <div className="hidden lg:block absolute top-[14rem] left-10 py-2 px-2 text-sm font-bold w-[80%] text-white bg-black/40 backdrop-blur-lg rounded-3xl ">
+              {transform(reversedContainers[2].p)}
+            </div>
+            <div className="absolute top-2 right-2 py-2 px-2 font-bold w-auto h-auto rounded-full backdrop-blur-md bg-white/40 ">
+              <Add style={{ fontSize: 30, color: "black" }} />
+            </div>
+            <HashLink
+              to={`/ViewAllPost/${reversedContainers.length - 3}#top`}
+              className="absolute bottom-2 right-2 font-bold w-auto h-auto bg-sky-200 text-black px-4 py-2 rounded-2xl hover:text-white hover:bg-gray-700"
+            >
+              <h2 className=" underline text-sm">Tìm hiểu thêm</h2>
+            </HashLink>
+            <img
+              className="w-full h-full object-cover rounded-3xl"
+              src={
+                reversedContainers.length > 0 || !reversedContainers
+                  ? reversedContainers[2].image
                   : "No heading available"
               }
               alt=""

@@ -221,11 +221,7 @@ p {
 .merry {
   font-family: "Merriweather", serif;
 }
-.perspective {
-  perspective: 2400px;
-  transform: rotateY(0deg);
-  transition: all 3s ease;
-}
+
 .rotate-y-45 {
   transform: rotateY(-55deg);
   transition: all 3s ease;
@@ -767,9 +763,6 @@ p {
   min-height: 100vh;
   min-width: 100%;
   object-fit: cover; 
-}
-.perspective{
-  perspective: 1600px;
 }
 @keyframes float {
 	0% {
