@@ -17,8 +17,10 @@ import Auth from "./page/Auth";
 import Header from "./components/Header";
 import Account from "./page/Account";
 import Edit from "./page/Editoral";
+
 function App() {
   const baseUrl = import.meta.env.VITE_BASE_URL;
+
   const refreshAccessToken = async () => {
     const refreshToken = localStorage.getItem('refreshToken');
     if (!refreshToken) {
@@ -30,7 +32,7 @@ function App() {
       const response = await axios.post(baseUrl + '/auth/refreshToken', { refreshToken });
       if (response.status === 200) {
         localStorage.setItem('accessToken', response.data.accessToken);
-
+        console.log('Access token refreshed', response.data.accessToken);
       } else {
         console.log('Error refreshing access token:', response.data.message);
       }
@@ -38,7 +40,12 @@ function App() {
       console.error('Error refreshing access token:', error);
     }
   };
-  setInterval(refreshAccessToken, 555555);
+
+  useEffect(() => {
+    refreshAccessToken();
+    const intervalId = setInterval(refreshAccessToken, 555555);
+    return () => clearInterval(intervalId);
+  });
 
   axios.interceptors.request.use(
     (config) => {
@@ -54,7 +61,7 @@ function App() {
       return Promise.reject(error);
     }
   );
-  
+
   const [containerData, setContainerData] = useState([]);
   useEffect(() => {
     axios
@@ -99,7 +106,6 @@ function App() {
           <Route path="/CourseInfo" element={<CourseInfo />} />
           <Route path="/Auth" element={<Auth />} />
           <Route path="/Account" element={<Account />} />
-
         </Routes>
       </BrowserRouter>
     </div>
