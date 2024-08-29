@@ -32,7 +32,7 @@ function App() {
       const response = await axios.post(baseUrl + '/auth/refreshToken', { refreshToken });
       if (response.status === 200) {
         localStorage.setItem('accessToken', response.data.accessToken);
-        console.log('Access token refreshed', response.data.accessToken);
+
       } else {
         console.log('Error refreshing access token:', response.data.message);
       }
