@@ -159,10 +159,10 @@ export default function NavBar() {
               </div>
             </button>
           </div>
-          <nav className="flex flex-col text-base lg:text-lg 2xl:text-xl gap-1 lg:gap-2 text-center uppercase items-center   text-black  justify-start ">
+          <nav className="flex flex-col text-sm lg:text-base 2xl:text-xl gap-1 lg:gap-2 text-center uppercase items-center   text-black  justify-start ">
             <HashLink
               smooth
-              className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[20px] md:pl-[30px] cursor-pointer ${
+              className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[15px] md:pl-[30px] cursor-pointer ${
                 activePage === "/Home"
                   ? "bg-blue-500 text-white"
                   : "bg-transparent"
@@ -173,7 +173,7 @@ export default function NavBar() {
             </HashLink>
             <HashLink
               smooth
-              className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[20px] md:pl-[30px] cursor-pointer ${
+              className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[15px] md:pl-[30px] cursor-pointer ${
                 activePage === "/About"
                   ? "bg-blue-500 text-white"
                   : "bg-transparent"
@@ -184,7 +184,7 @@ export default function NavBar() {
             </HashLink>
             <HashLink
               smooth
-              className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[20px] md:pl-[30px] cursor-pointer ${
+              className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[15px] md:pl-[30px] cursor-pointer ${
                 activePage === "/Annoucement"
                   ? "bg-blue-500 text-white"
                   : "bg-transparent"
@@ -195,7 +195,7 @@ export default function NavBar() {
             </HashLink>
             {/* <HashLink
               smooth
-              className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[20px] md:pl-[30px] cursor-pointer ${
+              className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[15px] md:pl-[30px] cursor-pointer ${
                 activePage === "/Course"
                   ? "bg-blue-500 text-white"
                   : "bg-transparent"
@@ -207,7 +207,7 @@ export default function NavBar() {
 
             <HashLink
               smooth
-              className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[20px] md:pl-[30px] cursor-pointer ${
+              className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[15px] md:pl-[30px] cursor-pointer ${
                 activePage === "/Partners"
                   ? "bg-blue-500 text-white"
                   : "bg-transparent"
