@@ -13,7 +13,7 @@ import a1 from "../assets/pic/1.jpg";
 import spon1 from "../assets/pic/sponsor1.png";
 import emailjs from 'emailjs-com';
 import { useState } from "react";
-
+import contactus from "../assets/pic/contactus.jpg";
 const Partners = () => {
   const [fullName, setFullName] = useState("");
   const [organization, setOrganization] = useState("");
@@ -62,7 +62,7 @@ const Partners = () => {
       >
         <div className="w-[40%] h-full lg:flex flex-col  hidden pt-[80px] gap-8  ">
           <div className="w-full h-[300px] ">
-            <img src={a1} className="w-full h-full object-cover" alt=""></img>
+            <img src={contactus} className="w-full h-full object-cover" alt="contactus"></img>
           </div>
         </div>
         <div className="w-full lg:w-[60%] h-full flex  p-8 gap-10 flex-col bg-white  mr-0 lg:mr-[100px]">
