@@ -193,7 +193,7 @@ export default function NavBar() {
             >
               Tin tức - Sự kiện
             </HashLink>
-            <HashLink
+            {/* <HashLink
               smooth
               className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[20px] md:pl-[30px] cursor-pointer ${
                 activePage === "/Course"
@@ -203,7 +203,7 @@ export default function NavBar() {
               to="/Course"
             >
               Khóa học - Dự án
-            </HashLink>
+            </HashLink> */}
 
             <HashLink
               smooth

@@ -11,42 +11,36 @@ import ReactQuill from "react-quill";
 import Footer from "../components/Footer";
 import a1 from "../assets/pic/1.jpg";
 import spon1 from "../assets/pic/sponsor1.png";
-// import spon3 from "../assets/pic/spon3.jpg";
-// import spon4 from "../assets/pic/spon4.jpg";
-// import spon5 from "../assets/pic/spon5.jpg";
-// import spon6 from "../assets/pic/spon6.jpg";
-// import spon7 from "../assets/pic/spon7.jpg";
-// import spon8 from "../assets/pic/spon8.jpg";
-// import spon9 from "../assets/pic/spon9.jpg";
-// import spon10 from "../assets/pic/spon10.jpg";
-// import spon11 from "../assets/pic/spon11.jpg";
-// import spon12 from "../assets/pic/spon12.jpg";
-// import spon13 from "../assets/pic/spon13.jpg";
+import emailjs from 'emailjs-com';
+import { useState } from "react";
+
 const Partners = () => {
-  const CustomInputField = ({ label, startIcon, uniqueId, fontSizee = "19px" }) => (
-    <div className="w-1/2 h-auto flex items-end">
-      <FormControl variant="standard">
-        <InputLabel
-          htmlFor={`input-with-icon-adornment-${uniqueId}`}
-          style={{
-            color: "black",
-            fontSize: {fontSizee},
-            fontWeight: "600",
-            transform: "translateY(-15px)",
-          }}
-        >
-          {label}
-        </InputLabel>
-        <Input
-          style={{ color: "black", fontWeight: "600" }}
-          id={`input-with-icon-adornment-${uniqueId}`}
-          startAdornment={
-            <InputAdornment position="start">{startIcon}</InputAdornment>
-          }
-        />
-      </FormControl>
-    </div>
-  );
+  const [fullName, setFullName] = useState("");
+  const [organization, setOrganization] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const from_name = `${fullName}-${organization}-${email}-${phone}`;
+    const emailContent = `
+      ${message.replace(/<\/?[^>]+(>|$)/g, "")}
+    `;
+    const formData = {
+      from_name: from_name,
+      to_name: 'SRC-FM',
+      message: emailContent,
+    };
+    emailjs.send('service_d1ls3nh', 'template_a9nn92l', formData, 'wQanaDDWtJ8ZtCqLU')
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+        alert('Gửi email thành công!');
+      }, (error) => {
+        console.log('FAILED...', error);
+        alert('Gửi email thất bại. Vui lòng thử lại sau.');
+      });
+  };
   return (
     <section className="w-screen h-auto overflow-hidden ">
       <section
@@ -60,126 +54,140 @@ const Partners = () => {
             src={spon1}
             alt=""
           ></img>
-          {/* <img
-            className="w-auto h-[80px] object-cover hover:scale-150 transition-all duration-300"
-            src={spon5}
-            alt=""
-          ></img>
-          <img
-            className="w-auto h-[80px] object-cover hover:scale-150 transition-all duration-300"
-            src={spon3}
-            alt=""
-          ></img>
-          <img
-            className="w-auto h-[80px] object-cover hover:scale-150 transition-all duration-300"
-            src={spon4}
-            alt=""
-          ></img> */}
         </div>
-        {/* <div className="w-full h-auto flex flex-row gap-10 mt-[100px] justify-center items-center">
-          <img
-            className="w-auto h-[80px] object-cover hover:scale-150 transition-all duration-300"
-            src={spon6}
-            alt=""
-          ></img>
-          <img
-            className="w-auto h-[80px] object-cover hover:scale-150 transition-all duration-300"
-            src={spon7}
-            alt=""
-          ></img>
-          <img
-            className="w-auto h-[80px] object-cover hover:scale-150 transition-all duration-300"
-            src={spon8}
-            alt=""
-          ></img>
-          <img
-            className="w-auto h-[80px] object-cover hover:scale-150 transition-all duration-300"
-            src={spon9}
-            alt=""
-          ></img>
-        </div>
-        <div className="w-full h-auto flex flex-row gap-10 mt-[100px] justify-center items-center">
-          <img
-            className="w-auto h-[80px] object-cover hover:scale-150 transition-all duration-300"
-            src={spon10}
-            alt=""
-          ></img>
-          <img
-            className="w-auto h-[80px] object-cover hover:scale-150 transition-all duration-300"
-            src={spon11}
-            alt=""
-          ></img>
-          <img
-            className="w-auto h-[80px] object-cover hover:scale-150 transition-all duration-300"
-            src={spon12}
-            alt=""
-          ></img>
-          <img
-            className="w-auto h-[80px] object-cover hover:scale-150 transition-all duration-300"
-            src={spon13}
-            alt=""
-          ></img>
-        </div> */}
       </section>
       <section
         id="coop"
-        className="w-screen flex px-4 pt-2 lg:px-[100px] lg:pt-[120px] flex-row h-screen  bg-blue-200"
+        className="w-screen flex px-4 pt-2 lg:px-[100px] lg:pt-[120px] flex-row h-auto  bg-blue-200"
       >
         <div className="w-[40%] h-full lg:flex flex-col  hidden pt-[80px] gap-8  ">
           <div className="w-full h-[300px] ">
             <img src={a1} className="w-full h-full object-cover" alt=""></img>
           </div>
-          {/* <div className="w-full h-auto pr-[20px]">
-            <h4 className="text-base text-black airbnb">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here,
-              content here', making it look like readable English.{" "}
-            </h4>
-          </div> */}
         </div>
         <div className="w-full lg:w-[60%] h-full flex  p-8 gap-10 flex-col bg-white  mr-0 lg:mr-[100px]">
-          <div className="h-auto w-full ">
-            <h2 className="text-4xl text-black airbnb">
-              Liên hệ với chúng tôi
-            </h2>
-          </div>
-          <div className="w-full h-auto flex flex-row gap-2">
-            <CustomInputField
-              label="Tên của bạn"
-              startIcon={<AccountCircle />}
-              uniqueId="nameField"
+          <form onSubmit={handleSubmit} className="w-full h-full flex flex-col gap-10">
+            <div className="h-auto w-full ">
+              <h2 className="text-4xl text-black airbnb">
+                Liên hệ với chúng tôi
+              </h2>
+            </div>
+            <div className="w-full h-auto flex flex-row gap-2">
+              <div className="w-1/2 h-auto flex items-end">
+                <FormControl variant="standard">
+                  <InputLabel
+                    htmlFor="nameField"
+                    style={{
+                      color: "black",
+                      fontSize: "19px",
+                      fontWeight: "600",
+                      transform: "translateY(-15px)",
+                    }}
+                  >
+                    Tên của bạn
+                  </InputLabel>
+                  <Input
+                    style={{ color: "black", fontWeight: "600" }}
+                    id="nameField"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    startAdornment={
+                      <InputAdornment position="start"><AccountCircle /></InputAdornment>
+                    }
+                  />
+                </FormControl>
+              </div>
+              <div className="w-1/2 h-auto flex items-end">
+                <FormControl variant="standard">
+                  <InputLabel
+                    htmlFor="organizationField"
+                    style={{
+                      color: "black",
+                      fontSize: "19px",
+                      fontWeight: "600",
+                      transform: "translateY(-15px)",
+                    }}
+                  >
+                    Tổ chức của bạn
+                  </InputLabel>
+                  <Input
+                    style={{ color: "black", fontWeight: "600" }}
+                    id="organizationField"
+                    value={organization}
+                    onChange={(e) => setOrganization(e.target.value)}
+                    startAdornment={
+                      <InputAdornment position="start"><CorporateFareIcon /></InputAdornment>
+                    }
+                  />
+                </FormControl>
+              </div>
+            </div>
+            <div className="w-full h-auto flex flex-row gap-2">
+              <div className="w-1/2 h-auto flex items-end">
+                <FormControl variant="standard">
+                  <InputLabel
+                    htmlFor="emailField"
+                    style={{
+                      color: "black",
+                      fontSize: "19px",
+                      fontWeight: "600",
+                      transform: "translateY(-15px)",
+                    }}
+                  >
+                    Email
+                  </InputLabel>
+                  <Input
+                    style={{ color: "black", fontWeight: "600" }}
+                    id="emailField"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    startAdornment={
+                      <InputAdornment position="start"><EmailIcon /></InputAdornment>
+                    }
+                  />
+                </FormControl>
+              </div>
+              <div className="w-1/2 h-auto flex items-end">
+                <FormControl variant="standard">
+                  <InputLabel
+                    htmlFor="phoneField"
+                    style={{
+                      color: "black",
+                      fontSize: "19px",
+                      fontWeight: "600",
+                      transform: "translateY(-15px)",
+                    }}
+                  >
+                    Số điện thoại
+                  </InputLabel>
+                  <Input
+                    style={{ color: "black", fontWeight: "600" }}
+                    id="phoneField"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    startAdornment={
+                      <InputAdornment position="start"><ContactPhoneIcon /></InputAdornment>
+                    }
+                  />
+                </FormControl>
+              </div>
+            </div>
+            <ReactQuill
+              theme="snow"
+              placeholder="Viết góp ý của bạn ở đây. Ý kiến của bạn sẽ giúp chúng tôi phát triển."
+              modules={{
+                toolbar: false,
+                "emoji-toolbar": false,
+                "emoji-textarea": false,
+                "emoji-shortname": true,
+              }}
+              value={message}
+              onChange={setMessage}
             />
-            <CustomInputField
-              label="Tổ chức của bạn"
-              startIcon={<CorporateFareIcon />}
-              uniqueId="organizationField"
-            />
-          </div>
-          <div className="w-full h-auto flex flex-row gap-2">
-            <CustomInputField
-              label="Email"
-              startIcon={<EmailIcon />}
-              uniqueId="emailField"
-            />
-            <CustomInputField
-              label="Số điện thoại"
-              startIcon={<ContactPhoneIcon />}
-              uniqueId="phoneField"
-            />
-          </div>
-
-          <ReactQuill
-            theme="snow"
-            placeholder="Viết góp ý của bạn ở đây. Ý kiến của bạn sẽ giúp chúng tôi phát triển."
-            modules={{
-              toolbar: false, 
-              "emoji-toolbar": false,
-              "emoji-textarea": false,
-              "emoji-shortname": true,
-            }}
-          />
+            <button type="submit" className="bg-sky-700 hover:bg-sky-600 font-bold text-xl text-white py-3 rounded-3xl">
+              Gửi email cho chúng tôi
+            </button>
+          </form>
         </div>
       </section>
       <Footer />
