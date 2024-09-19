@@ -59,7 +59,7 @@ export default function NavBar() {
   }, [location]);
   return (
     <div
-      className={`right-0 flex z-[1900000] fixed h-[100vh] w-[170px] lg:w-[270px] netflix  ${
+      className={`right-0 flex z-[1900000] fixed h-[100vh] w-[170px] lg:w-[270px] airbnb  ${
         isActive ? " visible   " : "  invisible"
       }  `}
     >
@@ -159,7 +159,7 @@ export default function NavBar() {
               </div>
             </button>
           </div>
-          <nav className="flex flex-col text-base lg:text-lg 2xl:text-xl gap-1 lg:gap-2 text-center uppercase items-center tracking-tighter   text-black  justify-start ">
+          <nav className="flex flex-col text-base lg:text-lg 2xl:text-xl gap-1 lg:gap-2 text-center uppercase items-center   text-black  justify-start ">
             <HashLink
               smooth
               className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[20px] md:pl-[30px] cursor-pointer ${
