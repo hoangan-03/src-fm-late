@@ -9,7 +9,7 @@ import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
 import ReactQuill from "react-quill";
 import Footer from "../components/Footer";
-import a1 from "../assets/pic/1.jpg";
+// import a1 from "../assets/pic/1.jpg";
 import spon1 from "../assets/pic/sponsor1.png";
 import emailjs from 'emailjs-com';
 import { useState } from "react";

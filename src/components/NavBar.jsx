@@ -59,14 +59,14 @@ export default function NavBar() {
   }, [location]);
   return (
     <div
-      className={`right-0 flex z-[1900000] fixed h-[100vh] w-[170px] lg:w-[270px] font-thin engine tracking-widest ${
+      className={`right-0 flex z-[1900000] fixed h-[100vh] w-[170px] lg:w-[270px] netflix  ${
         isActive ? " visible   " : "  invisible"
       }  `}
     >
       <div
         className={`absolute w-full top-0 h-full z-50 bg-white/70  backdrop-blur-xl `}
       >
-        <div className="w-full gap-2 flex flex-col z-20  ">
+        <div className="w-full gap-2 flex flex-col z-20">
           <div className="w-full gap-3 h-auto text-white pt-[7px] lg:pt-[20px]  uppercase flex justify-start pl-[12px] lg:pl-[30px]  text-2xl mb-[60px] ">
             <HashLink
               to="/Auth"
@@ -159,7 +159,7 @@ export default function NavBar() {
               </div>
             </button>
           </div>
-          <nav className="flex flex-col text-base lg:text-xl 2xl:text-2xl gap-1 lg:gap-2 text-center uppercase items-center   text-black  justify-start ">
+          <nav className="flex flex-col text-base lg:text-lg 2xl:text-xl gap-1 lg:gap-2 text-center uppercase items-center tracking-tighter   text-black  justify-start ">
             <HashLink
               smooth
               className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[20px] md:pl-[30px] cursor-pointer ${
