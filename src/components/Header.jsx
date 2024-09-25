@@ -5,7 +5,7 @@ function Header() {
 
     return (
         <HashLink to="/Home#hero"
-            className={`fixed z-[50000] gray-w top-0 justify-start pl-2 md:pl-[200px] backdrop-blur-sm items-center h-[50px] lg:h-[78px] w-screen flex flex-row transition-all duration-300 `}
+            className={`fixed z-[50000] gray-w top-0 justify-start pl-2 md:pl-10 xl:pl-[200px] backdrop-blur-sm items-center h-[50px] lg:h-[78px] w-screen flex flex-row transition-all duration-300 `}
         >
             <div className="h-[40px] w-[40px] lg:h-[70px] lg:w-[70px] border-r-2 lg:border-r-[3px] pr-[2px] flex justify-center items-center md:pr-[10px] border-black">
                 <img src={logo} alt="" className="object-cover h-[80%] w-auto"></img>
