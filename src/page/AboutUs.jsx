@@ -11,11 +11,9 @@ import a7 from "../assets/pic/7.jpg";
 // import a8 from "../assets/pic/8.jpg";
 // import a9 from "../assets/pic/9.jpg";
 // import a10 from "../assets/pic/10.jpg";
-import taichinh from "../assets/pic/taichinh.jpg";
-import haucan from "../assets/pic/haucan.jpg";
 import chunhiem from "../assets/pic/chunhiem.jpg";
-import noidung from "../assets/pic/noidung.jpg";
-import prit from "../assets/pic/prit.jpeg";
+import phochunhiem1 from "../assets/pic/phochunhiem1.jpg";
+import phochunhiem2 from "../assets/pic/phochunhiem2.jpg";
 import Scroll from "../components/Scroll";
 import "../components/animation.css";
 import Footer from "../components/Footer";
@@ -149,7 +147,7 @@ export default function Aboutus() {
         </div>
       </section>
       <section
-        className="w-screen overflow-auto h-auto lg:h-[120vh] relative bg-blue-200 flex pt-[20px] pb-[220px] lg:pb-[60px] flex-col gap-8 lg:gap-2 justify-center items-center"
+        className="w-screen overflow-auto h-auto lg:h-[180vh] relative bg-blue-200 flex pt-[20px] pb-[260px] flex-col gap-8 lg:gap-2 justify-center items-center"
         id="organization"
       >
         <a
@@ -173,64 +171,90 @@ export default function Aboutus() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col lg:flex-row h-[1500px] w-screen lg:w-[1200px] lg:h-full gap-6 justify-center items-start px-12 lg:px-0">
-          <div className="w-full lg:w-[20%] h-1/5 lg:h-1/2 relative">
-            <img
-              src={prit}
-              className=" absolute rounded-2xl object-cover w-full h-full"
-              alt=""
-            ></img>
-            <div className="absolute airbnb h-auto backdrop-blur-[1px] text-white w-full flex justify-center items-center bg-black/20 pl-2 bottom-2 lg:bottom-4 flex-col">
-              <h2 className="text-xl ">Cao Niên Kỷ</h2>
-              <h2 className="text-base  ">Trưởng ban PR-IT</h2>
+        <div className="flex flex-col h-[2800px] w-screen lg:w-[1600px] lg:h-full gap-6 justify-center items-start px-12 lg:px-0">
+          <div className="flex flex-col lg:flex-row w-full h-1/2 gap-6 justify-start lg:justify-center items-start">
+            <div className="w-full lg:w-[20%] h-1/3 lg:h-full relative">
+              <img
+                src={chunhiem}
+                className="absolute rounded-2xl object-cover w-full h-full"
+                alt=""
+              ></img>
+              <div className="absolute airbnb py-2 h-auto backdrop-blur-sm text-black w-full flex justify-center items-center bg-white/80 pl-2 bottom-2 lg:bottom-4 flex-col">
+                <h2 className="text-xl font-extrabold uppercase">
+                  Võ Tường Vi
+                </h2>
+                <h2 className="text-sm  font-thin">Phó chủ nhiệm</h2>
+              </div>
+            </div>
+
+            <div className="w-full lg:w-[20%] h-1/3 lg:h-full relative">
+              <img
+                src={phochunhiem1}
+                className="absolute rounded-2xl object-cover w-full h-full"
+                alt=""
+              ></img>
+              <div className="absolute airbnb py-2 h-auto backdrop-blur-sm text-black w-full flex justify-center items-center bg-white/80 pl-2 bottom-2 lg:bottom-4 flex-col">
+                <h2 className="text-xl font-extrabold uppercase">
+                  Thạch Đặng Minh Uyên
+                </h2>
+                <h2 className="text-sm  font-thin">Chủ nhiệm</h2>
+              </div>
+            </div>
+            <div className="w-full lg:w-[20%] h-1/3 lg:h-full relative">
+              <img
+                src={phochunhiem2}
+                className="absolute rounded-2xl object-cover w-full h-full"
+                alt=""
+              ></img>
+              <div className="absolute airbnb py-2 h-auto backdrop-blur-sm text-black w-full flex justify-center items-center bg-white/80 pl-2 bottom-2 lg:bottom-4 flex-col">
+                <h2 className="text-xl font-extrabold uppercase">
+                  Đặng Lê Minh Khang
+                </h2>
+                <h2 className="text-sm  font-thin">Phó chủ nhiệm</h2>
+              </div>
             </div>
           </div>
-          <div className="w-full lg:w-[20%] h-1/5 lg:h-1/2 relative">
-            <img
-              src={noidung}
-              className=" absolute rounded-2xl object-cover w-full h-full"
-              alt=""
-            ></img>
-            <div className="absolute airbnb h-auto backdrop-blur-[1px] text-white w-full flex justify-center items-center bg-black/20 pl-2  bottom-2 lg:bottom-4 flex-col">
-              <h2 className="text-base ">Đặng Lê Minh Khang</h2>
-              <h2 className="text-base ">
-                Phó chủ nhiệm - Trưởng ban Nội Dung
-              </h2>
+          <div className="flex flex-col lg:flex-row w-full h-1/2 gap-6 justify-start lg:justify-center items-start">
+            <div className="w-full lg:w-[20%] h-1/3 lg:h-full relative">
+              <img
+                // src={prit}
+                className="absolute rounded-2xl object-cover w-full h-full"
+                alt=""
+              ></img>
+              <div className="absolute airbnb py-2 h-auto backdrop-blur-sm text-black w-full flex justify-center items-center bg-white/80 pl-2 bottom-2 lg:bottom-4 flex-col">
+                <h2 className="text-xl font-extrabold uppercase">
+                  Tô Hữu Thiện
+                </h2>
+                <h2 className="text-sm  font-thin">Trưởng ban Truyền thông</h2>
+              </div>
             </div>
-          </div>
-          <div className="w-full lg:w-[20%] h-1/5 lg:h-1/2 relative">
-            <img
-              src={chunhiem}
-              className=" absolute rounded-2xl object-cover w-full h-full"
-              alt=""
-            ></img>
-            <div className="absolute airbnb h-auto backdrop-blur-[1px] text-white w-full flex justify-center items-center bg-black/20 pl-2  bottom-2 lg:bottom-4 flex-col">
-              <h2 className="text-xl">Lê Hoàng Thiên Ân</h2>
-              <h2 className="text-base  ">Chủ nhiệm</h2>
+            <div className="w-full lg:w-[20%] h-1/3 lg:h-full relative">
+              <img
+                // src={taichinh}
+                className="absolute rounded-2xl object-cover w-full h-full"
+                alt=""
+              ></img>
+              <div className="absolute airbnb py-2 h-auto backdrop-blur-sm text-black w-full flex justify-center items-center bg-white/80 pl-2 bottom-2 lg:bottom-4 flex-col">
+                <h2 className="text-xl font-extrabold uppercase">
+                  Nguyễn Hoàng Minh Trị
+                </h2>
+                <h2 className="text-sm  font-thin">Trưởng ban Chuyên môn</h2>
+              </div>
             </div>
-          </div>
-          <div className="w-full lg:w-[20%] h-1/5 lg:h-1/2 relative">
-            <img
-              src={haucan}
-              className=" absolute rounded-2xl object-cover w-full h-full"
-              alt=""
-            ></img>
-            <div className="absolute airbnb h-auto backdrop-blur-[1px] text-white w-full flex justify-center items-center bg-black/20 pl-2  bottom-2 lg:bottom-4 flex-col">
-              <h2 className="text-base ">Thạch Đặng Minh Uyên</h2>
-              <h2 className="text-base  ">
-                Phó chủ nhiệm - Trưởng ban Hậu Cần
-              </h2>
-            </div>
-          </div>
-          <div className="w-full lg:w-[20%] h-1/5 lg:h-1/2 relative">
-            <img
-              src={taichinh}
-              className=" absolute rounded-2xl object-cover w-full h-full"
-              alt=""
-            ></img>
-            <div className="absolute airbnb h-auto backdrop-blur-[1px] text-white w-full flex justify-center items-center bg-black/20 pl-2  bottom-2 lg:bottom-4 flex-col">
-              <h2 className="text-xl ">Võ Tường Vi</h2>
-              <h2 className="text-base  ">Trưởng ban Tài Chính</h2>
+            <div className="w-full lg:w-[20%] h-1/3 lg:h-full relative">
+              <img
+                // src={taichinh}
+                className="absolute rounded-2xl object-cover w-full h-full"
+                alt=""
+              ></img>
+              <div className="absolute airbnb py-2 h-auto backdrop-blur-sm text-black w-full flex justify-center items-center bg-white/80 pl-2 bottom-2 lg:bottom-4 flex-col">
+                <h2 className="text-xl font-extrabold uppercase">
+                  Huỳnh Nguyên Nhật Vũ
+                </h2>
+                <h2 className="text-sm  font-thin">
+                  Trưởng ban Hậu cần - Sự kiện
+                </h2>
+              </div>
             </div>
           </div>
         </div>
