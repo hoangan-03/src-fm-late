@@ -220,7 +220,7 @@ export default function NavBar() {
           <div className=" overflow-y-hidden absolute bottom-0 w-[270px] h-1/3 ml-[20px] lg:ml-[30px] border-t-2  border-t-gray-700 flex flex-row">
             <div className="w-3/5 h-full flex items-start justify-start flex-col ">
               <div className="w-full h-full flex flex-col gap-8 mt-8 ">
-                <div className="w-full h-1/2 flex flex-col text-start text-black text-sm lg:text-base uppercase  mt-2">
+                <div className="w-full h-1/2 flex flex-col text-start text-black text-xs lg:text-sm uppercase mt-2">
                   <h4 className=" w-full h-auto overflow-hidden ">
                     Powered by
                   </h4>
