@@ -175,7 +175,7 @@ export default function Aboutus() {
           <div className="flex flex-col lg:flex-row w-full h-1/2 gap-6 justify-start lg:justify-center items-start">
             <div className="w-full lg:w-[20%] h-1/3 lg:h-full relative">
               <img
-                src={chunhiem}
+                src={phochunhiem1}
                 className="absolute rounded-2xl object-cover w-full h-full"
                 alt=""
               ></img>
@@ -189,7 +189,7 @@ export default function Aboutus() {
 
             <div className="w-full lg:w-[20%] h-1/3 lg:h-full relative">
               <img
-                src={phochunhiem1}
+                src={chunhiem}
                 className="absolute rounded-2xl object-cover w-full h-full"
                 alt=""
               ></img>
