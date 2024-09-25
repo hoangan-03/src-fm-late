@@ -329,7 +329,7 @@ const HomePage = ({ containerData }) => {
             <div className="w-full h-auto mb-3 flex flex-row justify-end">
               <HashLink
                 smooth
-                to="/Course#hero"
+                // to="/Course#hero"
                 onClick={handleHover}
                 className="w-auto hover:bg-white hover:text-sky-800  rounded-[30px]  mt-0 lg:mt-4 airbnb h-full py-2 px-6 text-sm lg:text-xl flex justify-center items-center text-gray-800 bg-teal-300  "
               >
@@ -337,7 +337,7 @@ const HomePage = ({ containerData }) => {
               </HashLink>{" "}
             </div>
             <HashLink
-              to="/Course#hero"
+              // to="/Course#hero"
               className="w-full h-[120px] lg:h-[250px] flex flex-row bg-teal-300  shadow-2xl shadow-black rounded-2xl hover:scale-110 transition-all duration-300 "
             >
               <div className="w-[60%] h-full">
@@ -358,7 +358,7 @@ const HomePage = ({ containerData }) => {
               </div>
             </HashLink>
             <HashLink
-              to="/Course#hero"
+              // to="/Course#hero"
               className="w-full h-[129px] lg:h-[250px] flex flex-row bg-teal-300  rounded-2xl shadow-2xl shadow-black hover:scale-110 ransition-all duration-300"
             >
               <div className="w-[40%] h-full airbnb flex flex-col  px-3 py-4 gap-2">
