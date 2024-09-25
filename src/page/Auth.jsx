@@ -5,11 +5,10 @@ import a1 from "../assets/pic/1.jpg";
 import { Google } from "@mui/icons-material";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import Modal from "@mui/material/Modal";
-import tick from "../assets/pic/accept.png";
-import info from "../assets/pic/info.png";
-import close from "../assets/pic/close.png";
 import { useGoogleLogin } from "@react-oauth/google";
+import CustomModal from "../components/CustomModal";
+
+
 const Auth = () => {
   const navigate = useNavigate();
 
@@ -124,36 +123,6 @@ const Auth = () => {
       });
   };
 
-  // const handleLogin = (event) => {
-  //   event.preventDefault();
-  //   const user = {
-  //     usernameOrEmail,
-  //     password,
-  //   };
-  //   axios
-  //     .post(baseUrl + "/auth/login", user)
-  //     .then((res) => {
-  //       if (res.data.success) {
-  //         localStorage.setItem("user", JSON.stringify(res.data.user));
-  //         setOpenLogin(true);
-  //         setLoginError("");
-  //         setShouldNavigate(true);
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       if (err.response) {
-  //         console.log(err.response.data.message);
-  //         if (err.response.status === 404) {
-  //           setLoginError("nonexist");
-  //         } else if (err.response.status === 403) {
-  //           setLoginError("wrong");
-  //         }
-  //         setOpenLogin(true);
-  //       } else {
-  //         console.error(err);
-  //       }
-  //     });
-  // };
   const handleLogin = (event) => {
     event.preventDefault();
     const user = {
@@ -255,126 +224,36 @@ const Auth = () => {
   };
   return (
     <section className="w-screen h-screen flex flex-row gap-2 airbnb justify-center items-center">
-      <Modal
-        open={openlogin}
+      <CustomModal
+        isSuccess={loginError === ""}
         onClose={handleClose2}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <div
-          className={`absolute border-b-[8px] ${
-            loginError === "" ? "border-b-green-500" : "border-b-amber-600"
-          }  left-1/2 gap-1 top-1/2 flex h-[100px] w-[620px] -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center rounded-2xl bg-white`}
-        >
-          <div
-            className={`flex flex-row gap-4 h-full w-full justify-between px-4`}
-          >
-            <div className="flex flex-row gap-4 h-full w-full">
-              <div
-                className={`h-[45px] w-[45px] p-1 self-center rounded-xl flex justify-center items-center ${
-                  loginError === "" ? "bg-green-500/20" : "bg-amber-600/20"
-                } `}
-              >
-                <img
-                  className="w-[30px] h-[30px]"
-                  alt=""
-                  src={`${loginError === "" ? tick : info}`}
-                ></img>
-              </div>
-              <div className="w-auto h-[70px] self-center flex flex-col text-start justify-center items-start">
-                <h2
-                  className={`  w-auto text-start items-start text-2xl  font-bold text-black`}
-                >
-                  {loginError === ""
-                    ? "Đăng nhập thành công"
-                    : "Đăng nhập thất bại"}
-                </h2>
-                <h1
-                  className={`w-auto text-start items-start text-base font-semibold text-gray-700`}
-                >
-                  {loginError === ""
-                    ? ""
-                    : loginError === "nonexist"
-                    ? "Tên tài khoản hoặc email không tồn tại"
-                    : "Mật khẩu đăng nhập không chính xác"}
-                </h1>
-              </div>
-            </div>
-            <button
-              onClick={() => handleClose2()}
-              className="w-[40px] h-[40px] flex self-center rounded-full justify-center items-center p-3 hover:bg-gray-200/30"
-            >
-              <img
-                alt=""
-                className="w-full h-full object-cover"
-                src={close}
-              ></img>
-            </button>
-          </div>
-        </div>
-      </Modal>
-      <Modal
-        open={open}
+        open={openlogin}
+        action={"Đăng nhập"}
+        errorMes={
+          loginError === ""
+            ? ""
+            : loginError === "nonexist"
+            ? "Tên tài khoản hoặc email không tồn tại"
+            : "Mật khẩu đăng nhập không chính xác"
+        }
+      />
+      <CustomModal
+        isSuccess={registerError === ""}
         onClose={handleClose1}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <div
-          className={`absolute border-b-[8px] ${
-            registerError === "" ? "border-b-green-500" : "border-b-amber-600"
-          }  left-1/2 gap-1 top-1/2 flex h-[100px] w-[620px] -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center rounded-2xl bg-white`}
-        >
-          <div
-            className={`flex flex-row gap-4 h-full w-full justify-between px-4`}
-          >
-            <div className="flex flex-row gap-4 h-full w-full">
-              <div
-                className={`h-[45px] w-[45px] p-1 self-center rounded-xl flex justify-center items-center ${
-                  registerError === "" ? "bg-green-500/20" : "bg-amber-600/20"
-                } `}
-              >
-                <img
-                  className="w-[30px] h-[30px]"
-                  alt=""
-                  src={`${registerError === "" ? tick : info}`}
-                ></img>
-              </div>
-              <div className="w-auto h-[70px] self-center flex flex-col text-start justify-center items-start">
-                <h2
-                  className={`  w-auto text-start items-start text-2xl  font-bold text-black`}
-                >
-                  {registerError === ""
-                    ? "Đăng kí tài khoản thành công"
-                    : "Đăng kí tài khoản thất bại"}
-                </h2>
-                <h1
-                  className={`  w-auto text-start items-start text-base font-semibold text-gray-700`}
-                >
-                  {registerError === ""
-                    ? "Tài khoản của bạn đã được chấp thuận"
-                    : registerError === "passwordlen"
-                    ? "Mật khẩu phải có độ dài từ 6 đến 16 kí tự"
-                    : registerError === "password"
-                    ? "Mật khẩu nhập lại không chính xác"
-                    : registerError === "username"
-                    ? "Tên tài khoản hoặc email đã tồn tại"
-                    : "Mã API không chính xác"}
-                </h1>
-              </div>
-            </div>
-            <button
-              onClick={() => handleClose1()}
-              className="w-[40px] h-[40px] flex self-center rounded-full justify-center items-center p-3 hover:bg-gray-200/30"
-            >
-              <img
-                alt=""
-                className="w-full h-full object-cover"
-                src={close}
-              ></img>
-            </button>
-          </div>
-        </div>
-      </Modal>
+        open={open}
+        action={"Đăng kí tài khoản"}
+        errorMes={
+          registerError === ""
+            ? "Tài khoản của bạn đã được chấp thuận"
+            : registerError === "passwordlen"
+            ? "Mật khẩu phải có độ dài từ 6 đến 16 kí tự"
+            : registerError === "password"
+            ? "Mật khẩu nhập lại không chính xác"
+            : registerError === "username"
+            ? "Tên tài khoản hoặc email đã tồn tại"
+            : "Mã API không chính xác"
+        }
+      />
       <div className="flex flex-col h-[400px] items-center justify-between  pl-0 lg:pl-[200px] w-1/2 ">
         {isLogin ? (
           <div className="w-[300px] lg:w-[420px] flex flex-col gap-2 justify-center items-center">
