@@ -7,13 +7,13 @@ const Footer = () => {
       <div className=" w-screen h-[90%] flex flex-row gap-[30px] lg:gap-8 py-[20px] pl-3 md:px-[50px] lg:px-[200px]  ">
         <div className="w-1/2 h-full flex text-white flex-col gap-3">
           <h2 className="text-sm lg:text-xl airbnb mb-2 ">Liên hệ</h2>
-          <h2 className="text-xs lg:text-base airbnb ">Ms. Lê Hoàng Thiên Ân </h2>
+          <h2 className="text-xs lg:text-base airbnb ">Ms. Thạch Đặng Minh Uyên </h2>
           <h2 className="text-xs lg:text-base airbnb ">Chủ nhiệm</h2>
           <h2 className="text-xs lg:text-base airbnb ">
-            <span className="underline">Email:</span> lhtan.y19@ump.edu.vn
+            <span className="underline">Email:</span> tdmuyen.Y22@ump.edu.vn
           </h2>
           <h2 className="text-xs lg:text-base airbnb ">
-            <span className="underline">Phone:</span> 076 398 7099
+            <span className="underline">Phone:</span> 0838 890 169
           </h2>
         </div>
         <div className="w-1/2 h-full flex text-white flex-col gap-2">

@@ -14,6 +14,9 @@ import a7 from "../assets/pic/7.jpg";
 import chunhiem from "../assets/pic/chunhiem.jpg";
 import phochunhiem1 from "../assets/pic/phochunhiem1.jpg";
 import phochunhiem2 from "../assets/pic/phochunhiem2.jpg";
+import chuyenmon from "../assets/pic/chuyenmon.jpg";
+import truyenthong from "../assets/pic/truyenthong.jpg";
+import haucan from "../assets/pic/haucan.jpg";
 import Scroll from "../components/Scroll";
 import "../components/animation.css";
 import Footer from "../components/Footer";
@@ -217,7 +220,7 @@ export default function Aboutus() {
           <div className="flex flex-col lg:flex-row w-full h-1/2 gap-6 justify-start lg:justify-center items-start">
             <div className="w-full lg:w-[20%] h-1/3 lg:h-full relative">
               <img
-                // src={prit}
+                src={truyenthong}
                 className="absolute rounded-2xl object-cover w-full h-full"
                 alt=""
               ></img>
@@ -230,7 +233,7 @@ export default function Aboutus() {
             </div>
             <div className="w-full lg:w-[20%] h-1/3 lg:h-full relative">
               <img
-                // src={taichinh}
+                src={chuyenmon}
                 className="absolute rounded-2xl object-cover w-full h-full"
                 alt=""
               ></img>
@@ -243,7 +246,7 @@ export default function Aboutus() {
             </div>
             <div className="w-full lg:w-[20%] h-1/3 lg:h-full relative">
               <img
-                // src={taichinh}
+                src={haucan}
                 className="absolute rounded-2xl object-cover w-full h-full"
                 alt=""
               ></img>
