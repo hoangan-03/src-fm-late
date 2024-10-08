@@ -17,6 +17,7 @@ import Auth from "./page/Auth";
 import Header from "./components/Header";
 import Account from "./page/Account";
 import Edit from "./page/Editoral";
+import Recruitment from "./page/Recruitment";
 
 function App() {
   const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -25,27 +26,34 @@ function App() {
     const refreshToken = localStorage.getItem('refreshToken');
     if (!refreshToken) {
       console.log('No refresh token found. Redirecting to login...');
+      localStorage.clear();
+      window.location.href = '/auth';
       return;
     }
-
+  
     try {
       const response = await axios.post(baseUrl + '/auth/refreshToken', { refreshToken });
       if (response.status === 200) {
         localStorage.setItem('accessToken', response.data.accessToken);
-
       } else {
         console.log('Error refreshing access token:', response.data.message);
+        if (response.data.message === 'Refresh Token Expired') {
+          localStorage.clear();
+          // window.location.href = '/auth';
+        }
       }
     } catch (error) {
       console.error('Error refreshing access token:', error);
+      localStorage.clear();
+      // window.location.href = '/auth';
     }
   };
-
+  
   useEffect(() => {
     refreshAccessToken();
-    const intervalId = setInterval(refreshAccessToken, 555555);
+    const intervalId = setInterval(refreshAccessToken, 555555); 
     return () => clearInterval(intervalId);
-  });
+  }, []);
 
   axios.interceptors.request.use(
     (config) => {
@@ -106,6 +114,7 @@ function App() {
           <Route path="/CourseInfo" element={<CourseInfo />} />
           <Route path="/Auth" element={<Auth />} />
           <Route path="/Account" element={<Account />} />
+          <Route path="/Recruitment" element={<Recruitment />} />
         </Routes>
       </BrowserRouter>
     </div>

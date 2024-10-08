@@ -19,6 +19,7 @@ export default function NavBar() {
   const [avatarUrl, setAvatarUrl] = useState("");
 
   useEffect(() => {
+
     const fetchUserData = async () => {
       if (user) {
         try {
@@ -58,6 +59,7 @@ export default function NavBar() {
   useEffect(() => {
     setActivePage(location.pathname);
   }, [location]);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   return (
     <div
       className={`right-0 flex z-[1900000] fixed h-[100vh] w-[170px] lg:w-[270px] airbnb  ${isActive ? " visible   " : "  invisible"
@@ -83,7 +85,7 @@ export default function NavBar() {
               onClick={() => handleModal()}
             >
               <div
-                className={`open absolute left-0 flex flex-col justify-center items-start gap-1 px-1 lg:px-3 py-5 lg:py-8 top-[42px] w-[150px] lg:w-[220px] h-auto bggray rounded-xl ${modal ? "block" : "hidden"
+                className={`open absolute left-0 flex flex-col justify-center items-start gap-1 px-1 lg:px-3 py-5 lg:py-8 top-[42px] w-[150px] lg:w-[220px] h-auto bggray rounded-xl z-[20] ${modal ? "block" : "hidden"
                   }`}
               >
                 <div className="cursor-default flex flex-row gap-1 lg:gap-3 rounded-lg w-full pl-2 h-[40px] hover:bg-sky-800 py-1 items-center">
@@ -161,29 +163,71 @@ export default function NavBar() {
             <HashLink
               smooth
               className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[15px] md:pl-[30px] cursor-pointer ${activePage === "/Home"
-                  ? "bg-blue-500 text-white"
-                  : "bg-transparent"
+                ? "bg-blue-500 text-white"
+                : "bg-transparent"
                 }`}
               to="/Home#hero"
             >
               Trang chủ
             </HashLink>
-            <HashLink
-              smooth
-              className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[15px] md:pl-[30px] cursor-pointer ${activePage === "/About"
-                  ? "bg-blue-500 text-white"
-                  : "bg-transparent"
+            <div
+              className={`self-start h-[30px] relative lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[15px] md:pl-[30px] cursor-pointer ${activePage === "/About"
+                ? "bg-blue-500 text-white"
+                : "bg-transparent"
                 }`}
-              to="/About#mission"
+              onMouseEnter={() => setIsDropdownOpen(true)}
+              onMouseLeave={() => setIsDropdownOpen(false)}
             >
-              Về chúng tôi
-            </HashLink>
+              <HashLink
+                smooth
+                className=""
+                to="/About#mission"
+              >
+                Về chúng tôi
+              </HashLink>
+              {isDropdownOpen && (
+                <div
+                  className="absolute left-0 top-[30px]  lg:top-[50px] w-full bg-gray-100 shadow-xl"
+                  onMouseEnter={() => setIsDropdownOpen(true)}
+                  onMouseLeave={() => setIsDropdownOpen(false)}
+                >
+                  <HashLink
+                    smooth
+                    className="block px-4 py-2 text-xs lg:text-base h-[30px] lg:h-[40px] text-black hover:bg-sky-700 hover:text-white"
+                    to="/About#mission"
+                  >
+                    Sứ mệnh
+                  </HashLink>
+                  <HashLink
+                    smooth
+                    className="block px-4 py-2 text-xs lg:text-base h-[30px] lg:h-[40px] text-black hover:bg-sky-700 hover:text-white"
+                    to="/About#vision1"
+                  >
+                    Tầm nhìn
+                  </HashLink>
+                  <HashLink
+                    smooth
+                    className="block px-4 py-2 text-xs lg:text-base h-[30px] lg:h-[40px] text-black hover:bg-sky-700 hover:text-white"
+                    to="/About#organization"
+                  >
+                    Tổ chức
+                  </HashLink>
+                  <HashLink
+                    smooth
+                    className="block px-4 py-2 text-xs lg:text-base h-[30px] lg:h-[40px] text-black hover:bg-sky-700 hover:text-white"
+                    to="/Recruitment"
+                  >
+                    Tuyển thành viên
+                  </HashLink>
+                </div>
+              )}
+            </div>
             <HashLink
               smooth
-              className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[15px] md:pl-[30px] cursor-pointer ${activePage === "/Annoucement"
-                  ? "bg-blue-500 text-white"
-                  : "bg-transparent"
-                }`}
+              className={`self-start h-[30px]  lg:h-[50px] transition-all duration-300 w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[15px] md:pl-[30px] cursor-pointer ${activePage === "/Annoucement"
+                ? "bg-blue-500 text-white"
+                : "bg-transparent "
+                }${isDropdownOpen ? "mt-[120px] lg:mt-[160px]" : ""}`}
               to="/Annoucement#hero"
             >
               Tin tức - Sự kiện
@@ -203,18 +247,18 @@ export default function NavBar() {
             <HashLink
               smooth
               className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[15px] md:pl-[30px] cursor-pointer ${activePage === "/Partners"
-                  ? "bg-blue-500 text-white"
-                  : "bg-transparent"
+                ? "bg-blue-500 text-white"
+                : "bg-transparent "
                 }`}
               to="/Partners#Partners"
             >
               Hợp tác - Đối tác
             </HashLink>
           </nav>
-          <div className=" overflow-y-hidden absolute bottom-0 w-[270px] h-1/3 ml-[20px] lg:ml-[30px] border-t-2  border-t-gray-700 flex flex-row">
+          <div className=" overflow-y-hidden absolute bottom-0 w-[270px] h-1/4 ml-[20px] lg:ml-[30px] border-t-2  border-t-gray-700 flex flex-row">
             <div className="w-3/5 h-full flex items-start justify-start flex-col ">
               <div className="w-full h-full flex flex-col gap-8 mt-8 ">
-                <div className="w-full h-1/2 flex flex-col text-start text-black text-xs lg:text-sm uppercase mt-2">
+                <div className="w-full h-1/2 flex flex-col text-start text-black text-xs uppercase mt-2">
                   <h4 className=" w-full h-auto overflow-hidden ">
                     Powered by
                   </h4>

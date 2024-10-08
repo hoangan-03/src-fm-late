@@ -174,7 +174,7 @@ const Partners = () => {
             </div>
             <ReactQuill
               theme="snow"
-              placeholder="Viết góp ý của bạn ở đây. Ý kiến của bạn sẽ giúp chúng tôi phát triển."
+              placeholder="Viết tin nhắn của bạn ở đây..."
               modules={{
                 toolbar: false,
                 "emoji-toolbar": false,
@@ -185,7 +185,7 @@ const Partners = () => {
               onChange={setMessage}
             />
             <button type="submit" className="bg-sky-700 hover:bg-sky-600 font-bold text-xl text-white py-3 rounded-3xl">
-              Gửi email cho chúng tôi
+              Gửi
             </button>
           </form>
         </div>

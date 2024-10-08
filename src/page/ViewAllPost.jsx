@@ -7,8 +7,11 @@ import { HashLink } from "react-router-hash-link";
 
 const ViewAllPost = ({ containerData }) => {
   const userLocalStorage = JSON.parse(localStorage.getItem("user"));
-  let userRole;
-  if (userLocalStorage.role === "Admin") { userRole = true } else { userRole = false }
+  let userRole = false;
+  if (userLocalStorage && userLocalStorage.role === "Admin") {
+    userRole = true;
+  }
+
   const [inputText, setInputText] = useState("");
   let inputHandler = (e) => {
     var lowerCase = e.target.value.toLowerCase();
