@@ -264,7 +264,7 @@ export default function NavBar() {
                     Powered by
                   </h4>
                   <h4 className="w-full h-auto overflow-hidden">
-                    HCMUT.Andodes
+                    HCMUT.Anlaluot
                   </h4>
                 </div>
               </div>
