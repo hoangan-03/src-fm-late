@@ -224,11 +224,12 @@ export default function NavBar() {
             </div>
             <HashLink
               smooth
-              className={`self-start h-[30px]  lg:h-[50px] transition-all duration-300 w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[15px] md:pl-[30px] cursor-pointer ${activePage === "/Annoucement"
+              className={`self-start h-[30px]  lg:h-[50px] w-full flex items-center  hover:bg-blue-500 hover:text-white pl-[15px] md:pl-[30px] cursor-pointer ${activePage === "/Annoucement"
                 ? "bg-blue-500 text-white"
                 : "bg-transparent "
                 }${isDropdownOpen ? "mt-[120px] lg:mt-[160px]" : ""}`}
               to="/Annoucement#hero"
+              style={{ transition: 'margin 0.4s' }}
             >
               Tin tức - Sự kiện
             </HashLink>
