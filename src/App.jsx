@@ -27,7 +27,7 @@ function App() {
     if (!refreshToken) {
       console.log('No refresh token found. Redirecting to login...');
       localStorage.clear();
-      window.location.href = '/auth';
+      // window.location.href = '/auth';
       return;
     }
   
