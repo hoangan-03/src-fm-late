@@ -268,7 +268,7 @@ const HomePage = ({ containerData }) => {
                 </h2>
                 <h4 className="hidden lg:block text-sm h-auto w-full text-gray-200 ">
                   {containerData.length > 0 || !containerData
-                    ? containerData[containerData.length - 1].date.substring(8, 20)
+                    ? containerData[containerData.length - 1].date
                     : "No date available"}
                 </h4>
                 <p className="hidden lg:block w-full h-auto text-sm text-gray-100 ">
@@ -311,7 +311,7 @@ const HomePage = ({ containerData }) => {
                         {truncateHeading(currentItem.heading)}
                       </h2>
                       <h4 className="hidden lg:block text-xs h-auto w-full text-gray-200">
-                        {currentItem.date.substring(8, 20)}
+                        {currentItem.date}
                       </h4>
                       <p className="hidden lg:block w-full h-auto text-xs text-gray-100">
                         {transform(currentItem.p)}

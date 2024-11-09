@@ -38,7 +38,7 @@ function RecentPostContainer({ imageSrc, heading, date, category }) {
           <h2
             className={`text-xs lg:text-sm self-center  font-semibold text-center text-gray-600 `}
           >
-            {date.substring(8)}
+            {date}
           </h2>
         </div>
       </div>

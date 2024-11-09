@@ -86,7 +86,7 @@ function Container({ imageSrc, heading, date, p, category, editMode, postId, ind
             <h2
               className={` text-xs self-center  font-semibold text-center text-gray-600 `}
             >
-              {date.substring(8)}
+              {date}
             </h2>
           </div>
         </div>
