@@ -176,7 +176,7 @@ const Annoucement = ({ containerData }) => {
               ></img>
             </div>
           ) : (
-            <div className="block lg:hidden w-full h-[220px] lg:h-2/3 flex items-center justify-center bg-gray-200 rounded-3xl">
+            <div className="lg:hidden w-full h-[220px] lg:h-2/3 flex items-center justify-center bg-gray-200 rounded-3xl">
               <h3 className="text-gray-500 text-lg">No announcements available</h3>
             </div>
           )}
