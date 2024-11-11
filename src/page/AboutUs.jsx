@@ -119,6 +119,7 @@ export default function Aboutus() {
                 src={a3}
                 className="w-full z-20 h-full relative object-cover"
                 alt=""
+                loading="lazy"
               ></img>
               <div className="absolute w-full  z-10 top-0 left-0 blur-lg h-full translate-x-10 translate-y-10 bg-teal-300/60"></div>
             </div>
@@ -136,6 +137,7 @@ export default function Aboutus() {
               src={a7}
               className="w-full z-20 h-full relative object-cover"
               alt=""
+              loading="lazy"
             ></img>
             <div className="absolute w-full  z-10 top-0 left-0 blur-lg h-full translate-x-10 -translate-y-10 bg-teal-300/60"></div>
           </div>
@@ -161,6 +163,7 @@ export default function Aboutus() {
             className="w-full h-full object-cover"
             src={mouseup}
             alt=""
+            loading="lazy"
           ></img>
         </a>
         <div className="w-full h-[60px] lg:h-[120px] justify-center mt-[50px] ">
@@ -181,6 +184,7 @@ export default function Aboutus() {
                 src={phochunhiem1}
                 className="absolute rounded-2xl object-cover w-full h-full"
                 alt=""
+                loading="lazy"
               ></img>
               <div className="absolute airbnb py-2 h-auto backdrop-blur-sm text-black w-full flex justify-center items-center bg-white/80 pl-2 bottom-2 lg:bottom-4 flex-col">
                 <h2 className="text-xl font-extrabold uppercase">
@@ -195,6 +199,7 @@ export default function Aboutus() {
                 src={chunhiem}
                 className="absolute rounded-2xl object-cover w-full h-full"
                 alt=""
+                loading="lazy"
               ></img>
               <div className="absolute airbnb py-2 h-auto backdrop-blur-sm text-black w-full flex justify-center items-center bg-white/80 pl-2 bottom-2 lg:bottom-4 flex-col">
                 <h2 className="text-xl font-extrabold uppercase">
@@ -208,6 +213,7 @@ export default function Aboutus() {
                 src={phochunhiem2}
                 className="absolute rounded-2xl object-cover w-full h-full"
                 alt=""
+                loading="lazy"
               ></img>
               <div className="absolute airbnb py-2 h-auto backdrop-blur-sm text-black w-full flex justify-center items-center bg-white/80 pl-2 bottom-2 lg:bottom-4 flex-col">
                 <h2 className="text-xl font-extrabold uppercase">
@@ -223,6 +229,7 @@ export default function Aboutus() {
                 src={truyenthong}
                 className="absolute rounded-2xl object-cover w-full h-full"
                 alt=""
+                loading="lazy"
               ></img>
               <div className="absolute airbnb py-2 h-auto backdrop-blur-sm text-black w-full flex justify-center items-center bg-white/80 pl-2 bottom-2 lg:bottom-4 flex-col">
                 <h2 className="text-xl font-extrabold uppercase">
@@ -236,6 +243,7 @@ export default function Aboutus() {
                 src={chuyenmon}
                 className="absolute rounded-2xl object-cover w-full h-full"
                 alt=""
+                loading="lazy"
               ></img>
               <div className="absolute airbnb py-2 h-auto backdrop-blur-sm text-black w-full flex justify-center items-center bg-white/80 pl-2 bottom-2 lg:bottom-4 flex-col">
                 <h2 className="text-xl font-extrabold uppercase">
@@ -249,6 +257,7 @@ export default function Aboutus() {
                 src={haucan}
                 className="absolute rounded-2xl object-cover w-full h-full"
                 alt=""
+                loading="lazy"
               ></img>
               <div className="absolute airbnb py-2 h-auto backdrop-blur-sm text-black w-full flex justify-center items-center bg-white/80 pl-2 bottom-2 lg:bottom-4 flex-col">
                 <h2 className="text-xl font-extrabold uppercase">

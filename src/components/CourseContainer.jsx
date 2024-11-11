@@ -17,6 +17,7 @@ function CourseContainer({ heading, description, price }) {
         <img
           src={backgoodd}
           alt="Container"
+          loading="lazy"
           className="object-cover h-full w-full rounded-tl-3xl rounded-tr-3xl "
         />
       </div>

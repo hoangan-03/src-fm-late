@@ -42,6 +42,7 @@ const PictureInfo = ({ pictures }) => {
           <img
             src={picture.image}
             alt=""
+            loading="lazy"
             className="w-full h-full border-black border-[1px] trans object-cover"
           />
         </div>

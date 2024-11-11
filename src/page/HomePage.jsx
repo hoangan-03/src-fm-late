@@ -184,6 +184,7 @@ const HomePage = ({ containerData }) => {
                     className="w-full lg:w-[80%] h-[100px] lg:h-[90%] object-cover z-30"
                     src={a1}
                     alt=""
+                    loading="lazy"
                   ></img>
                   <div className="hidden lg:block absolute w-[80%] h-[90%] top-0  border-white border-4 z-20 translate-x-4 translate-y-9"></div>
                 </div>
@@ -201,6 +202,7 @@ const HomePage = ({ containerData }) => {
                     className="w-full lg:w-[80%] h-[100px] lg:h-[90%] object-cover z-30"
                     src={a5}
                     alt=""
+                    loading="lazy"
                   ></img>
                   <div className="hidden lg:block absolute w-[80%] h-[90%] top-0  border-white border-4 z-20 translate-x-4 translate-y-9"></div>
                 </div>
@@ -218,6 +220,7 @@ const HomePage = ({ containerData }) => {
                     className="w-full lg:w-[80%] h-[100px] lg:h-[90%] object-cover z-30"
                     src={a6}
                     alt=""
+                    loading="lazy"
                   ></img>
                   <div className="hidden lg:block absolute w-[80%] h-[90%] top-0  border-white border-4 z-20 translate-x-4 translate-y-9"></div>
                 </div>
@@ -258,6 +261,7 @@ const HomePage = ({ containerData }) => {
                       : "No heading available"
                   }
                   alt=""
+                  loading="lazy"
                 ></img>
               </div>
               <div className="w-[40%] h-full airbnb flex flex-col px-2 py-3  lg:px-3 lg:py-4 gap-2">
@@ -304,6 +308,7 @@ const HomePage = ({ containerData }) => {
                         className="w-full h-full object-cover rounded-tl-2xl rounded-bl-2xl lg:rounded-bl-none lg:rounded-tr-2xl"
                         src={currentItem.image}
                         alt=""
+                        loading="lazy"
                       />
                     </div>
                     <div className="w-[40%] h-full lg:w-full flex flex-col gap-1 pt-2 px-3">
@@ -345,6 +350,7 @@ const HomePage = ({ containerData }) => {
                   className="w-full h-full object-cover rounded-tl-2xl rounded-bl-2xl"
                   src={dna}
                   alt=""
+                  loading="lazy"
                 ></img>
               </div>
               <div className="w-[40%] h-full airbnb flex flex-col  px-3 py-4 gap-2  ">
@@ -375,6 +381,7 @@ const HomePage = ({ containerData }) => {
                   className="w-full h-full object-cover rounded-tr-2xl rounded-br-2xl"
                   src={backgood}
                   alt=""
+                  loading="lazy"
                 ></img>
               </div>
             </HashLink>
@@ -393,8 +400,8 @@ const HomePage = ({ containerData }) => {
               </HashLink>{" "}
             </div>
             <div className="h-[120px] lg:h-[250px] w-full rounded-xl flex flex-row bg-white">
-              <img className="h-full w-1/2 object-cover rounded-tl-xl rounded-bl-xl" alt="" src={dna}></img>
-              <img className="h-full w-1/2 object-cover rounded-tr-xl rounded-br-xl" alt="" src={backgood}></img>
+              <img className="h-full w-1/2 object-cover rounded-tl-xl rounded-bl-xl" alt="" loading="lazy" src={dna}></img>
+              <img className="h-full w-1/2 object-cover rounded-tr-xl rounded-br-xl" alt="" loading="lazy" src={backgood}></img>
             </div>
             <div className="h-[120px] lg:h-[250px] rounded-xl w-full flex flex-col justify-center items-center bg-white">
 
@@ -402,6 +409,7 @@ const HomePage = ({ containerData }) => {
                 className="object-cover h-[120px]  lg:h-[255px] w-[120px] lg:w-[255px] p-2 hover:scale-125 transition-all duration-200"
                 src={spon1}
                 alt=""
+                loading="lazy"
               ></img>
             </div>
           </div>
@@ -424,6 +432,7 @@ const HomePage = ({ containerData }) => {
                     } `}
                   src={a1}
                   alt=""
+                  loading="lazy"
                 ></img>
                 <img
                   className={`object-cover absolute  w-[95%] lg:w-[70%]   transition-all duration-500  h-[45%] lg:h-[70%] rounded-3xl ${order === 3 ? "opacity-100" : "opacity-0"
@@ -434,18 +443,21 @@ const HomePage = ({ containerData }) => {
                       : "No heading available"
                   }
                   alt=""
+                  loading="lazy"
                 ></img>
                 <img
                   className={`object-cover absolute  w-[95%] lg:w-[70%] transition-all duration-500  h-[45%] lg:h-[70%] rounded-3xl ${order === 4 ? "opacity-100" : "opacity-0"
                     } `}
                   src={dna}
                   alt=""
+                  loading="lazy"
                 ></img>
                 <img
                   className={`object-cover absolute  w-[95%] lg:w-[70%] transition-all duration-500  h-[45%] lg:h-[70%] rounded-3xl ${order === 5 ? "opacity-100" : "opacity-0"
                     } `}
                   src={a4}
                   alt=""
+                  loading="lazy"
                 ></img>
               </div>
             </div>

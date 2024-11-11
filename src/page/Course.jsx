@@ -25,11 +25,11 @@ const Course = () => {
           <div className="absolute top-[200px] lg:top-[120px] z-[200] bg-white shadow-xl right-2 lg:left-10 text-2xl text-black rounded-[60px] px-4 lg:px-8 py-3 w-[240px] lg:w-[420px] h-auto"><span className="text-white rounded-2xl w-auto text-center text-3xl bg-sky-800 px-2 py-1">10+</span> Khóa học đã được SRC-FM triển khai</div>
 
           <div className="w-full lg:w-1/3 h-[70%]  bg-black rounded-[140px] translate-y-[60px]">
-            <img className="w-full h-full rounded-[140px] object-cover" alt='' src={a1}></img>
+            <img className="w-full h-full rounded-[140px] object-cover" alt='' loading="lazy" src={a1}></img>
           </div>
           <div className="w-1/3 hidden lg:block h-[60%]  bg-black rounded-[140px] -translate-y-[60px]">
 
-            <img className="w-full h-full rounded-[140px] object-cover" alt='' src={a2}></img>
+            <img className="w-full h-full rounded-[140px] object-cover" alt='' loading="lazy" src={a2}></img>
           </div>
         </div>
       </section>

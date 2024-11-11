@@ -273,6 +273,7 @@ const Account = () => {
                   className="w-20 h-20 object-cover rounded-full"
                   src={avatarUrl || avatar}
                   alt=""
+                  loading="lazy"
                 ></img>
               </div>
               <div className="w-[60%] hidden  h-full lg:flex flex-col justify-start items-start gap-3">

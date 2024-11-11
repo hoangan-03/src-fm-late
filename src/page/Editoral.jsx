@@ -8,10 +8,11 @@ import "react-quill/dist/quill.snow.css";
 import "quill-emoji/dist/quill-emoji.css";
 import image from "../assets/pic/add-image.png";
 import CustomModal from "../components/CustomModal";
-
 import { useParams } from "react-router-dom";
 import ToolbarOptions from "../functions/ToolbarOptions";
 import { useNavigate } from "react-router-dom";
+import { Edit } from "@mui/icons-material"; // Importing an icon from Material UI
+
 Quill.register("modules/emoji", Emoji);
 
 const categoryOptions = ["Thông báo", "Sự kiện"];
@@ -63,7 +64,7 @@ const Editoral = () => {
         setImageUrl(uploadedImageUrl);
         return uploadedImageUrl;
       } else {
-        console.error('Failed to upload image',error);
+        console.error('Failed to upload image', error);
         return null;
       }
     } catch (error) {
@@ -83,7 +84,6 @@ const Editoral = () => {
     ];
     const currentDate = new Date();
     const day = currentDate.getDate();
-
     const month = currentDate.getMonth();
     const year = currentDate.getFullYear();
     const date = dates[currentDate.getDay()];
@@ -145,7 +145,7 @@ const Editoral = () => {
     window.location.reload();
   };
   return (
-    <section className="w-screen h-auto flex flex-col justify-center items-center">
+    <section className="w-screen h-auto flex flex-col justify-center items-center bg-gray-100 py-32">
       <CustomModal
         isSuccess={active}
         onClose={handleClose}
@@ -153,10 +153,14 @@ const Editoral = () => {
         action={"Cập nhật bài viết"}
         errorMes={error}
       />
-      <div className="flex flex-col mb-[50px] w-[90vw] lg:w-[70vw]  h-auto gap-1 md:gap-3  justify-start ">
-        <div className="w-[150px] h-[45px] md:h-[40px] mt-[120px] text-base md:text-base">
+      <div className="flex flex-col mb-10 w-[90vw] lg:w-[70vw] bg-white shadow-lg rounded-lg p-6">
+        <div className="flex items-center mb-6">
+          <Edit className="text-xl mr-2" />
+          <h2 className="text-xl font-semibold">Cập nhật bài viết</h2>
+        </div>
+        <div className="w-full mb-4">
           <select
-            className="w-full h-full border-[1px]  border-black p-1"
+            className="w-full h-12 border border-gray-300 rounded-lg p-2"
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
           >
@@ -167,14 +171,14 @@ const Editoral = () => {
             ))}
           </select>
         </div>
-        <div className="w-full h-[35px] md:h-[50px] text-base md:text-xl">
+        <div className="w-full mb-4">
           <input
             type="text"
             placeholder="Tiêu đề bài viết"
-            className="w-full h-full border-[1px]   border-black p-1 md:p-3"
+            className="w-full h-12 border border-gray-300 rounded-lg p-2"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-          ></input>
+          />
         </div>
         <input
           type="file"
@@ -182,8 +186,7 @@ const Editoral = () => {
           style={{ display: "none" }}
           ref={fileInputRef}
         />
-
-        <div id="quill-editor">
+        <div id="quill-editor" className="mb-4">
           <ReactQuill
             theme="snow"
             placeholder="Nội dung bài viết"
@@ -199,48 +202,35 @@ const Editoral = () => {
             onChange={setValue}
           />
         </div>
-        <div className="self-center flex justify-center mt-5 h-[50px] w-[50px]  cursor-pointer">
+        <div className="self-center flex justify-center mt-5 h-12 w-12 cursor-pointer">
           <button onClick={() => fileInputRef.current.click()}>
-            <label className="w-[50px] cursor-pointer overflow-hidden h-[50px]">
+            <label className="w-12 h-12 cursor-pointer overflow-hidden">
               <img
-                className="w-full cursor-pointer overflow-hidden h-full"
+                className="w-full h-full object-cover"
                 src={image}
-                alt=""
-              ></img>
+                alt="Add"
+              />
             </label>
           </button>
         </div>
-        <div
-          className={`preview w-full h-[220px] flex flex-col aspect-video ${
-            imageUrl ? "flex" : "hidden"
-          }`}
-        >
-          <div className={`justify-center mt-3 flex `}>
-            {imageUrl && (
-              <img
-                className="h-[200px] w-[355px] border-4 border-black object-cover"
-                src={imageUrl}
-                alt="Uploaded"
-              />
-            )}
+        {imageUrl && (
+          <div className="preview w-full h-auto flex flex-col items-center mt-4">
+            <img
+              className="h-48 w-64 border-4 border-gray-300 object-cover rounded-lg"
+              src={imageUrl}
+              loading="lazy"
+              alt="Uploaded"
+            />
           </div>
-        </div>
-        <div
-          className={`w-full h-[35px]  flex flex-col  ${
-            imageUrl ? "hidden" : "flex"
-          }`}
-        >
-          <p className="text-sm md:text-base self-center font-semibold ">
-            Tải hình nền lên (kich thước dưới 10MB)
-          </p>
-        </div>
-
-        <button
-          className=" button-89 w-auto h-[60px] text-center text-sm md:text-base self-center bt font-bold text-black"
-          onClick={handleEdit}
-        >
-          Cập nhật bài viết
-        </button>
+        )}
+        {!imageUrl && (
+          <div className="w-full h-auto flex flex-col items-center mt-4">
+            <p className="text-sm font-semibold text-gray-600">
+              Tải hình nền lên (kích thước dưới 10MB)
+            </p>
+          </div>
+        )}
+        <button className="mt-10 button-89 w-auto h-[60px] text-center text-sm md:text-base  self-center bt font-bold text-black" onClick={handleEdit}>Cập nhật bài viết</button>
       </div>
     </section>
   );

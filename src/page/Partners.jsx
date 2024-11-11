@@ -53,6 +53,7 @@ const Partners = () => {
              object-cover hover:scale-150 transition-all duration-300"
             src={spon1}
             alt=""
+            loading="lazy"
           ></img>
         </div>
       </section>

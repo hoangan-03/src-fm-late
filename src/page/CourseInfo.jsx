@@ -19,6 +19,7 @@ const InfoItem = ({ src, text }) => (
         <img
             src={src}
             alt=""
+            loading="lazy"
             className="w-8 h-8 object-cover flex justify-center items-center"
         />
         <h2 className="text-base text-black">{text}</h2>
@@ -94,6 +95,7 @@ export const CourseInfo = () => {
                                 <img
                                     src={star}
                                     alt=""
+                                    
                                     className="w-8 h-8 object-cover flex justify-center items-center"
                                 ></img>
                                 <h2 className="text-sm text-gray-800">(22 lượt reviews)</h2>

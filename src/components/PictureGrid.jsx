@@ -1,28 +1,60 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
-import Container from './Container'; 
-import Pagination from './Pagination'; 
+import { useState, useEffect } from 'react';
+import Container from './Container';
+import Pagination from './Pagination';
 
-const PictureGrid = ({ containersPerPage, containerList, input, editMode }) => {
+const PictureGrid = ({
+  containersPerPage,
+  containerList = [],
+  input,
+  editMode,
+  selectedCategory,
+  sortOrder,
+}) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [filteredAndSortedData, setFilteredAndSortedData] = useState([]);
 
-  const totalPages = Math.ceil(containerList.length / containersPerPage);
+  useEffect(() => {
+    let data = containerList || [];
+
+    // Filter by search input
+    data = data.filter((el) => {
+      if (input === "") {
+        return true;
+      } else {
+        return el.heading.toLowerCase().includes(input);
+      }
+    });
+
+    // Filter by category
+    if (selectedCategory !== "") {
+      data = data.filter((el) => el.category === selectedCategory);
+    }
+
+    // Sort by date
+    data.sort((a, b) => {
+      const dateA = new Date(a.date.replace(/-/g, '/'));
+      const dateB = new Date(b.date.replace(/-/g, '/'));
+      if (sortOrder === "newest") {
+        return dateB - dateA;
+      } else {
+        return dateA - dateB;
+      }
+    });
+
+    setFilteredAndSortedData(data);
+    setCurrentPage(1); // Reset to first page when filters change
+  }, [containerList, input, selectedCategory, sortOrder]);
+
+  const totalPages = Math.ceil(filteredAndSortedData.length / containersPerPage);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  const filteredData = containerList.filter((el) => {
-    if (input === "") {
-      return el;
-    } else {
-      return el.heading.toLowerCase().includes(input);
-    }
-  });
-  const reversedContainers = [...filteredData].reverse();
   const indexOfLastContainer = currentPage * containersPerPage;
   const indexOfFirstContainer = Math.max(0, indexOfLastContainer - containersPerPage);
-  const currentContainers = reversedContainers.slice(
+  const currentContainers = filteredAndSortedData.slice(
     indexOfFirstContainer,
     indexOfLastContainer
   );

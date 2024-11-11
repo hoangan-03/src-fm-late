@@ -30,6 +30,7 @@ const CustomModal = ({ open, isSuccess, action, onClose, errorMes }) => {
                 <img
                   className="w-[30px] h-[30px]"
                   alt=""
+                  loading="lazy"
                   src={isSuccess ? tick : info}
                 ></img>
               </div>
@@ -54,6 +55,7 @@ const CustomModal = ({ open, isSuccess, action, onClose, errorMes }) => {
                 alt=""
                 className="w-full h-full object-cover"
                 src={close}
+                loading="lazy"
               ></img>
             </button>
           </div>

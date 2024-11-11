@@ -9,6 +9,7 @@ function RecentPostContainer({ imageSrc, heading, date, category }) {
       <img
         src={imageSrc}
         alt="Container"
+        loading="lazy"
         className="object-cover  h-auto aspect-square w-2/3 rounded-xl lg:w-[150px] lg:h-auto"
       />
       <div
@@ -32,6 +33,7 @@ function RecentPostContainer({ imageSrc, heading, date, category }) {
         <div className="flex flex-row gap-1 justify-end w-full items-center">
           <img
             alt=""
+            loading="lazy"
             className="w-[12px] h-[12px] object-cover"
             src={datee}
           ></img>

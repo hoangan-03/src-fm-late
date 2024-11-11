@@ -396,6 +396,7 @@ const Auth = () => {
           src={a1}
           className="w-full h-full object-cover rounded-3xl"
           alt=""
+          loading="lazy"
         ></img>
       </div>
     </section>

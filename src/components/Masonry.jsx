@@ -52,9 +52,16 @@ const Masonry = () => {
         <a.div style={style}>
           <div
             style={{
-              backgroundImage: `url(${item.css}`,
+              backgroundImage: `url(${item.css})`,
             }}
-          />
+          >
+            <img
+              src={item.css}
+              alt=""
+              loading="lazy"
+              style={{ display: "none" }}
+            />
+          </div>
         </a.div>
       ))}
     </div>

@@ -83,6 +83,7 @@ const Annoucement = ({ containerData }) => {
                     : "No heading available"
                 }
                 alt=""
+                loading="lazy"
               ></img>
             </div>
           ) : (
@@ -129,6 +130,7 @@ const Annoucement = ({ containerData }) => {
                     : "No heading available"
                 }
                 alt=""
+                loading="lazy"
               ></img>
             </div>
           ) : (
@@ -173,6 +175,7 @@ const Annoucement = ({ containerData }) => {
                     : "No heading available"
                 }
                 alt=""
+                loading="lazy"
               ></img>
             </div>
           ) : (
@@ -191,6 +194,7 @@ const Annoucement = ({ containerData }) => {
                     : "No heading available"
                 }
                 alt=""
+                loading="lazy"
               ></img>
               <HashLink
                 to="../ViewAllPost"
