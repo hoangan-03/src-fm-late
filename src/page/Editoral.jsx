@@ -226,7 +226,7 @@ const Editoral = () => {
         {!imageUrl && (
           <div className="w-full h-auto flex flex-col items-center mt-4">
             <p className="text-sm font-semibold text-gray-600">
-              Tải hình nền lên (kích thước dưới 10MB)
+              Tải hình nền (kích thước dưới 10MB)
             </p>
           </div>
         )}
