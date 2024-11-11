@@ -80,7 +80,7 @@ export default function NavBar() {
             </HashLink>
 
             <button
-              className={`rounded-full relative w-10 h-10 flex justify-center items-center ${user ? "block" : "hidden"
+              className={`rounded-full relative flex justify-center items-center ${user ? "block" : "hidden"
                 }`}
               onClick={() => handleModal()}
             >
@@ -89,12 +89,16 @@ export default function NavBar() {
                   }`}
               >
                 <div className="cursor-default flex flex-row gap-1 lg:gap-3 rounded-lg w-full pl-2 h-[40px] hover:bg-sky-800 py-1 items-center">
-                  <div className="w-8 h-8 flex justify-center items-center rounded-full bg-gray-200/20 ">
-                    <img
-                      className="w-full h-full object-cover rounded-full"
-                      src={avatarUrl || profile}
-                      alt=""
-                    ></img>
+                  <div className="relative w-8 h-8">
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-red-500 via-yellow-500 to-green-500"></div>
+                    <div className="w-7 h-7 flex justify-center items-center rounded-full bg-gray-200/20 absolute top-[0.125rem] left-[0.125rem]">
+                      <img
+                        className="w-full h-full object-cover rounded-full"
+                        src={avatarUrl || profile}
+                        alt=""
+                        loading="lazy"
+                      ></img>
+                    </div>
                   </div>
                   <h1 className="text-xs text-white font-bold w-auto max-w-20 lg:max-w-full leading-4">
                     {fullname.length > 16
@@ -145,11 +149,17 @@ export default function NavBar() {
                 </button>
               </div>
 
-              <img
-                className="object-cover w-full h-full rounded-full "
-                alt=""
-                src={avatarUrl || profile}
-              ></img>
+              <div className="relative w-11 h-11">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-red-500 via-yellow-500 to-green-500"></div>
+                <div className="w-10 h-10 flex justify-center items-center rounded-full bg-gray-200/20 absolute top-[0.125rem] left-[0.125rem]">
+                  <img
+                    className="w-full h-full object-cover rounded-full"
+                    src={avatarUrl || profile}
+                    alt=""
+                    loading="lazy"
+                  ></img>
+                </div>
+              </div>
               <div className="w-4 h-4 absolute bottom-[-1px] p-1 right-0 bg-black rounded-full">
                 <img
                   className="object-cover w-full h-full invert "

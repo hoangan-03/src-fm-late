@@ -14,6 +14,7 @@ import Modal from "@mui/material/Modal";
 import tick from "../assets/pic/accept.png";
 import info from "../assets/pic/info.png";
 import close from "../assets/pic/close.png";
+import 'dayjs/locale/en';
 
 const BlueOutlinedTextField = styled(TextField)(() => ({
   "& .MuiOutlinedInput-root": {
@@ -215,18 +216,16 @@ const Account = () => {
         aria-describedby="modal-modal-description"
       >
         <div
-          className={`absolute border-b-[8px] ${
-            success ? "border-b-green-500" : "border-b-amber-600"
-          }  left-1/2 gap-1 top-1/2 flex h-[100px] w-[90vw] lg:w-[620px] -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center rounded-2xl bg-white`}
+          className={`absolute border-b-[8px] ${success ? "border-b-green-500" : "border-b-amber-600"
+            }  left-1/2 gap-1 top-1/2 flex h-[100px] w-[90vw] lg:w-[620px] -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center rounded-2xl bg-white`}
         >
           <div
             className={`flex flex-row gap-1 lg:gap-4 h-full w-full justify-center lg:justify-between px-1 lg:px-4 pl-5`}
           >
             <div className="flex lg:flex-row gap-4 h-full w-full">
               <div
-                className={`hidden h-[45px] w-[45px] p-1 self-center rounded-xl lg:flex justify-center items-center ${
-                  success ? "bg-green-500/20" : "bg-amber-600/20"
-                } `}
+                className={`hidden h-[45px] w-[45px] p-1 self-center rounded-xl lg:flex justify-center items-center ${success ? "bg-green-500/20" : "bg-amber-600/20"
+                  } `}
               >
                 <img
                   className="w-[30px] h-[30px]"
@@ -269,14 +268,17 @@ const Account = () => {
           <div className="w-full h-auto lg:h-[30%] bg-gray-100 flex flex-col gap-4 justify-center items-center px-3 py-6">
             <div className="w-full flex flex-row gap-1 lg:gap-4 justify-center items-center">
               <div className="w-[40%] h-full flex flex-col gap-2 justify-start items-center ">
-                <img
-                  className="w-20 h-20 object-cover rounded-full"
-                  src={avatarUrl || avatar}
-                  alt=""
-                  loading="lazy"
-                ></img>
+                <div className="relative w-[5.5rem] h-[5.5rem]">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-red-500 via-yellow-500 to-green-500"></div>
+                  <img
+                    className="w-20 h-20 object-cover rounded-full absolute top-1 left-1"
+                    src={avatarUrl || avatar}
+                    alt=""
+                    loading="lazy"
+                  ></img>
+                </div>
               </div>
-              <div className="w-[60%] hidden  h-full lg:flex flex-col justify-start items-start gap-3">
+              <div className="w-[60%] hidden h-full lg:flex flex-col justify-start items-start gap-3">
                 <button
                   className="w-[200px] lg:w-full h-auto text-sm font-bold bg-sky-800 hover:bg-sky-700 text-white px-6 lg:px-2 py-2 flex justify-center items-center rounded-2xl"
                   onClick={() => fileInputRef.current.click()}
@@ -304,85 +306,73 @@ const Account = () => {
           <div className="w-full h-[70%] bg-gray-200 flex flex-row lg:flex-col justify-start lg:justify-between items-center">
             <div className="h-auto w-[80%] lg:w-full flex flex-row lg:flex-col justify-start items-center">
               <div
-                className={`flex cursor-pointer flex-row w-full pl-0 lg:pl-5 py-2 justify-center lg:justify-start items-center border-b-4 lg:border-l-4 lg:border-b-0 gap-3  ${
-                  active === 1
-                    ? "bg-white border-sky-700"
-                    : "hover:bg-white hover:border-black"
-                } `}
+                className={`flex cursor-pointer flex-row w-full pl-0 lg:pl-5 py-2 justify-center lg:justify-start items-center border-b-4 lg:border-l-4 lg:border-b-0 gap-3  ${active === 1
+                  ? "bg-white border-sky-700"
+                  : "hover:bg-white hover:border-black"
+                  } `}
                 onClick={() => changeActive(1)}
               >
                 <i
-                  className={`fi w-auto h-auto flex justify-center items-center text-lg fi-rr-info text-center self-center ${
-                    active === 1 ? "text-sky-700" : "text-black"
-                  }`}
+                  className={`fi w-auto h-auto flex justify-center items-center text-lg fi-rr-info text-center self-center ${active === 1 ? "text-sky-700" : "text-black"
+                    }`}
                 ></i>
                 <h1
-                  className={`text-lg hidden lg:flex mb-1 justify-center items-center ${
-                    active === 1 ? "font-bold text-sky-700" : "font-semibold"
-                  }`}
+                  className={`text-lg hidden lg:flex mb-1 justify-center items-center ${active === 1 ? "font-bold text-sky-700" : "font-semibold"
+                    }`}
                 >
                   Thông tin cá nhân
                 </h1>
               </div>
               <div
-                className={`flex cursor-not-allowed flex-row w-full pl-0 lg:pl-5 py-2 justify-center lg:justify-start items-center border-b-4 lg:border-l-4 lg:border-b-0 gap-3  ${
-                  active === 2
-                    ? "bg-white border-sky-700"
-                    : "hover:bg-white hover:border-black"
-                } `}
+                className={`flex cursor-not-allowed flex-row w-full pl-0 lg:pl-5 py-2 justify-center lg:justify-start items-center border-b-4 lg:border-l-4 lg:border-b-0 gap-3  ${active === 2
+                  ? "bg-white border-sky-700"
+                  : "hover:bg-white hover:border-black"
+                  } `}
                 onClick={(e) => e.preventDefault()}
               >
                 <i
-                  className={`fi w-auto h-auto flex justify-center items-center text-lg fi-rr-shopping-cart-add text-center self-center ${
-                    active === 2 ? "text-sky-700" : "text-black"
-                  }`}
+                  className={`fi w-auto h-auto flex justify-center items-center text-lg fi-rr-shopping-cart-add text-center self-center ${active === 2 ? "text-sky-700" : "text-black"
+                    }`}
                 ></i>
                 <h1
-                  className={`text-lg hidden lg:flex mb-1 justify-center items-center ${
-                    active === 2 ? "font-bold text-sky-700" : "font-semibold"
-                  }`}
+                  className={`text-lg hidden lg:flex mb-1 justify-center items-center ${active === 2 ? "font-bold text-sky-700" : "font-semibold"
+                    }`}
                 >
                   Quản lí đơn hàng
                 </h1>
               </div>
               <div
-                className={`flex cursor-not-allowed flex-row w-full pl-0 lg:pl-5 py-2 justify-center lg:justify-start items-center border-b-4 lg:border-l-4 lg:border-b-0 gap-3 ${
-                  active === 3
-                    ? "bg-white border-sky-700"
-                    : "hover:bg-white hover:border-black"
-                } `}
+                className={`flex cursor-not-allowed flex-row w-full pl-0 lg:pl-5 py-2 justify-center lg:justify-start items-center border-b-4 lg:border-l-4 lg:border-b-0 gap-3 ${active === 3
+                  ? "bg-white border-sky-700"
+                  : "hover:bg-white hover:border-black"
+                  } `}
                 onClick={(e) => e.preventDefault()}
               >
                 <i
-                  className={`fi w-auto h-auto flex justify-center items-center text-lg fi-rr-e-learning text-center self-center ${
-                    active === 3 ? "text-sky-700" : "text-black"
-                  }`}
+                  className={`fi w-auto h-auto flex justify-center items-center text-lg fi-rr-e-learning text-center self-center ${active === 3 ? "text-sky-700" : "text-black"
+                    }`}
                 ></i>
                 <h1
-                  className={`text-lg hidden lg:flex mb-1 justify-center items-center ${
-                    active === 3 ? "font-bold text-sky-700" : "font-semibold"
-                  }`}
+                  className={`text-lg hidden lg:flex mb-1 justify-center items-center ${active === 3 ? "font-bold text-sky-700" : "font-semibold"
+                    }`}
                 >
                   Quản lí khóa học
                 </h1>
               </div>
               <div
-                className={`flex cursor-not-allowed flex-row w-full pl-0 lg:pl-5 py-2 justify-center lg:justify-start items-center border-b-4 lg:border-l-4 lg:border-b-0 gap-3 ${
-                  active === 4
-                    ? "bg-white border-sky-700"
-                    : "hover:bg-white hover:border-black"
-                } `}
+                className={`flex cursor-not-allowed flex-row w-full pl-0 lg:pl-5 py-2 justify-center lg:justify-start items-center border-b-4 lg:border-l-4 lg:border-b-0 gap-3 ${active === 4
+                  ? "bg-white border-sky-700"
+                  : "hover:bg-white hover:border-black"
+                  } `}
                 onClick={(e) => e.preventDefault()}
               >
                 <i
-                  className={`fi w-auto h-auto flex justify-center items-center text-lg fi-rr-credit-card text-center self-center ${
-                    active === 4 ? "text-sky-700" : "text-black"
-                  }`}
+                  className={`fi w-auto h-auto flex justify-center items-center text-lg fi-rr-credit-card text-center self-center ${active === 4 ? "text-sky-700" : "text-black"
+                    }`}
                 ></i>
                 <h1
-                  className={`text-lg hidden lg:flex mb-1 justify-center items-center ${
-                    active === 4 ? "font-bold text-sky-700" : "font-semibold"
-                  }`}
+                  className={`text-lg hidden lg:flex mb-1 justify-center items-center ${active === 4 ? "font-bold text-sky-700" : "font-semibold"
+                    }`}
                 >
                   Phương thức thanh toán
                 </h1>
@@ -511,6 +501,7 @@ const Account = () => {
                   label={<span className="work">Ngày sinh</span>}
                   value={dayjs(yearofbirth ? yearofbirth : "2000-01-01")}
                   onChange={handleYOBChange}
+                  format="DD/MM/YYYY"
                   slotProps={{ textField: { size: "small" } }}
                   sx={{
                     ".MuiInputBase-input": {
@@ -524,70 +515,61 @@ const Account = () => {
                   }}
                 />
               </LocalizationProvider>
-              <div className="flex flex-row h-[100px] gap-4">
+              <div className="flex flex-row h-auto gap-4">
                 <div
                   onClick={() => setGender("Male")}
-                  className={`w-[120px] cursor-pointer h-full flex flex-col justify-center gap-1 pt-3 items-center rounded-md   ${
-                    gender === "Male"
-                      ? "bg-sky-600 "
-                      : "bg-white border-2 border-gray-200"
-                  }`}
+                  className={`w-[80px] cursor-pointer h-[80px] flex flex-col justify-center gap-1 pt-2 items-center rounded-lg   ${gender === "Male"
+                    ? "bg-sky-600 "
+                    : "bg-white border-2 border-gray-200"
+                    }`}
                 >
                   <i
-                    className={`text-4xl flex justify-center items-center fi fi-br-male ${
-                      gender === "Male" ? "text-white" : "text-black"
-                    }`}
+                    className={`text-3xl flex justify-center items-center fi fi-br-male ${gender === "Male" ? "text-white" : "text-black"
+                      }`}
                   ></i>
                   <h2
-                    className={`text-xl ${
-                      gender === "Male" ? "text-white" : "text-gray-700"
-                    }`}
+                    className={`text-base font-semibold ${gender === "Male" ? "text-white" : "text-gray-700"
+                      }`}
                   >
                     Nam
                   </h2>
                 </div>
                 <div
                   onClick={() => setGender("Female")}
-                  className={`w-[120px] cursor-pointer h-full flex flex-col justify-center gap-1 pt-3 items-center rounded-md   ${
-                    gender === "Female"
-                      ? "bg-sky-600 "
-                      : "bg-white border-2 border-gray-200"
-                  }`}
+                  className={`w-[80px] cursor-pointer h-[80px] flex flex-col justify-center gap-1 pt-2 items-center rounded-lg   ${gender === "Female"
+                    ? "bg-sky-600 "
+                    : "bg-white border-2 border-gray-200"
+                    }`}
                 >
                   <i
-                    className={`text-4xl flex justify-center items-center fi fi-br-female ${
-                      gender === "Female" ? "text-white" : "text-black"
-                    }`}
+                    className={`text-3xl flex justify-center items-center fi fi-br-female ${gender === "Female" ? "text-white" : "text-black"
+                      }`}
                   ></i>
                   <h2
-                    className={`text-xl ${
-                      gender === "Female" ? "text-white" : "text-gray-700"
-                    }`}
+                    className={`text-base font-semibold ${gender === "Female" ? "text-white" : "text-gray-700"
+                      }`}
                   >
                     Nữ
                   </h2>
                 </div>
-                <div
+                {/* <div
                   onClick={() => setGender("Other")}
-                  className={`w-[120px] cursor-pointer h-full flex flex-col justify-center gap-1 pt-3 items-center rounded-md   ${
-                    gender === "Other"
+                  className={`w-[120px] cursor-pointer h-full flex flex-col justify-center gap-1 pt-3 items-center rounded-md   ${gender === "Other"
                       ? "bg-sky-600 "
                       : "bg-white border-2 border-gray-200"
-                  }`}
+                    }`}
                 >
                   <i
-                    className={`text-4xl flex justify-center items-center fi fi-br-question ${
-                      gender === "Other" ? "text-white" : "text-black"
-                    }`}
+                    className={`text-4xl flex justify-center items-center fi fi-br-question ${gender === "Other" ? "text-white" : "text-black"
+                      }`}
                   ></i>
                   <h2
-                    className={`text-xl ${
-                      gender === "Other" ? "text-white" : "text-gray-700"
-                    }`}
+                    className={`text-xl ${gender === "Other" ? "text-white" : "text-gray-700"
+                      }`}
                   >
                     Khác
                   </h2>
-                </div>
+                </div> */}
               </div>
               <div className="flex flex-row gap-4 h-[40px] w-full items-center justify-start">
                 <button

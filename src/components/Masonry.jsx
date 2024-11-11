@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
+import PropTypes from "prop-types";
 import useMeasure from "react-use-measure";
 import { useTransition, a } from "@react-spring/web";
 import shuffle from "lodash.shuffle";
@@ -6,7 +7,7 @@ import useMedia from "./useMedia";
 import data from "./data";
 import styles from "./styles.module.css";
 
-const Masonry = () => {
+const Masonry = ({ shouldShuffle }) => {
   const columns = useMedia(
     ["(min-width: 1500px)", "(min-width: 1000px)", "(min-width: 600px)"],
     [5, 4, 3],
@@ -14,10 +15,15 @@ const Masonry = () => {
   );
   const [ref, { width }] = useMeasure();
   const [items, set] = useState(data);
+
   useEffect(() => {
-    const t = setInterval(() => set(shuffle), 4000);
+    let t;
+    if (shouldShuffle) {
+      t = setInterval(() => set(shuffle), 4000);
+    }
     return () => clearInterval(t);
-  }, []);
+  }, [shouldShuffle]);
+
   const [heights, gridItems] = useMemo(() => {
     let heights = new Array(columns).fill(0);
     let gridItems = items.map((child) => {
@@ -34,6 +40,7 @@ const Masonry = () => {
     });
     return [heights, gridItems];
   }, [columns, items, width]);
+
   const transitions = useTransition(gridItems, {
     key: (item) => item.css,
     from: { opacity: 1 },
@@ -42,6 +49,7 @@ const Masonry = () => {
     config: { mass: 5, tension: 700, friction: 200 },
     trail: 25,
   });
+
   return (
     <div
       ref={ref}
@@ -66,6 +74,9 @@ const Masonry = () => {
       ))}
     </div>
   );
+};
+Masonry.propTypes = {
+  shouldShuffle: PropTypes.bool.isRequired,
 };
 
 export default Masonry;

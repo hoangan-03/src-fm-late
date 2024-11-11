@@ -92,8 +92,8 @@ html {
   animation: slide-out 0.6s ease-in-out;
 }
 * {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer and Edge */
+  /* scrollbar-width: none; */
+  -ms-overflow-style: none; 
   box-sizing: border-box;
 }
 h1 {
