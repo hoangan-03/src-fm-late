@@ -1,6 +1,6 @@
 import mouseup from "../assets/pic/mouse-cursor (1).png";
 import { useLocation } from "react-router-dom";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Masonry from "../components/Masonry";
 import a3 from "../assets/pic/3.jpg";
 import a7 from "../assets/pic/7.jpg";
@@ -13,10 +13,11 @@ import haucan from "../assets/pic/haucan.jpg";
 import Scroll from "../components/Scroll";
 import "../components/animation.css";
 import Footer from "../components/Footer";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 export default function Aboutus() {
   const location = useLocation();
-  const [shouldShuffle, setShouldShuffle] = useState(true);
   const masonryRef = useRef(null);
 
   const addShowOnLoadClass = () => {
@@ -30,67 +31,37 @@ export default function Aboutus() {
     addShowOnLoadClass();
   }, [location]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      let sections = document.querySelectorAll("section.animate,div.animate");
-      let windowHeight = window.innerHeight;
-      let scrollY = window.scrollY;
+  const [ref1, inView1] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [ref2, inView2] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [ref3, inView3] = useInView({ triggerOnce: true, threshold: 0.1 });
 
-      sections.forEach((sec) => {
-        let offset = sec.offsetTop + 200;
-        let height = sec.offsetHeight;
-
-        if (scrollY + windowHeight >= offset && scrollY < offset + height) {
-          sec.classList.add("show-animate");
-        } else {
-          sec.classList.remove("show-animate");
-        }
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const animation1 = useAnimation();
+  const animation2 = useAnimation();
+  const animation3 = useAnimation();
 
   useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      setShouldShuffle(width >= 600 && width <= 1500);
-    };
-
-    window.addEventListener("resize", handleResize);
-    handleResize();
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setShouldShuffle(true);
-          } else {
-            setShouldShuffle(false);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const currentMasonryRef = masonryRef.current;
-
-    if (currentMasonryRef) {
-      observer.observe(currentMasonryRef);
+    if (inView1) {
+      animation1.start({ opacity: 1, x: 0 });
+    } else {
+      animation1.start({ opacity: 0, x: -350 });
     }
+  }, [inView1, animation1]);
 
-    return () => {
-      if (currentMasonryRef) {
-        observer.unobserve(currentMasonryRef);
-      }
-    };
-  }, []);
+  useEffect(() => {
+    if (inView2) {
+      animation2.start({ opacity: 1, x: 0 });
+    } else {
+      animation2.start({ opacity: 0, x: 350 });
+    }
+  }, [inView2, animation2]);
+
+  useEffect(() => {
+    if (inView3) {
+      animation3.start({ opacity: 1, y: 0 });
+    } else {
+      animation3.start({ opacity: 0, y: 250 });
+    }
+  }, [inView3, animation3]);
 
   return (
     <div className="w-screen h-auto overflow-hidden gra bg-white">
@@ -118,7 +89,7 @@ export default function Aboutus() {
           </div>
         </div>
         <div ref={masonryRef}>
-          <Masonry shouldShuffle={shouldShuffle} />
+          <Masonry />
         </div>
         <div className="absolute wrapperr w-[90%] lg:w-[800px] self-center rounded-2xl backdrop-blur-2xl bg-sky-100/90 h-auto bottom-[-50px] lg:bottom-[10px] text-white text-center airbnb flex justify-center items-center">
           <div className="special-text text-sm lg:text-3xl lg:px-4 lg:py-2">
@@ -126,7 +97,11 @@ export default function Aboutus() {
           </div>
         </div>
       </section>
-      <section
+      <motion.section
+        ref={ref1}
+        animate={animation1}
+        initial={{ opacity: 0, x: -50 }}
+        transition={{ duration: 0.5 }}
         className="w-screen h-[600px] lg:h-screen mt-16 lg:mt-0 relative animate"
         id="vision1"
       >
@@ -162,9 +137,13 @@ export default function Aboutus() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <section
+      <motion.section
+        ref={ref2}
+        animate={animation2}
+        initial={{ opacity: 0, x: 50 }}
+        transition={{ duration: 0.5 }}
         className="w-screen h-[600px] lg:h-screen flex justify-center animate flex-col items-center gap-8"
         id="vision2"
       >
@@ -187,8 +166,12 @@ export default function Aboutus() {
             </h3>
           </div>
         </div>
-      </section>
-      <section
+      </motion.section>
+      <motion.section
+        ref={ref3}
+        animate={animation3}
+        initial={{ opacity: 0, y: 50 }}
+        transition={{ duration: 0.5 }}
         className="w-screen overflow-auto h-auto lg:h-[180vh] relative bg-blue-200 flex pt-[20px] pb-[260px] flex-col gap-8 lg:gap-2 justify-center items-center"
         id="organization"
       >
@@ -214,7 +197,7 @@ export default function Aboutus() {
             </div>
           </div>
         </div>
-        <div className=" flex flex-col h-[2800px] w-screen lg:w-[1600px] max-w-full lg:h-full gap-6 justify-center items-start px-12 lg:px-0">
+        <div className="flex flex-col h-[2800px] w-screen lg:w-[1600px] max-w-full lg:h-full gap-6 justify-center items-start px-12 lg:px-0">
           <div className="flex overflow-x-hidden flex-col lg:flex-row w-full h-1/2 gap-6 justify-start lg:justify-center items-start">
             <div className="w-full lg:w-[20%] h-1/3 lg:h-full relative">
               <img
@@ -307,7 +290,7 @@ export default function Aboutus() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
       <Footer />
     </div>
   );

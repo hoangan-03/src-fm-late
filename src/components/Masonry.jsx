@@ -1,28 +1,18 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import PropTypes from "prop-types";
 import useMeasure from "react-use-measure";
-import { useTransition, a } from "@react-spring/web";
-import shuffle from "lodash.shuffle";
 import useMedia from "./useMedia";
 import data from "./data";
 import styles from "./styles.module.css";
 
-const Masonry = ({ shouldShuffle }) => {
+const Masonry = () => {
   const columns = useMedia(
     ["(min-width: 1500px)", "(min-width: 1000px)", "(min-width: 600px)"],
     [5, 4, 3],
     2
   );
   const [ref, { width }] = useMeasure();
-  const [items, set] = useState(data);
-
-  useEffect(() => {
-    let t;
-    if (shouldShuffle) {
-      t = setInterval(() => set(shuffle), 4000);
-    }
-    return () => clearInterval(t);
-  }, [shouldShuffle]);
+  const [items] = useState(data);
 
   const [heights, gridItems] = useMemo(() => {
     let heights = new Array(columns).fill(0);
@@ -39,42 +29,40 @@ const Masonry = ({ shouldShuffle }) => {
       };
     });
     return [heights, gridItems];
-  }, [columns, items, width]);
-
-  const transitions = useTransition(gridItems, {
-    key: (item) => item.css,
-    from: { opacity: 1 },
-    enter: { opacity: 1 },
-    update: ({ x, y, width, height }) => ({ x, y, width, height }),
-    config: { mass: 5, tension: 700, friction: 200 },
-    trail: 25,
-  });
+  }, [columns, width, items]);
 
   return (
     <div
       ref={ref}
       className={styles.list}
-      style={{ height: Math.max(...heights) }}
+      style={{ height: Math.max(...heights), position: 'relative' }}
     >
-      {transitions((style, item) => (
-        <a.div style={style}>
-          <div
-            style={{
-              backgroundImage: `url(${item.css})`,
-            }}
-          >
-            <img
-              src={item.css}
-              alt=""
-              loading="lazy"
-              style={{ display: "none" }}
-            />
-          </div>
-        </a.div>
+      {gridItems.map((item) => (
+        <div
+          key={item.css}
+          style={{
+            position: "absolute",
+            top: item.y,
+            left: item.x,
+            width: item.width,
+            height: item.height,
+            backgroundImage: `url(${item.css})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <img
+            src={item.css}
+            alt=""
+            loading="lazy"
+            style={{ display: "none" }}
+          />
+        </div>
       ))}
     </div>
   );
 };
+
 Masonry.propTypes = {
   shouldShuffle: PropTypes.bool.isRequired,
 };
